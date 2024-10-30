@@ -42,7 +42,7 @@ export default function Home() {
       <Toaster position="top-center" />
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {/* Contact - Fixed layout */}
-        <Card className="col-span-1 sm:col-span-2 lg:col-span-4 p-4">
+        <Card className="col-span-1 sm:col-span-2 lg:col-span-4 p-4 bg-zinc-900">
           <div className="flex justify-between items-center w-full">
             <div className="flex items-center space-x-6">
               <SocialIcon
@@ -66,19 +66,19 @@ export default function Home() {
         </Card>
 
         {/* Header */}
-        <Card className="col-span-1 sm:col-span-2 lg:col-span-1">
+        <Card className="col-span-1 sm:col-span-2 lg:col-span-1 bg-zinc-900">
           <h1 className="text-3xl sm:text-4xl font-bold mb-2">
             Hi, I&apos;m Ishan —
           </h1>
           <p className="text-gray-400 text-sm sm:text-base">
-            Senior Software Engineer with 4+ years of experience in leading
+            Senior Software Engineer with 5+ years of experience in leading
             teams and developing high-quality applications using React.js, React
             Native & Node.js.
           </p>
         </Card>
 
         {/* Profile Image */}
-        <Card className="col-span-1 sm:col-span-2 lg:col-span-1 p-0 aspect-square">
+        <Card className="col-span-1 sm:col-span-2 lg:col-span-1 p-0 aspect-square bg-zinc-900">
           <Image
             src={ProfileImage}
             alt="Ishan"
@@ -90,7 +90,7 @@ export default function Home() {
         </Card>
 
         {/* Skills */}
-        <Card className="col-span-1 sm:col-span-2 lg:col-span-2 py-2 px-4">
+        <Card className="col-span-1 sm:col-span-2 lg:col-span-2 py-2 px-4 bg-zinc-900">
           <h2 className="text-xl sm:text-2xl font-bold mt-4">Skills</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <SkillSet
@@ -135,7 +135,7 @@ export default function Home() {
 
         {/* Frontend Projects */}
         <Card
-          className="col-span-1 sm:col-span-2"
+          className="col-span-1 sm:col-span-2 bg-zinc-900"
           onClick={() => setFrontendDialogOpen(true)}
           viewAllButton={
             <ViewAllButton onClick={() => setFrontendDialogOpen(true)} />
@@ -155,7 +155,7 @@ export default function Home() {
         </Card>
 
         {/* Rust Experience */}
-        <Card className="col-span-1 sm:col-span-2" variant="rust">
+        <Card className="col-span-1 sm:col-span-2 bg-zinc-900" variant="rust">
           <h2 className="text-xl sm:text-2xl font-bold mb-4">
             Rust Experience
           </h2>
@@ -169,12 +169,32 @@ export default function Home() {
               Concurrency: Built-in support for efficient concurrent programming
             </li>
             <li>Performance: Rust&apos;s speed trumps that of Javascript</li>
+            <div className="flex gap-4 mt-2">
+              <a
+                href="https://www.udemy.com/certificate/UC-144bbd90-4f91-4b5a-a1f0-2b26b3d507aa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-400 hover:underline flex items-center gap-1"
+              >
+                <ExternalLink size={16} />
+                <span>View Certificate </span>
+              </a>
+              <a
+                href="https://www.udemy.com/certificate/UC-c839d9fd-bd30-458d-b431-0213c2cc8c3f/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-400 hover:underline flex items-center gap-1"
+              >
+                <ExternalLink size={16} />
+                <span>View Certificate 2</span>
+              </a>
+            </div>
           </ul>
         </Card>
 
         {/* Blockchain Experience */}
         <Card
-          className="col-span-1 sm:col-span-2 lg:col-span-1"
+          className="col-span-1 sm:col-span-2 lg:col-span-1 bg-zinc-900"
           onClick={() => setBlockchainDialogOpen(true)}
           viewAllButton={
             <ViewAllButton onClick={() => setBlockchainDialogOpen(true)} />
@@ -190,7 +210,7 @@ export default function Home() {
 
         {/* Solana Expert */}
         <Card
-          className="col-span-1 sm:col-span-2 lg:col-span-1"
+          className="col-span-1 sm:col-span-2 lg:col-span-1 bg-zinc-900"
           onClick={() => setSolanaDialogOpen(true)}
           viewAllButton={
             <ViewAllButton onClick={() => setSolanaDialogOpen(true)} />
@@ -205,7 +225,10 @@ export default function Home() {
         </Card>
 
         {/* GO Experience */}
-        <Card className="col-span-1 sm:col-span-2 lg:col-span-2" variant="go">
+        <Card
+          className="col-span-1 sm:col-span-2 lg:col-span-2 bg-zinc-900"
+          variant="go"
+        >
           <h2 className="text-xl sm:text-2xl font-bold mb-4">GO Experience</h2>
           <p className="mb-4 text-sm sm:text-base">
             Worked on Micro-service Architecture in GO: Developed a distributed
@@ -216,7 +239,7 @@ export default function Home() {
         </Card>
 
         {/* Work Experience */}
-        <Card className="col-span-1 sm:col-span-2 lg:col-span-4">
+        <Card className="col-span-1 sm:col-span-2 lg:col-span-4 bg-zinc-900">
           <h2 className="text-xl sm:text-2xl font-bold mb-4">
             Work Experience
           </h2>
@@ -244,7 +267,7 @@ export default function Home() {
 
         {/* Certifications */}
         <Card
-          className="col-span-1 sm:col-span-2 lg:col-span-4"
+          className="col-span-1 sm:col-span-2 lg:col-span-4 bg-zinc-900"
           onClick={() => setCertificationsDialogOpen(true)}
           viewAllButton={
             <ViewAllButton onClick={() => setCertificationsDialogOpen(true)} />
@@ -261,7 +284,7 @@ export default function Home() {
         </Card>
 
         {/* Achievements */}
-        <Card className="col-span-1 sm:col-span-2 lg:col-span-4">
+        <Card className="col-span-1 sm:col-span-2 lg:col-span-4 bg-zinc-900">
           <h2 className="text-xl sm:text-2xl font-bold mb-4">Achievements</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="bg-zinc-900 p-6 rounded-xl hover:bg-zinc-800/80 transition-all">
@@ -638,62 +661,58 @@ const blockchainProjects = [
   {
     name: "Redstone Blockchain Data Explorer",
     description:
-      "Web-based interface to explore and display data from the Redstone Holesky Blockchain",
-    github: "https://github.com/yourusername/redstone-explorer",
+      "Web-based interface to explore and display data from the Redstone Holesky Blockchain, specifically focusing on game data. Utilizing the MUD Indexer for data retrieval, it features a PostgreSQL database for storage, a Node.js backend for data manipulation and API endpoints, and a simple frontend for user interaction.",
+    github: "https://github.com/bluntbrain/redstone-blockchain-data-explorer",
     live: "https://redstone-explorer.example.com",
   },
   {
     name: "Decentralised Voting dApp",
     description:
-      "Deployed on Polygon Mumbai Testnet, enabling secure and transparent voting",
-    github: "https://github.com/yourusername/voting-dapp",
-    live: "https://voting-dapp.example.com",
+      "Led the frontend development and smart contract deployment for this project, using React.js, Firebase, and Solidity. Successfully deployed the smart contract on Polygon Mumbai Testnet, enabling secure and transparent voting that reduces voting costs by up to 80% compared to traditional methods. Technologies used: Solidity,  Hardhat, Polygon (Mumbai Testnet),  React.js",
+    github: "https://github.com/bluntbrain/voting-app-eth-india",
+    live: "https://devfolio.co/projects/ballet-on-chain-9d77",
   },
   {
     name: "Domain service on Polygon L2",
     description:
-      "DApp on polygon PoS chain where users can buy their own domain",
-    github: "https://github.com/yourusername/polygon-domains",
-    live: "https://polygon-domains.example.com",
+      "A DApp on polygon PoS chain(Mumbai Testnet) where user can buy their own domain. Users can connect their metamask wallet to pay the gas fees and domain fees. The domain name with owner's address can be viewed on OpenSea NFT marketplace testnet.",
+    github: "https://github.com/bluntbrain/domain-service-on-polygon-L2",
+    live: "https://domain-service-polygon.web.app/",
   },
   {
     name: "Custom ERC-20 and ERC-721 Tokens",
-    description: "Created using OpenZeppelin and deployed to Rinkeby testnet",
-    github: "https://github.com/yourusername/custom-tokens",
-    live: "https://custom-tokens.example.com",
+    description:
+      "Created ERC20 and ERC721 Tokens using openzeppelin and Deployed to rinkeby testnet. Published and verified on etherscan. ERC-20 is for fungible tokens with identical value per unit, ERC-721 is for unique, indivisible tokens representing ownership of assets, and ERC-1155 is a multi-token standard allowing for both fungible and non-fungible tokens within a single contract, optimizing transaction and storage efficiency. Mintable NFTs ",
+    github: "https://github.com/bluntbrain/custom-ERC20-token",
+    live: "https://goerli.etherscan.io/tx/0xcda0b9c1f1ee0f3c3c2162fcfe249bd9f7012a48f177dc069aedf6347c272dbf",
   },
 ];
 
 const frontendProjects = [
   {
     name: "Next.js Movie Ballot App",
-    description: "Web application for movie award voting",
-    github: "https://github.com/yourusername/movie-ballot",
-    live: "https://movie-ballot.example.com",
+    description:
+      "Next.js Movie Ballot App is a web application designed for users to participate in movie award voting. This app allows users to browse different award categories, view nominees, and cast their votes. Additionally, users can view voting results in real-time through a modal window.",
+    github: "https://github.com/bluntbrain/next-js-movie-ballot-app",
+    live: "https://next-js-movie-ballot-app.vercel.app/",
   },
   {
     name: "Coupl App",
-    description: "Neobank for couples (React Native)",
-    github: "https://github.com/yourusername/coupl-app",
-    live: "https://coupl-app.example.com",
+    description:
+      "Led the end-to-end development of the app from inception to launch, successfully acquiring more than 10,000 users from scratch within just 2 months post-launch. Coupl is India's first neobank designed for couples, offering a joint wallet and linked cards to facilitate easy pooling and spending of money for shared expenses without the need for a traditional joint account. It provides a convenient solution for managing finances together, aimed at fostering financial savvy among modern couples. The platform emphasizes ease of use, inclusivity, and rewards for spending together, making it appealing for couples at any stage of their relationship.",
+    live: "https://play.google.com/store/apps/details?id=com.couplapp",
   },
   {
-    name: "Cryo Circuit App",
-    description: "Online truck booking platform (React Native)",
-    github: "https://github.com/yourusername/cryo-circuit",
-    live: "https://cryo-circuit.example.com",
+    name: "Swipable News Headlines App (React Native)",
+    description:
+      "This React Native app fetches and displays the top news headlines, allowing users to refresh the list, pin their favorite headlines, and delete the ones they're not interested in. It uses local storage to cache headlines for offline access and introduces new headlines at specified intervals.",
+    github: "https://github.com/bluntbrain/swipeable-news-app",
   },
   {
-    name: "Swipable News Headlines App",
-    description: "News app with swipable headlines  (React Native)",
-    github: "https://github.com/yourusername/swipable-news",
-    live: "https://swipable-news.example.com",
-  },
-  {
-    name: "Location-based Chat Application",
-    description: "Chat app based on user location (React Native)",
-    github: "https://github.com/yourusername/location-chat",
-    live: "https://location-chat.example.com",
+    name: "Location-based Chat Application (React Native)",
+    description:
+      "This is a location-based chat application built with React Native. It allows users to see other users on a map and start a chat conversation by selecting a user marker on the map. Technologies Used: React Native, React Context API, Mapbox, React Native Gifted Chat",
+    github: "https://github.com/bluntbrain/react-native-messenger-library",
   },
 ];
 
