@@ -68,7 +68,7 @@ export default function Home() {
         {/* Header */}
         <Card className="col-span-1 sm:col-span-2 lg:col-span-1 bg-zinc-900">
           <h1 className="text-3xl sm:text-4xl font-bold mb-2">
-            Hi, I&apos;m Ishan —
+            Hi, I&apos;m Ishan
           </h1>
           <p className="text-gray-400 text-sm sm:text-base">
             Senior Software Engineer with 5+ years of experience in leading
@@ -287,7 +287,7 @@ export default function Home() {
         <Card className="col-span-1 sm:col-span-2 lg:col-span-4 bg-zinc-900">
           <h2 className="text-xl sm:text-2xl font-bold mb-4">Achievements</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="bg-zinc-900 p-6 rounded-xl hover:bg-zinc-800/80 transition-all">
+            <div className="bg-slate-950 p-6 rounded-xl hover:bg-zinc-800/80 transition-all">
               <h3 className="font-bold text-lg mb-2 text-blue-400">
                 StarkHack Winner 🏆
               </h3>
@@ -297,7 +297,16 @@ export default function Home() {
               </p>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/yourusername/chain-monsters"
+                  href="https://ethglobal.com/showcase/chain-monsters-o26dw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-400 hover:underline flex items-center gap-1"
+                >
+                  <ExternalLink size={16} />
+                  <span>ETH Global</span>
+                </a>
+                <a
+                  href="https://github.com/Krane-Apps/chain-monsters"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:underline flex items-center gap-1"
@@ -306,7 +315,7 @@ export default function Home() {
                   <span>GitHub</span>
                 </a>
                 <a
-                  href="https://chain-monsters.example.com"
+                  href="https://chain-monsters.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-green-400 hover:underline flex items-center gap-1"
@@ -317,7 +326,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-zinc-900 p-6 rounded-xl hover:bg-zinc-800/80 transition-all">
+            <div className="bg-slate-950 p-6 rounded-xl hover:bg-zinc-800/80 transition-all">
               <h3 className="font-bold text-lg mb-2 text-purple-400">
                 SuperHack Winner 🚀
               </h3>
@@ -327,7 +336,16 @@ export default function Home() {
               </p>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/yourusername/repo-reward"
+                  href="https://ethglobal.com/showcase/repo-rewards-su0bh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-400 hover:underline flex items-center gap-1"
+                >
+                  <ExternalLink size={16} />
+                  <span>ETH Global</span>
+                </a>
+                <a
+                  href="https://github.com/Krane-Apps/repo-rewards-superhack-2024"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:underline flex items-center gap-1"
@@ -336,7 +354,7 @@ export default function Home() {
                   <span>GitHub</span>
                 </a>
                 <a
-                  href="https://repo-reward.example.com"
+                  href="https://repo-rewards.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-green-400 hover:underline flex items-center gap-1"
@@ -347,7 +365,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-zinc-900 p-6 rounded-xl hover:bg-zinc-800/80 transition-all">
+            <div className="bg-slate-950 p-6 rounded-xl hover:bg-zinc-800/80 transition-all">
               <h3 className="font-bold text-lg mb-2 text-yellow-400">
                 ETH Singapore 🌟
               </h3>
@@ -357,7 +375,16 @@ export default function Home() {
               </p>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/yourusername/inspector-ai"
+                  href="https://ethglobal.com/showcase/inspector-ai-s5mw5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-400 hover:underline flex items-center gap-1"
+                >
+                  <ExternalLink size={16} />
+                  <span>ETH Global</span>
+                </a>
+                <a
+                  href="https://github.com/Krane-Apps/inspector-ai-eth-singapore-2024"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:underline flex items-center gap-1"
@@ -366,7 +393,7 @@ export default function Home() {
                   <span>GitHub</span>
                 </a>
                 <a
-                  href="https://chrome.google.com/webstore/detail/inspector-ai"
+                  href="https://chromewebstore.google.com/detail/inspectorai/kbaegdknaifjgibhhehalanldkanclkb"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-green-400 hover:underline flex items-center gap-1"
@@ -433,7 +460,7 @@ function Card({
   return (
     <div
       className={cn(
-        "bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-zinc-950 relative overflow-hidden rounded-3xl border border-slate-900 bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat p-8 shadow-2xl transition-all duration-300 cursor-pointer group",
+        "bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-zinc-950 relative overflow-hidden rounded-3xl border border-slate-900 bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat p-8 shadow-2xl transition-all duration-300 cursor-pointer group ",
         className
       )}
       onClick={onClick}
@@ -451,8 +478,8 @@ function Card({
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/50 z-10" />
         </div>
       )}
-      <div className="relative z-20">
-        {children}
+      <div className="relative z-20 h-full flex flex-col">
+        <div className="flex-1">{children}</div>
         {viewAllButton}
       </div>
     </div>
@@ -867,7 +894,7 @@ function ViewAllButton({ onClick }: { onClick: () => void }) {
   return (
     <button
       onClick={onClick}
-      className="absolute bottom-4 right-4 text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1 group z-30"
+      className="mt-4 text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1 group z-30 self-end"
     >
       <span className="text-sm font-medium underline underline-offset-4">
         View All
