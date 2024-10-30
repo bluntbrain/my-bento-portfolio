@@ -284,8 +284,10 @@ export default function Home() {
         </Card>
 
         {/* Achievements */}
-        <Card className="col-span-1 sm:col-span-2 lg:col-span-4 bg-zinc-900">
-          <h2 className="text-xl sm:text-2xl font-bold mb-4">Achievements</h2>
+        <Card className="col-span-1 sm:col-span-2 lg:col-span-4 bg-zinc-900 p-2">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 px-4 py-2">
+            Achievements
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="bg-slate-950 p-6 rounded-xl hover:bg-zinc-800/80 transition-all">
               <h3 className="font-bold text-lg mb-2 text-blue-400">
@@ -295,7 +297,7 @@ export default function Home() {
                 Won $4,000 for developing Chain Monsters, an innovative
                 blockchain-based game
               </p>
-              <div className="flex gap-4">
+              <div className="flex gap-2">
                 <a
                   href="https://ethglobal.com/showcase/chain-monsters-o26dw"
                   target="_blank"
@@ -321,7 +323,7 @@ export default function Home() {
                   className="text-green-400 hover:underline flex items-center gap-1"
                 >
                   <ExternalLink size={16} />
-                  <span>Live Demo</span>
+                  <span>Demo</span>
                 </a>
               </div>
             </div>
@@ -360,7 +362,7 @@ export default function Home() {
                   className="text-green-400 hover:underline flex items-center gap-1"
                 >
                   <ExternalLink size={16} />
-                  <span>Live App</span>
+                  <span>Demo</span>
                 </a>
               </div>
             </div>
@@ -399,7 +401,7 @@ export default function Home() {
                   className="text-green-400 hover:underline flex items-center gap-1"
                 >
                   <ExternalLink size={16} />
-                  <span>Chrome Store</span>
+                  <span>Demo</span>
                 </a>
               </div>
             </div>
