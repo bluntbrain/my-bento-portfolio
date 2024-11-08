@@ -46,7 +46,7 @@ export default function Home() {
           <div className="flex justify-between items-center w-full">
             <div className="flex items-center space-x-6">
               <SocialIcon
-                href="https://twitter.com/ishan_lakhwani"
+                href="https://twitter.com/bluntbrain_web3"
                 icon={<Twitter size={24} />}
                 label="Twitter"
               />
