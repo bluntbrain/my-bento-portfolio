@@ -18,6 +18,7 @@ import { blockchainProjects } from "@/lib/data";
 import { ContactSection } from "@/components/sections/contact-section";
 import { Header } from "@/components/sections/header";
 import { Achievements } from "@/components/sections/achievements";
+import { FoundryProjects } from "@/components/sections/foundry-projects";
 
 export default function Home() {
   const [blockchainDialogOpen, setBlockchainDialogOpen] = React.useState(false);
@@ -36,6 +37,9 @@ export default function Home() {
 
         {/* Achievements */}
         <Achievements />
+
+        {/* Foundry Projects */}
+        <FoundryProjects />
 
         {/* Frontend Projects */}
         <FrontendSection setFrontendDialogOpen={setFrontendDialogOpen} />

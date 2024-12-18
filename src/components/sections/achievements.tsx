@@ -89,7 +89,7 @@ export function Achievements() {
 
         {/* ETH Singapore Card */}
         <div className="bg-slate-950 p-6 rounded-xl hover:bg-zinc-800/80 transition-all h-full">
-          <h3 className="font-bold text-lg mb-2 text-yellow-400">
+          <h3 className="font-bold text-lg mb-2 text-blue-400">
             ETH Singapore 🌟
           </h3>
           <p className="text-gray-400 mb-4 min-h-[80px]">
@@ -129,7 +129,7 @@ export function Achievements() {
 
         {/* ETH Bangkok Card */}
         <div className="bg-slate-950 p-6 rounded-xl hover:bg-zinc-800/80 transition-all h-full">
-          <h3 className="font-bold text-lg mb-2 text-blue-400">
+          <h3 className="font-bold text-lg mb-2 text-purple-400">
             ETH Bangkok Winner 🏆
           </h3>
           <p className="text-gray-400 mb-4 min-h-[80px]">
