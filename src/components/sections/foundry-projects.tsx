@@ -18,7 +18,7 @@ export function FoundryProjects() {
             <p className="text-gray-400 mb-4">
               An exogenously collateralized, dollar-pegged, algorithmically
               stable cryptocurrency. Built with robust smart contracts and
-              testing.
+              testing in foundry.
             </p>
           </div>
           <div className="mt-auto pt-4">
