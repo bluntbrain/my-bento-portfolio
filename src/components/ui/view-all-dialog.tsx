@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-
 import { Github, ExternalLink, X } from "lucide-react";
 import React from "react";
 
@@ -23,161 +22,76 @@ export function ViewAllDialog({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
-  const DialogHeader = ({
-    className,
-    ...props
-  }: React.HTMLAttributes<HTMLDivElement>) => (
-    <div
-      className={cn(
-        "flex flex-col space-y-1.5 text-center sm:text-left",
-        className
-      )}
-      {...props}
-    />
-  );
-  DialogHeader.displayName = "DialogHeader";
-
-  const DialogFooter = ({
-    className,
-    ...props
-  }: React.HTMLAttributes<HTMLDivElement>) => (
-    <div
-      className={cn(
-        "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-        className
-      )}
-      {...props}
-    />
-  );
-  DialogFooter.displayName = "DialogFooter";
-
-  const DialogTitle = React.forwardRef<
-    React.ElementRef<typeof DialogPrimitive.Title>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
-  >(({ className, ...props }, ref) => (
-    <DialogPrimitive.Title
-      ref={ref}
-      className={cn(
-        "text-lg font-semibold leading-none tracking-tight",
-        className
-      )}
-      {...props}
-    />
-  ));
-  DialogTitle.displayName = DialogPrimitive.Title.displayName;
-
-  const DialogDescription = React.forwardRef<
-    React.ElementRef<typeof DialogPrimitive.Description>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
-  >(({ className, ...props }, ref) => (
-    <DialogPrimitive.Description
-      ref={ref}
-      className={cn("text-sm text-muted-foreground", className)}
-      {...props}
-    />
-  ));
-  DialogDescription.displayName = DialogPrimitive.Description.displayName;
-
-  const DialogPortal = ({
-    children,
-    ...props
-  }: DialogPrimitive.DialogPortalProps) => (
-    <DialogPrimitive.Portal {...props}>
-      <div className="fixed inset-0 z-50 flex items-start justify-center sm:items-center">
-        {children}
-      </div>
-    </DialogPrimitive.Portal>
-  );
-  DialogPortal.displayName = DialogPrimitive.Portal.displayName;
-
-  const DialogOverlay = React.forwardRef<
-    React.ElementRef<typeof DialogPrimitive.Overlay>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
-  >(({ className, ...props }, ref) => (
-    <DialogPrimitive.Overlay
-      ref={ref}
-      className={cn(
-        "fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-100 data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in",
-        className
-      )}
-      {...props}
-    />
-  ));
-  DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
-
-  const DialogContent = React.forwardRef<
-    React.ElementRef<typeof DialogPrimitive.Content>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
-  >(({ className, children, ...props }, ref) => (
-    <DialogPortal>
-      <DialogOverlay />
-      <DialogPrimitive.Content
-        ref={ref}
-        className={cn(
-          "fixed z-50 grid w-full gap-4 rounded-b-lg border bg-background p-6 shadow-lg animate-in data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:max-w-lg sm:rounded-lg sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0",
-          className
-        )}
-        {...props}
-      >
-        {children}
-      </DialogPrimitive.Content>
-    </DialogPortal>
-  ));
-  DialogContent.displayName = DialogPrimitive.Content.displayName;
   const Dialog = DialogPrimitive.Root;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="fixed inset-x-0 bottom-0 h-[95vh] !max-w-full !rounded-t-2xl !rounded-b-none sm:!rounded-t-2xl animate-in data-[state=open]:slide-in-from-bottom-full data-[state=closed]:animate-out data-[state=closed]:slide-out-to-bottom">
-        <div className="absolute left-1/2 top-2 -translate-x-1/2 flex flex-col items-center gap-4">
-          <div className="h-1.5 w-12 rounded-full bg-gray-300" />
-          <button
-            onClick={() => onOpenChange(false)}
-            className="rounded-full p-2 bg-zinc-900 hover:bg-zinc-800 transition-colors"
-          >
-            <X className="h-4 w-4" />
-            <span className="sr-only">Close</span>
-          </button>
-        </div>
-        <DialogHeader className="mt-16">
-          <DialogTitle className="text-center text-2xl">{title}</DialogTitle>
-        </DialogHeader>
-        <div className="mt-4 overflow-y-auto max-h-[calc(95vh-8rem)] pr-2">
-          {items.map((item, index) => (
-            <div
-              key={index}
-              className="mb-6 p-4 bg-[rgb(20,20,20)] rounded-xl hover:bg-[rgb(30,30,30)] transition-colors"
-            >
-              <h3 className="font-semibold text-lg mb-2">{item.name}</h3>
-              <p className="text-gray-400 mb-3">{item.description}</p>
-              <div className="flex gap-4">
-                {item.github && (
-                  <a
-                    href={item.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:underline flex items-center gap-1"
+      <DialogPrimitive.Portal>
+        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+        <DialogPrimitive.Content
+          className={cn(
+            "fixed inset-y-0 right-0 z-50 h-full w-full sm:w-[700px] lg:w-[900px] border-l bg-zinc-950",
+            "data-[state=open]:animate-in data-[state=closed]:animate-out",
+            "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right",
+            "duration-300 ease-in-out"
+          )}
+        >
+          <div className="h-full flex flex-col">
+            {/* Header */}
+            <div className="flex items-center justify-between border-b border-zinc-800 p-6">
+              <h2 className="text-2xl font-semibold">{title}</h2>
+              <button
+                onClick={() => onOpenChange(false)}
+                className="rounded-full p-2.5 bg-zinc-900 hover:bg-zinc-800 transition-colors"
+              >
+                <X className="h-5 w-5" />
+                <span className="sr-only">Close</span>
+              </button>
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 overflow-y-auto p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {items.map((item, index) => (
+                  <div
+                    key={index}
+                    className="p-4 bg-zinc-900/50 rounded-xl hover:bg-zinc-900 transition-colors"
                   >
-                    <Github size={16} />
-                    <span>GitHub</span>
-                  </a>
-                )}
-                {item.live && (
-                  <a
-                    href={item.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-green-400 hover:underline flex items-center gap-1"
-                  >
-                    <ExternalLink size={16} />
-                    <span>Live App</span>
-                  </a>
-                )}
+                    <h3 className="font-semibold text-lg mb-2 text-yellow-400">
+                      {item.name}
+                    </h3>
+                    <p className="text-gray-400 mb-4">{item.description}</p>
+                    <div className="flex gap-4">
+                      {item.github && (
+                        <a
+                          href={item.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-400 hover:text-blue-300 hover:underline flex items-center gap-1.5"
+                        >
+                          <Github size={18} />
+                          <span>GitHub</span>
+                        </a>
+                      )}
+                      {item.live && (
+                        <a
+                          href={item.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-green-400 hover:text-green-300 hover:underline flex items-center gap-1.5"
+                        >
+                          <ExternalLink size={18} />
+                          <span>Live App</span>
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      </DialogContent>
+          </div>
+        </DialogPrimitive.Content>
+      </DialogPrimitive.Portal>
     </Dialog>
   );
 }
