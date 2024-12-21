@@ -1,11 +1,8 @@
 import React from "react";
 import { CopyEmailButton } from "../ui/copy-email-button";
-import { Github } from "lucide-react";
-import { Linkedin } from "lucide-react";
-import { Twitter } from "lucide-react";
+import { Github, Linkedin, Twitter, Send } from "lucide-react";
 import { Card } from "../ui/card";
 import { SocialIcon } from "../ui/social-icon";
-
 export function ContactSection() {
   return (
     <Card className="col-span-1 sm:col-span-2 lg:col-span-4 p-4 bg-zinc-900">
@@ -25,6 +22,11 @@ export function ContactSection() {
             href="https://linkedin.com/in/ishanl"
             icon={<Linkedin size={24} />}
             label="LinkedIn"
+          />
+          <SocialIcon
+            href="https://t.me/bluntbrain_web3"
+            icon={<Send size={24} />}
+            label="Telegram"
           />
         </div>
         <CopyEmailButton email="ishan.lakhwani@gmail.com" />
