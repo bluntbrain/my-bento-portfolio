@@ -17,7 +17,7 @@ export function FoundryProjects() {
         </div>
         <div>
           <h3 className="font-bold text-lg mb-2 text-yellow-400">
-            DSC Stablecoin
+            Decentralized Stablecoin System
           </h3>
           <p className="text-gray-400 mb-4">
             A decentralized, multi-collateral stablecoin system pegged 1:1 with
