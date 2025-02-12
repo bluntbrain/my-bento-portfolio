@@ -6,10 +6,8 @@ import { Toaster } from "react-hot-toast";
 
 import { certifications, solanaProjects } from "@/lib/data";
 import { frontendProjects } from "@/lib/data";
-import { Certifications } from "@/components/sections/certifications";
 import { WorkExperienceSection } from "@/components/sections/work-experience-section";
-import { GoExperience } from "@/components/sections/go-experience";
-import { Solana } from "@/components/sections/solana";
+
 import { Blockchain } from "@/components/sections/blockchain";
 import { ViewAllDialog } from "@/components/ui/view-all-dialog";
 import { Rust } from "@/components/sections/rust";
@@ -18,7 +16,7 @@ import { blockchainProjects } from "@/lib/data";
 import { ContactSection } from "@/components/sections/contact-section";
 import { Header } from "@/components/sections/header";
 import { Achievements } from "@/components/sections/achievements";
-import { FoundryProjects } from "@/components/sections/foundry-projects";
+import { Footer } from "@/components/sections/footer";
 
 export default function Home() {
   const [blockchainDialogOpen, setBlockchainDialogOpen] = React.useState(false);
@@ -35,33 +33,21 @@ export default function Home() {
         <ContactSection />
         <Header />
 
-        {/* Achievements */}
+        {/* Work Experience and Achievements side by side */}
+        <WorkExperienceSection />
         <Achievements />
 
-        {/* Foundry Projects */}
-        <FoundryProjects />
-
-        {/* Frontend Projects */}
-        <FrontendSection setFrontendDialogOpen={setFrontendDialogOpen} />
-
-        {/* Rust Experience */}
+        {/* Rust Experience & Projects */}
         <Rust />
 
+        {/* Frontend Experience & Projects */}
+        <FrontendSection />
+
         {/* Blockchain Experience */}
-        <Blockchain onOpenChange={setBlockchainDialogOpen} />
+        <Blockchain />
 
-        {/* Solana Expert */}
-        <Solana onOpenChange={setSolanaDialogOpen} />
-
-        {/* GO Experience */}
-        <GoExperience />
-
-        {/* Work Experience */}
-        <WorkExperienceSection />
-        {/* Certifications */}
-        <Certifications
-          setCertificationsDialogOpen={setCertificationsDialogOpen}
-        />
+        {/* Footer */}
+        <Footer />
       </div>
 
       {/* Render ViewAllDialog components */}
