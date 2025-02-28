@@ -12,7 +12,7 @@ interface SkillSetProps {
 export function SkillSet({ title, skills }: SkillSetProps) {
   return (
     <div>
-      <h3 className="font-medium text-blue-400 mb-3">{title}</h3>
+      <h3 className="font-medium text-blue-400 mb-3 ml-2">{title}</h3>
       <div className="flex flex-wrap gap-2">
         {skills.map((skill, index) => (
           <motion.div

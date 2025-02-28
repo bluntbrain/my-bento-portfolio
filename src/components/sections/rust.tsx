@@ -7,14 +7,14 @@ export function Rust() {
     {
       title: "Rust CLI Task Manager",
       description:
-        "A command-line task management application built with Rust. Features include task creation, deletion, status updates, and persistent storage using SQLite. Demonstrates proficiency in Rust's ownership system, error handling, and third-party crate integration.",
+        "Command-line task manager with SQLite storage. Features task creation, deletion, and status updates. Demonstrates Rust's ownership system and error handling.",
       tags: ["Rust", "CLI"],
       githubLink: "https://github.com/your-username/rust-task-manager",
     },
     {
       title: "Rust Image Processing WASM",
       description:
-        "A WebAssembly-powered image processing library written in Rust. Implements various image filters and transformations with high performance. Showcases Rust's zero-cost abstractions and seamless WebAssembly integration.",
+        "WebAssembly-powered image processing library with high-performance filters and transformations. Showcases zero-cost abstractions and seamless WASM integration.",
       tags: ["Rust", "WebAssembly"],
       githubLink: "https://github.com/your-username/rust-image-wasm",
     },
@@ -46,10 +46,8 @@ export function Rust() {
           <div className="bg-zinc-800/80 backdrop-blur-sm rounded-xl p-4 border border-zinc-700">
             <h3 className="font-semibold text-lg mb-4">Certifications</h3>
             <p className="text-gray-400 mb-4 text-sm">
-              Certified Rust developer with strong focus on systems programming
-              and performance optimization. Completed advanced certifications by
-              Nathan Stocks covering both foundational and intermediate
-              concepts.
+              Certified Rust developer focused on systems programming and
+              performance. Completed advanced certifications by Nathan Stocks.
             </p>
             <div className="flex flex-col gap-2">
               <a
