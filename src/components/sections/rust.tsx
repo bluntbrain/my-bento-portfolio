@@ -9,14 +9,14 @@ export function Rust() {
       description:
         "Command-line task manager with SQLite storage. Features task creation, deletion, and status updates. Demonstrates Rust's ownership system and error handling.",
       tags: ["Rust", "CLI"],
-      githubLink: "https://github.com/your-username/rust-task-manager",
+      githubLink: "https://github.com/bluntbrain",
     },
     {
       title: "Rust Image Processing WASM",
       description:
         "WebAssembly-powered image processing library with high-performance filters and transformations. Showcases zero-cost abstractions and seamless WASM integration.",
       tags: ["Rust", "WebAssembly"],
-      githubLink: "https://github.com/your-username/rust-image-wasm",
+      githubLink: "https://github.com/bluntbrain",
     },
   ];
 

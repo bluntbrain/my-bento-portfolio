@@ -9,7 +9,7 @@ export function FrontendSection() {
       description:
         "A modern web application for movie voting and reviews. Built with Next.js 14, Server Actions, and Prisma for optimal performance and user experience.",
       tags: ["Next.js", "TypeScript"],
-      githubLink: "https://github.com/your-username/movie-ballot",
+      githubLink: "https://github.com/bluntbrain",
       liveLink: "https://movie-ballot.vercel.app",
     },
     {
@@ -17,7 +17,7 @@ export function FrontendSection() {
       description:
         "A React Native application for couples to share moments and plan activities together. Features real-time chat, shared calendar, and photo sharing.",
       tags: ["React Native", "Firebase"],
-      githubLink: "https://github.com/your-username/coupl-app",
+      githubLink: "https://github.com/bluntbrain",
       playStoreLink:
         "https://play.google.com/store/apps/details?id=com.couplapp",
     },
@@ -26,14 +26,14 @@ export function FrontendSection() {
       description:
         "Fitness tracking application built with React Native. Includes workout planning, progress tracking, and social features.",
       tags: ["React Native", "Redux"],
-      githubLink: "https://github.com/your-username/cryo-circuit",
+      githubLink: "https://github.com/bluntbrain",
     },
     {
       title: "Swipable News Headlines",
       description:
         "React Native app featuring swipeable news cards with gesture animations and real-time updates.",
       tags: ["React Native", "Animations"],
-      githubLink: "https://github.com/your-username/swipable-news",
+      githubLink: "https://github.com/bluntbrain",
     },
   ];
 

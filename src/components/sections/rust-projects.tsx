@@ -28,7 +28,7 @@ export function RustProjects() {
         </div>
         <div className="absolute bottom-1">
           <a
-            href="https://github.com/your-username/rust-task-manager"
+            href="https://github.com/bluntbrain"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 hover:underline flex items-center gap-1"
@@ -62,7 +62,7 @@ export function RustProjects() {
         </div>
         <div className="absolute bottom-1">
           <a
-            href="https://github.com/your-username/rust-image-wasm"
+            href="https://github.com/bluntbrain"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 hover:underline flex items-center gap-1"
