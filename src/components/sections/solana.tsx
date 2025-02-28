@@ -17,7 +17,7 @@ export function Solana() {
       description:
         "A decentralized lending protocol on Solana allowing users to deposit collateral, borrow assets, and earn interest. Implements risk management features, liquidation mechanisms, and interest rate models optimized for Solana's high throughput.",
       tags: ["Solana", "Lending", "DeFi"],
-      githubLink: "https://github.com/bluntbrain/solana-lending-app",
+      githubLink: "https://github.com/bluntbrain/solana-lending-protocol",
       techStack: ["Rust", "Anchor", "TypeScript", "Solana Program Library"],
     },
   ];
