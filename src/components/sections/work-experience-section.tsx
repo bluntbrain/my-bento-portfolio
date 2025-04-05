@@ -4,15 +4,51 @@ import { Card } from "../ui/card";
 export function WorkExperienceSection() {
   const experiences = [
     {
-      title: "Co-founder",
-      company: "Krane Apps",
-      location: "Bangalore, India",
-      period: "February 2023 - Present",
+      title: "Senior Frontend Engineer",
+      company: "DxSale Network",
+      location: "",
+      period: "March 2024 - Present",
       description: [
         <span key="1">
-          Lead a team of{" "}
+          Built and maintained core frontend features for DxSale&apos;s DeFi
+          launchpad using{" "}
+          <span className="text-green-400 font-semibold">Next.js</span> and{" "}
+          <span className="text-green-400 font-semibold">TailwindCSS</span>
+        </span>,
+        <span key="2">
+          Improved UI performance and reduced bounce rate through optimization
+          and responsive design
+        </span>,
+        <span key="3">
+          Integrated real-time data visualization and wallet interactions with{" "}
+          <span className="text-green-400 font-semibold">Ethers.js</span> and{" "}
+          <span className="text-green-400 font-semibold">Web3.js</span>
+        </span>,
+        <span key="4">
+          Helped launch over{" "}
+          <span className="text-yellow-400 font-semibold">500</span> token
+          sales, generating{" "}
+          <span className="text-yellow-400 font-semibold">$100K+</span> in fees
+          from <span className="text-yellow-400 font-semibold">$10M+</span> in
+          transaction volume
+        </span>,
+        <span key="5">
+          Implemented SEO best practices, improving organic traffic by{" "}
+          <span className="text-yellow-400 font-semibold">3x</span> over{" "}
+          <span className="text-yellow-400 font-semibold">6 months</span>
+        </span>,
+      ],
+      tags: ["Next.js", "TailwindCSS", "Ethers.js", "Web3.js", "DeFi", "SEO"],
+    },
+    {
+      title: "Co-founder",
+      company: "Krane Apps",
+      location: "",
+      period: "February 2023 - March 2024",
+      description: [
+        <span key="1">
+          Led a team of{" "}
           <span className="text-yellow-400 font-semibold">10</span>, focusing on{" "}
-          <span className="text-green-400 font-semibold">Rust</span> and{" "}
           <span className="text-green-400 font-semibold">Nest.js</span> for
           backend and{" "}
           <span className="text-green-400 font-semibold">Next.js</span> for
@@ -25,37 +61,61 @@ export function WorkExperienceSection() {
           </span>{" "}
           and{" "}
           <span className="text-blue-400 font-semibold">DeFi applications</span>
+          , like Glitter Finance
         </span>,
         <span key="3">
           Implemented agile methodologies and improved team productivity by{" "}
           <span className="text-yellow-400 font-semibold">40%</span>
         </span>,
       ],
-      tags: ["Team Leadership", "Blockchain", "DeFi", "Rust", "React"],
+      tags: ["Team Leadership", "Blockchain", "DeFi", "Next.js", "Nest.js"],
     },
     {
-      title: "iOS Team Lead (React Native)",
-      company: "Jar",
+      title: "Frontend Team Lead",
+      company: "Jar App",
       location: "Bangalore",
       period: "February 2022 - February 2023",
       description: [
-        "Led the iOS team, mentored junior developers, and conducted peer reviews",
-        "Improved app performance by 60% through optimization techniques",
-        "Implemented CI/CD pipelines reducing deployment time by 70%",
+        <span key="1">
+          Led the Frontend team, mentored junior developers, and conducted peer
+          reviews
+        </span>,
+        <span key="2">
+          Improved app performance by{" "}
+          <span className="text-yellow-400 font-semibold">60%</span> through
+          optimisation techniques
+        </span>,
+        <span key="3">
+          Implemented CI/CD pipelines reducing deployment time by{" "}
+          <span className="text-yellow-400 font-semibold">70%</span>
+        </span>,
       ],
-      tags: ["iOS", "React Native", "Team Lead", "CI/CD", "Mentoring"],
+      tags: [
+        "Team Leadership",
+        "Performance Optimization",
+        "CI/CD",
+        "Mentoring",
+      ],
     },
     {
-      title: "Software Engineer",
+      title: "Frontend Engineer",
       company: "Fleek",
       location: "Bangalore",
       period: "January 2020 - February 2022",
       description: [
-        "Developed PWA in React.js and flagship app in React Native",
-        "Integrated multiple third-party services and payment gateways",
-        "Reduced app bundle size by 45% through code splitting and lazy loading",
+        <span key="1">
+          Developed PWA in{" "}
+          <span className="text-green-400 font-semibold">React.js</span> and
+          flagship app in{" "}
+          <span className="text-green-400 font-semibold">React Native</span>
+        </span>,
+        <span key="2">
+          Reduced app bundle size by{" "}
+          <span className="text-yellow-400 font-semibold">45%</span> through
+          code splitting and lazy loading
+        </span>,
       ],
-      tags: ["React.js", "React Native", "PWA", "Performance"],
+      tags: ["React.js", "React Native", "PWA", "Performance Optimization"],
     },
   ];
 
@@ -82,7 +142,8 @@ export function WorkExperienceSection() {
                 </div>
                 <div className="mb-2">
                   <span className="text-yellow-400">
-                    {exp.company} • {exp.location}
+                    {exp.company}
+                    {exp.location ? ` • ${exp.location}` : ""}
                   </span>
                 </div>
                 <ul className="list-disc list-inside space-y-1 mb-3">
