@@ -149,64 +149,112 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
         <h2 className="text-2xl font-bold mb-6 text-blue-400">Featured Projects</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {frontendProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-zinc-800 rounded-xl p-6 border border-zinc-700"
-            >
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag, tagIndex) => (
-                  <span
-                    key={tagIndex}
-                    className="px-2 py-1 bg-blue-400/10 text-blue-400 rounded-full text-xs"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <h3 className="font-bold text-lg mb-3 text-blue-400">
-                {project.title}
-              </h3>
-              <p className="text-gray-400 mb-4 text-sm">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.techStack.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="flex gap-3">
-                {project.liveLink && (
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-green-400 hover:underline flex items-center gap-1 text-sm"
-                  >
-                    <ExternalLink size={14} />
-                    Live Demo
-                  </a>
+            <div key={index} className={project.videoDemo ? "lg:col-span-2" : ""}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className={`bg-zinc-800 rounded-xl p-6 border border-zinc-700 ${
+                  project.videoDemo ? "grid grid-cols-1 lg:grid-cols-2 gap-6" : ""
+                }`}
+              >
+                <div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="px-2 py-1 bg-blue-400/10 text-blue-400 rounded-full text-xs"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="font-bold text-lg mb-3 text-blue-400">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-400 mb-4 text-sm">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.techStack.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-3">
+                    {project.liveLink && (
+                      <a
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green-400 hover:underline flex items-center gap-1 text-sm"
+                      >
+                        <ExternalLink size={14} />
+                        Live Demo
+                      </a>
+                    )}
+                    {project.playStoreLink && (
+                      <a
+                        href={project.playStoreLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green-400 hover:underline flex items-center gap-1 text-sm"
+                      >
+                        <ExternalLink size={14} />
+                        Play Store
+                      </a>
+                    )}
+                    {project.githubLink && (
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:underline flex items-center gap-1 text-sm"
+                      >
+                        <Github size={14} />
+                        GitHub
+                      </a>
+                    )}
+                  </div>
+                </div>
+                
+                {project.screenshot && (
+                  <div className="flex items-center justify-center">
+                    <a
+                      href={project.playStoreLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block transition-transform hover:scale-105"
+                    >
+                      <img
+                        src={project.screenshot}
+                        alt={`${project.title} screenshot`}
+                        className="w-full max-w-xs rounded-lg shadow-lg cursor-pointer"
+                      />
+                    </a>
+                  </div>
                 )}
-                {project.githubLink && (
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:underline flex items-center gap-1 text-sm"
-                  >
-                    <Github size={14} />
-                    GitHub
-                  </a>
+                
+                {project.videoDemo && (
+                  <div className="flex items-center justify-center">
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full max-w-xs rounded-lg shadow-lg"
+                    >
+                      <source src={project.videoDemo} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 )}
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           ))}
         </div>
       </Card>

@@ -196,17 +196,6 @@ export function SolidityEvmDetails({ onBack }: SolidityEvmDetailsProps) {
                 ))}
               </div>
               <div className="flex gap-3">
-                {project.liveLink && (
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-green-400 hover:underline flex items-center gap-1 text-sm"
-                  >
-                    <ExternalLink size={14} />
-                    Live Demo
-                  </a>
-                )}
                 {project.githubLink && (
                   <a
                     href={project.githubLink}
@@ -218,15 +207,15 @@ export function SolidityEvmDetails({ onBack }: SolidityEvmDetailsProps) {
                     GitHub
                   </a>
                 )}
-                {project.demoLink && (
+                {project.liveLink && (
                   <a
-                    href={project.demoLink}
+                    href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-400 hover:underline flex items-center gap-1 text-sm"
                   >
                     <ExternalLink size={14} />
-                    View Demo
+                    Live Demo
                   </a>
                 )}
               </div>
