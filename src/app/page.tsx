@@ -93,6 +93,7 @@ export default function Home() {
   };
 
   return (
+    <>
     <div className="min-h-screen p-4 sm:p-6 bg-black text-white">
       <Toaster position="top-center" />
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -142,6 +143,7 @@ export default function Home() {
         open={certificationsDialogOpen}
         onOpenChange={setCertificationsDialogOpen}
       />
+    </>
     </div>
   );
 }
