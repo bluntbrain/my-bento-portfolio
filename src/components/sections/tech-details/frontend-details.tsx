@@ -24,6 +24,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
       description: "Led the end-to-end development of the app from inception to launch, successfully acquiring more than 10,000 users from scratch within just 2 months post-launch. Coupl is India's first neobank designed for couples, offering a joint wallet and linked cards to facilitate easy pooling and spending of money for shared expenses without the need for a traditional joint account.",
       tags: ["React Native", "Fintech"],
       playStoreLink: "https://play.google.com/store/apps/details?id=com.couplapp",
+      screenshot: "/images/coupldemo.png",
       techStack: ["React Native", "Firebase", "Stripe", "Redux"],
     },
     {
@@ -38,6 +39,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
       description: "This React Native app fetches and displays the top news headlines, allowing users to refresh the list, pin their favorite headlines, and delete the ones they're not interested in. It uses local storage to cache headlines for offline access and introduces new headlines at specified intervals.",
       tags: ["React Native", "News"],
       githubLink: "https://github.com/bluntbrain/swipeable-news-app",
+      videoDemo: "/videos/newsdemo.mp4",
       techStack: ["React Native", "AsyncStorage", "Gesture Handler"],
     },
     {
@@ -45,7 +47,24 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
       description: "This is a location-based chat application built with React Native. It allows users to see other users on a map and start a chat conversation by selecting a user marker on the map. Technologies Used: React Native, React Context API, Mapbox, React Native Gifted Chat",
       tags: ["React Native", "Chat"],
       githubLink: "https://github.com/bluntbrain/react-native-messenger-library",
+      videoDemo: "/videos/locationdemo.mp4",
       techStack: ["React Native", "Mapbox", "React Context API", "Gifted Chat"],
+    },
+    {
+      title: "Jar App",
+      description: "Worked as Frontend Team Lead on this savings and investment app. Improved app performance by 60% through optimization techniques and implemented CI/CD pipelines reducing deployment time by 70%.",
+      tags: ["React Native", "Fintech", "Investment"],
+      playStoreLink: "https://play.google.com/store/apps/details?id=com.jar.app",
+      screenshot: "/images/jardemo.png",
+      techStack: ["React Native", "Redux", "Performance Optimization", "CI/CD"],
+    },
+    {
+      title: "SuiSage - AI-Powered Web3 Portfolio Assistant",
+      description: "A revolutionary AI-powered Web3 portfolio assistant that chains multiple AI models for superior analysis. Unlike traditional AI apps that give one response from one model, SuiSage connects OpenAI and Gemini in sequence where the second AI reads and builds upon the first AI's response. Features three modes: Chain 1 (OpenAI → Gemini), Chain 2 (Gemini → OpenAI), and Compare mode for side-by-side analysis. Includes voice responses with 30+ voices, multi-network Sui support (mainnet/testnet/devnet/localnet), portfolio security recommendations, and performance analytics to track which AI approach works best.",
+      tags: ["React Native", "AI", "Web3"],
+      githubLink: "https://github.com/bluntbrain/SuiSage-AI-Powered-Web3-Portfolio-Assistant",
+      videoDemo: "/videos/suidemo.mp4",
+      techStack: ["React Native", "OpenAI API", "Gemini API", "AI Chaining", "Voice Synthesis", "Sui Blockchain", "Portfolio Analytics"],
     },
   ];
 
