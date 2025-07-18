@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 import { Toaster } from "react-hot-toast";
 
@@ -21,7 +22,7 @@ import { FrontendDetails } from "@/components/sections/tech-details/frontend-det
 import { MobileDetails } from "@/components/sections/tech-details/mobile-details";
 import { SolidityEvmDetails } from "@/components/sections/tech-details/solidity-evm-details";
 
-export default function Home() {
+function HomeContent() {
   const searchParams = useSearchParams();
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
   const [blockchainDialogOpen, setBlockchainDialogOpen] = React.useState(false);
@@ -145,5 +146,13 @@ export default function Home() {
         />
       </div>
     </>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-black" />}>
+      <HomeContent />
+    </Suspense>
   );
 }
