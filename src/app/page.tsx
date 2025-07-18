@@ -40,9 +40,6 @@ export default function Home() {
         setSelectedTech('solidity-evm');
       } else {
         setSelectedTech(tech);
-      }
-    }
-  }, [searchParams]);
 
   const handleTechSelect = (tech: string) => {
     setSelectedTech(tech);
