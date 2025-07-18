@@ -23,6 +23,7 @@ import { TechSelection } from "@/components/sections/tech-selection";
 import { RustSolanaDetails } from "@/components/sections/tech-details/rust-solana-details";
 import { FrontendDetails } from "@/components/sections/tech-details/frontend-details";
 import { MobileDetails } from "@/components/sections/tech-details/mobile-details";
+import { SolidityEvmDetails } from "@/components/sections/tech-details/solidity-evm-details";
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -35,7 +36,7 @@ export default function Home() {
 
   useEffect(() => {
     const tech = searchParams.get('tech');
-    if (tech && ['rust', 'frontend', 'mobile'].includes(tech)) {
+    if (tech && ['rust-solana', 'solidity-evm', 'frontend', 'mobile'].includes(tech)) {
       setSelectedTech(tech);
     }
   }, [searchParams]);
@@ -57,11 +58,20 @@ export default function Home() {
   };
 
   // Show tech-specific details if a tech is selected
-  if (selectedTech === 'rust') {
+  if (selectedTech === 'rust-solana') {
     return (
       <>
         <Toaster position="top-center" />
         <RustSolanaDetails onBack={handleBackToSelection} />
+      </>
+    );
+  }
+
+  if (selectedTech === 'solidity-evm') {
+    return (
+      <>
+        <Toaster position="top-center" />
+        <SolidityEvmDetails onBack={handleBackToSelection} />
       </>
     );
   }
@@ -88,28 +98,17 @@ export default function Home() {
     <div className="min-h-screen p-4 sm:p-6 bg-black text-white">
       <Toaster position="top-center" />
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* Contact */}
+        <ContactSection />
+        
         {/* Tech Selection Blocks */}
         <TechSelection onTechSelect={handleTechSelect} />
-
-        {/* Contact - Fixed layout */}
-        <ContactSection />
+        
         <Header />
 
         {/* Work Experience and Achievements side by side */}
         <WorkExperienceSection />
         <Achievements />
-
-        {/* Solana Experience & Projects */}
-        <Solana />
-
-        {/* Rust Experience & Projects */}
-        <Rust />
-
-        {/* Frontend Experience & Projects */}
-        <FrontendSection />
-
-        {/* Blockchain Experience */}
-        <Blockchain />
 
         {/* Footer */}
         <Footer />

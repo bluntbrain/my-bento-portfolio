@@ -12,14 +12,24 @@ interface TechSelectionProps {
 export function TechSelection({ onTechSelect }: TechSelectionProps) {
   const techBlocks = [
     {
-      id: "rust",
+      id: "rust-solana",
       title: "Rust & Solana",
-      description: "Blockchain development, smart contracts, and systems programming",
+      description: "Systems programming with Rust and blockchain development on Solana",
       icon: <Code size={32} />,
       color: "from-orange-500 to-red-500",
       bgColor: "bg-orange-500/10",
       borderColor: "border-orange-500/20",
       hoverColor: "hover:border-orange-500/50",
+    },
+    {
+      id: "solidity-evm",
+      title: "Solidity & EVM",
+      description: "Smart contract development and DeFi protocols on Ethereum",
+      icon: <Code size={32} />,
+      color: "from-yellow-500 to-orange-500",
+      bgColor: "bg-yellow-500/10",
+      borderColor: "border-yellow-500/20",
+      hoverColor: "hover:border-yellow-500/50",
     },
     {
       id: "frontend",
@@ -44,11 +54,11 @@ export function TechSelection({ onTechSelect }: TechSelectionProps) {
   ];
 
   return (
-    <div className="col-span-1 sm:col-span-2 lg:col-span-4 mb-8">
-      <h2 className="text-3xl font-bold text-center mb-8 text-white">
+    <div className="col-span-1 sm:col-span-2 lg:col-span-4">
+      <h2 className="text-2xl font-bold mb-6 text-white">
         Choose Your Tech Focus
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {techBlocks.map((tech, index) => (
           <motion.div
             key={tech.id}
@@ -61,22 +71,22 @@ export function TechSelection({ onTechSelect }: TechSelectionProps) {
             <Card
               className={`
                 ${tech.bgColor} ${tech.borderColor} ${tech.hoverColor}
-                border-2 cursor-pointer transition-all duration-300
-                hover:shadow-lg hover:shadow-orange-500/10
-                p-6 h-full
+                border cursor-pointer transition-all duration-300
+                hover:shadow-lg hover:shadow-orange-500/10 bg-zinc-900
+                p-4 h-full min-h-[140px]
               `}
               onClick={() => onTechSelect(tech.id)}
             >
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className={`p-4 rounded-full bg-gradient-to-r ${tech.color}`}>
+              <div className="flex flex-col items-center text-center space-y-3">
+                <div className={`p-3 rounded-full bg-gradient-to-r ${tech.color}`}>
                   <div className="text-white">
                     {tech.icon}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-white">
+                <h3 className="text-lg font-bold text-white">
                   {tech.title}
                 </h3>
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-400 text-xs">
                   {tech.description}
                 </p>
               </div>

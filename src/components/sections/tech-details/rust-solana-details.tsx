@@ -14,15 +14,15 @@ export function RustSolanaDetails({ onBack }: RustSolanaDetailsProps) {
     {
       title: "Rust CLI Task Manager",
       description: "Command-line task manager with SQLite storage. Features task creation, deletion, and status updates. Demonstrates Rust's ownership system and error handling.",
-      tags: ["Rust", "CLI", "SQLite"],
-      githubLink: "https://github.com/bluntbrain/rust-task-manager",
+      tags: ["Rust", "CLI"],
+      githubLink: "https://github.com/bluntbrain",
       techStack: ["Rust", "SQLite", "Clap", "Serde"],
     },
     {
       title: "Rust Image Processing WASM",
       description: "WebAssembly-powered image processing library with high-performance filters and transformations. Showcases zero-cost abstractions and seamless WASM integration.",
-      tags: ["Rust", "WebAssembly", "Image Processing"],
-      githubLink: "https://github.com/bluntbrain/rust-wasm-image",
+      tags: ["Rust", "WebAssembly"],
+      githubLink: "https://github.com/bluntbrain",
       techStack: ["Rust", "WebAssembly", "wasm-pack", "Canvas API"],
     },
   ];
@@ -30,26 +30,34 @@ export function RustSolanaDetails({ onBack }: RustSolanaDetailsProps) {
   const solanaProjects = [
     {
       title: "Solana Token Launchpad",
-      description: "A comprehensive token launchpad built on Solana blockchain. Features include token creation, IDO management, liquidity pool setup, and vesting schedules.",
+      description: "A comprehensive token launchpad built on Solana blockchain. Features include token creation, IDO management, liquidity pool setup, and vesting schedules. The platform enables projects to launch their tokens with customizable parameters and security features.",
       tags: ["Solana", "DeFi", "Launchpad"],
       liveLink: "https://sol.dx.app/",
-      githubLink: "https://github.com/bluntbrain/solana-launchpad",
       techStack: ["Rust", "Anchor", "React", "Solana Program Library"],
     },
     {
       title: "Solana Lending Protocol",
-      description: "A decentralized lending protocol on Solana allowing users to deposit collateral, borrow assets, and earn interest. Implements risk management features and liquidation mechanisms.",
+      description: "A decentralized lending protocol on Solana allowing users to deposit collateral, borrow assets, and earn interest. Implements risk management features, liquidation mechanisms, and interest rate models optimized for Solana's high throughput.",
       tags: ["Solana", "Lending", "DeFi"],
       githubLink: "https://github.com/bluntbrain/solana-lending-protocol",
       techStack: ["Rust", "Anchor", "TypeScript", "Solana Program Library"],
     },
-    {
-      title: "Solana NFT Marketplace",
-      description: "Full-featured NFT marketplace with minting, trading, and auction capabilities. Built with Metaplex standards and optimized for low transaction costs.",
-      tags: ["Solana", "NFT", "Marketplace"],
-      githubLink: "https://github.com/bluntbrain/solana-nft-marketplace",
-      techStack: ["Rust", "Anchor", "Metaplex", "React"],
-    },
+  ];
+
+  const expertise = [
+    "Solana Program Development",
+    "Anchor Framework", 
+    "SPL Token Standards",
+    "Cross-Program Invocation",
+    "Transaction Optimization",
+    "PDAs & Account Management",
+    "Solana Web3.js",
+    "Phantom & Sollet Integration",
+    "Memory Safety & Ownership System",
+    "Concurrent & Parallel Programming",
+    "Zero-cost Abstractions",
+    "Error Handling & Result Types",
+    "WebAssembly Integration",
   ];
 
   const certifications = [
@@ -89,6 +97,18 @@ export function RustSolanaDetails({ onBack }: RustSolanaDetailsProps) {
             Systems programming with Rust and blockchain development on Solana
           </p>
         </motion.div>
+
+        {/* Expertise */}
+        <Card className="bg-zinc-900 p-6 mb-8">
+          <h2 className="text-2xl font-bold mb-4 text-orange-400">Technical Proficiencies</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {expertise.map((skill, index) => (
+              <div key={index} className="bg-zinc-800 p-3 rounded-lg text-center">
+                <span className="text-sm text-gray-300">{skill}</span>
+              </div>
+            ))}
+          </div>
+        </Card>
 
         {/* Certifications */}
         <Card className="bg-zinc-900 p-6 mb-8">

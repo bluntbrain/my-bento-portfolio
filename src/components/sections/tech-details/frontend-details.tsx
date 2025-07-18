@@ -13,11 +13,18 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
   const frontendProjects = [
     {
       title: "Next.js Movie Ballot App",
-      description: "Next.js Movie Ballot App is a web application designed for users to participate in movie award voting. This app allows users to browse different award categories, view nominees, and cast their votes.",
+      description: "Next.js Movie Ballot App is a web application designed for users to participate in movie award voting. This app allows users to browse different award categories, view nominees, and cast their votes. Additionally, users can view voting results in real-time through a modal window.",
       tags: ["Next.js", "TypeScript", "Tailwind"],
       githubLink: "https://github.com/bluntbrain/next-js-movie-ballot-app",
       liveLink: "https://next-js-movie-ballot-app.vercel.app/",
       techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    },
+    {
+      title: "Coupl App",
+      description: "Led the end-to-end development of the app from inception to launch, successfully acquiring more than 10,000 users from scratch within just 2 months post-launch. Coupl is India's first neobank designed for couples, offering a joint wallet and linked cards to facilitate easy pooling and spending of money for shared expenses without the need for a traditional joint account.",
+      tags: ["React Native", "Fintech"],
+      playStoreLink: "https://play.google.com/store/apps/details?id=com.couplapp",
+      techStack: ["React Native", "Firebase", "Stripe", "Redux"],
     },
     {
       title: "dx.fun",
@@ -27,37 +34,31 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
       techStack: ["Next.js", "Ethers.js", "Base Chain", "WebSocket"],
     },
     {
-      title: "DxSale Launchpad",
-      description: "Built a comprehensive DeFi platform that streamlines token launches with integrated tools for token minting, fundraising, and liquidity locking. Features automated smart contract deployment.",
-      tags: ["Next.js", "DeFi", "Web3"],
-      liveLink: "https://dxsale.example.com",
-      techStack: ["Next.js", "Ethers.js", "Hardhat", "TailwindCSS"],
+      title: "Swipable News Headlines App (React Native)",
+      description: "This React Native app fetches and displays the top news headlines, allowing users to refresh the list, pin their favorite headlines, and delete the ones they're not interested in. It uses local storage to cache headlines for offline access and introduces new headlines at specified intervals.",
+      tags: ["React Native", "News"],
+      githubLink: "https://github.com/bluntbrain/swipeable-news-app",
+      techStack: ["React Native", "AsyncStorage", "Gesture Handler"],
     },
     {
-      title: "Glitter Explorer",
-      description: "Developed a comprehensive blockchain explorer for monitoring transactions and token details across multiple chains. Supports USDC, SOL, xSOL, XGLI, ALGO, and xALGO with multi-axis charting.",
-      tags: ["React.js", "Charts", "Multi-Chain"],
-      liveLink: "https://explorer.example.com",
-      techStack: ["React.js", "Web3.js", "Chart.js", "GraphQL"],
-    },
-    {
-      title: "Coupl App Landing",
-      description: "Landing page for India's first neobank designed for couples, offering a joint wallet and linked cards. Built with modern React.js and optimized for conversions.",
-      tags: ["React.js", "Landing Page"],
-      liveLink: "https://coupl.app",
-      techStack: ["React.js", "Styled Components", "Framer Motion"],
+      title: "Location-based Chat Application (React Native)",
+      description: "This is a location-based chat application built with React Native. It allows users to see other users on a map and start a chat conversation by selecting a user marker on the map. Technologies Used: React Native, React Context API, Mapbox, React Native Gifted Chat",
+      tags: ["React Native", "Chat"],
+      githubLink: "https://github.com/bluntbrain/react-native-messenger-library",
+      techStack: ["React Native", "Mapbox", "React Context API", "Gifted Chat"],
     },
   ];
 
   const skills = [
     "Next.js & React Server Components",
+    "React Native Mobile Development",
     "TypeScript & JavaScript",
     "State Management (Redux, Zustand)",
     "Performance Optimization",
     "Responsive Design",
+    "Animation & Gestures",
     "SEO & Web Vitals",
     "Testing (Jest, React Testing Library)",
-    "Modern CSS (Tailwind, Styled Components)",
   ];
 
   const experience = [
