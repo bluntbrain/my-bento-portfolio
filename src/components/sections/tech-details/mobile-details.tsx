@@ -12,19 +12,28 @@ interface MobileDetailsProps {
 export function MobileDetails({ onBack }: MobileDetailsProps) {
   const mobileProjects = [
     {
+      title: "Coupl App",
+      description: "Led the end-to-end development of India's first neobank designed for couples. Successfully acquired more than 10,000 users within 2 months post-launch. Features joint wallet and linked cards for shared expenses.",
+      tags: ["React Native", "Fintech", "Neobank"],
+      playStoreLink: "https://play.google.com/store/apps/details?id=com.couplapp",
+      screenshot: "/images/coupldemo.png",
+      techStack: ["React Native", "Redux", "Firebase", "Stripe", "Push Notifications"],
+    },
+    {
+      title: "Jar App",
+      description: "Worked as Frontend Team Lead on this savings and investment app. Improved app performance by 60% through optimization techniques and implemented CI/CD pipelines.",
+      tags: ["React Native", "Fintech", "Investment"],
+      playStoreLink: "https://play.google.com/store/apps/details?id=com.jar",
+      screenshot: "/images/jardemo.png",
+      techStack: ["React Native", "Redux", "Performance Optimization", "CI/CD"],
+    },
+    {
       title: "SuiSage - AI-Powered Web3 Portfolio Assistant",
       description: "A revolutionary AI-powered Web3 portfolio assistant that chains multiple AI models for superior analysis. Unlike traditional AI apps that give one response from one model, SuiSage connects OpenAI and Gemini in sequence where the second AI reads and builds upon the first AI's response. Features three modes: Chain 1 (OpenAI → Gemini), Chain 2 (Gemini → OpenAI), and Compare mode for side-by-side analysis. Includes voice responses with 30+ voices, multi-network Sui support (mainnet/testnet/devnet/localnet), portfolio security recommendations, and performance analytics to track which AI approach works best.",
       tags: ["React Native", "AI", "Web3"],
       githubLink: "https://github.com/bluntbrain/SuiSage-AI-Powered-Web3-Portfolio-Assistant",
       videoDemo: "/videos/suidemo.mp4",
       techStack: ["React Native", "OpenAI API", "Gemini API", "AI Chaining", "Voice Synthesis", "Sui Blockchain", "Portfolio Analytics"],
-    },
-    {
-      title: "Coupl App",
-      description: "Led the end-to-end development of India's first neobank designed for couples. Successfully acquired more than 10,000 users within 2 months post-launch. Features joint wallet and linked cards for shared expenses.",
-      tags: ["React Native", "Fintech", "Neobank"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.couplapp",
-      techStack: ["React Native", "Redux", "Firebase", "Stripe", "Push Notifications"],
     },
     {
       title: "Swipable News Headlines App",
@@ -41,13 +50,6 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
       githubLink: "https://github.com/bluntbrain/react-native-messenger-library",
       videoDemo: "/videos/locationdemo.mp4",
       techStack: ["React Native", "Mapbox", "React Native Gifted Chat", "Geolocation"],
-    },
-    {
-      title: "Jar App",
-      description: "Worked as Frontend Team Lead on this savings and investment app. Improved app performance by 60% through optimization techniques and implemented CI/CD pipelines.",
-      tags: ["React Native", "Fintech", "Investment"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.jar",
-      techStack: ["React Native", "Redux", "Performance Optimization", "CI/CD"],
     },
   ];
 
@@ -227,6 +229,23 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
                     )}
                   </div>
                 </div>
+                
+                {project.screenshot && (
+                  <div className="flex items-center justify-center">
+                    <a
+                      href={project.playStoreLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block transition-transform hover:scale-105"
+                    >
+                      <img
+                        src={project.screenshot}
+                        alt={`${project.title} screenshot`}
+                        className="w-full max-w-xs rounded-lg shadow-lg cursor-pointer"
+                      />
+                    </a>
+                  </div>
+                )}
                 
                 {project.videoDemo && (
                   <div className="flex items-center justify-center">
