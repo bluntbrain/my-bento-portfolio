@@ -43,6 +43,9 @@ export default function Home() {
       }
     }
   }, [searchParams]);
+      }
+    }
+  }, [searchParams]);
 
   const handleTechSelect = (tech: string) => {
     setSelectedTech(tech);
