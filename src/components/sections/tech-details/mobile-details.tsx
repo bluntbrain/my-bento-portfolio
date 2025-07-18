@@ -33,6 +33,14 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
       techStack: ["React Native", "Mapbox", "React Native Gifted Chat", "Geolocation"],
     },
     {
+      title: "SuiSage - AI-Powered Web3 Portfolio Assistant",
+      description: "An AI-powered Web3 portfolio assistant built with React Native. Features intelligent portfolio analysis, real-time market data integration, and personalized investment recommendations using advanced AI algorithms.",
+      tags: ["React Native", "AI", "Web3"],
+      githubLink: "https://github.com/bluntbrain/SuiSage-AI-Powered-Web3-Portfolio-Assistant",
+      videoDemo: "/videos/suidemo.mp4",
+      techStack: ["React Native", "AI/ML", "Web3", "Real-time Data", "Portfolio Analytics"],
+    },
+    {
       title: "Cryo Circuit Fitness App",
       description: "A comprehensive fitness tracking application with workout planning, progress tracking, and social features. Built with React Native for cross-platform compatibility.",
       tags: ["React Native", "Fitness", "Health"],
@@ -163,64 +171,84 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
         <h2 className="text-2xl font-bold mb-6 text-green-400">Featured Projects</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {mobileProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-zinc-800 rounded-xl p-6 border border-zinc-700"
-            >
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag, tagIndex) => (
-                  <span
-                    key={tagIndex}
-                    className="px-2 py-1 bg-green-400/10 text-green-400 rounded-full text-xs"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <h3 className="font-bold text-lg mb-3 text-green-400">
-                {project.title}
-              </h3>
-              <p className="text-gray-400 mb-4 text-sm">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.techStack.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="flex gap-3">
-                {project.playStoreLink && (
-                  <a
-                    href={project.playStoreLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-green-400 hover:underline flex items-center gap-1 text-sm"
-                  >
-                    <ExternalLink size={14} />
-                    Play Store
-                  </a>
+            <div key={index} className={project.videoDemo ? "lg:col-span-2" : ""}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className={`bg-zinc-800 rounded-xl p-6 border border-zinc-700 ${
+                  project.videoDemo ? "grid grid-cols-1 lg:grid-cols-2 gap-6" : ""
+                }`}
+              >
+                <div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="px-2 py-1 bg-green-400/10 text-green-400 rounded-full text-xs"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="font-bold text-lg mb-3 text-green-400">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-400 mb-4 text-sm">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.techStack.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-3">
+                    {project.playStoreLink && (
+                      <a
+                        href={project.playStoreLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green-400 hover:underline flex items-center gap-1 text-sm"
+                      >
+                        <ExternalLink size={14} />
+                        Play Store
+                      </a>
+                    )}
+                    {project.githubLink && (
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:underline flex items-center gap-1 text-sm"
+                      >
+                        <Github size={14} />
+                        GitHub
+                      </a>
+                    )}
+                  </div>
+                </div>
+                
+                {project.videoDemo && (
+                  <div className="flex items-center justify-center">
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full max-w-xs rounded-lg shadow-lg"
+                    >
+                      <source src={project.videoDemo} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 )}
-                {project.githubLink && (
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:underline flex items-center gap-1 text-sm"
-                  >
-                    <Github size={14} />
-                    GitHub
-                  </a>
-                )}
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           ))}
         </div>
       </Card>
