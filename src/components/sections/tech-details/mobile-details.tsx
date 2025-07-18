@@ -12,6 +12,14 @@ interface MobileDetailsProps {
 export function MobileDetails({ onBack }: MobileDetailsProps) {
   const mobileProjects = [
     {
+      title: "SuiSage - AI-Powered Web3 Portfolio Assistant",
+      description: "An AI-powered Web3 portfolio assistant built with React Native. Features intelligent portfolio analysis, real-time market data integration, and personalized investment recommendations using advanced AI algorithms.",
+      tags: ["React Native", "AI", "Web3"],
+      githubLink: "https://github.com/bluntbrain/SuiSage-AI-Powered-Web3-Portfolio-Assistant",
+      videoDemo: "/videos/suidemo.mp4",
+      techStack: ["React Native", "AI/ML", "Web3", "Real-time Data", "Portfolio Analytics"],
+    },
+    {
       title: "Coupl App",
       description: "Led the end-to-end development of India's first neobank designed for couples. Successfully acquired more than 10,000 users within 2 months post-launch. Features joint wallet and linked cards for shared expenses.",
       tags: ["React Native", "Fintech", "Neobank"],
@@ -31,21 +39,6 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
       tags: ["React Native", "Chat", "Location"],
       githubLink: "https://github.com/bluntbrain/react-native-messenger-library",
       techStack: ["React Native", "Mapbox", "React Native Gifted Chat", "Geolocation"],
-    },
-    {
-      title: "SuiSage - AI-Powered Web3 Portfolio Assistant",
-      description: "An AI-powered Web3 portfolio assistant built with React Native. Features intelligent portfolio analysis, real-time market data integration, and personalized investment recommendations using advanced AI algorithms.",
-      tags: ["React Native", "AI", "Web3"],
-      githubLink: "https://github.com/bluntbrain/SuiSage-AI-Powered-Web3-Portfolio-Assistant",
-      videoDemo: "/videos/suidemo.mp4",
-      techStack: ["React Native", "AI/ML", "Web3", "Real-time Data", "Portfolio Analytics"],
-    },
-    {
-      title: "Cryo Circuit Fitness App",
-      description: "A comprehensive fitness tracking application with workout planning, progress tracking, and social features. Built with React Native for cross-platform compatibility.",
-      tags: ["React Native", "Fitness", "Health"],
-      githubLink: "https://github.com/bluntbrain/cryo-circuit-app",
-      techStack: ["React Native", "Redux", "SQLite", "Charts", "Camera"],
     },
     {
       title: "Jar App",
