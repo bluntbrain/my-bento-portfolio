@@ -13,11 +13,11 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
   const mobileProjects = [
     {
       title: "SuiSage - AI-Powered Web3 Portfolio Assistant",
-      description: "An AI-powered Web3 portfolio assistant built with React Native. Features intelligent portfolio analysis, real-time market data integration, and personalized investment recommendations using advanced AI algorithms.",
+      description: "A revolutionary AI-powered Web3 portfolio assistant that chains multiple AI models for superior analysis. Unlike traditional AI apps that give one response from one model, SuiSage connects OpenAI and Gemini in sequence where the second AI reads and builds upon the first AI's response. Features three modes: Chain 1 (OpenAI → Gemini), Chain 2 (Gemini → OpenAI), and Compare mode for side-by-side analysis. Includes voice responses with 30+ voices, multi-network Sui support (mainnet/testnet/devnet/localnet), portfolio security recommendations, and performance analytics to track which AI approach works best.",
       tags: ["React Native", "AI", "Web3"],
       githubLink: "https://github.com/bluntbrain/SuiSage-AI-Powered-Web3-Portfolio-Assistant",
       videoDemo: "/videos/suidemo.mp4",
-      techStack: ["React Native", "AI/ML", "Web3", "Real-time Data", "Portfolio Analytics"],
+      techStack: ["React Native", "OpenAI API", "Gemini API", "AI Chaining", "Voice Synthesis", "Sui Blockchain", "Portfolio Analytics"],
     },
     {
       title: "Coupl App",
