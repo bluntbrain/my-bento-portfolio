@@ -20,6 +20,21 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
       techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     },
     {
+      title: "dx.fun",
+      description: "A sophisticated dApp built on Base chain featuring token creation, live chat, comments tab, and live token chart integration with Dextools. Implemented real-time on-chain data fetching for buy/sell events.",
+      tags: ["Next.js", "Base Chain", "DeFi"],
+      liveLink: "https://dx.fun",
+      techStack: ["Next.js", "Ethers.js", "Base Chain", "WebSocket"],
+    },
+    {
+      title: "Jar App",
+      description: "Worked as Frontend Team Lead on this savings and investment app. Improved app performance by 60% through optimization techniques and implemented CI/CD pipelines reducing deployment time by 70%.",
+      tags: ["React Native", "Fintech", "Investment"],
+      playStoreLink: "https://play.google.com/store/apps/details?id=com.jar.app",
+      screenshot: "/images/jardemo.png",
+      techStack: ["React Native", "Redux", "Performance Optimization", "CI/CD"],
+    },
+    {
       title: "Coupl App",
       description: "Led the end-to-end development of the app from inception to launch, successfully acquiring more than 10,000 users from scratch within just 2 months post-launch. Coupl is India's first neobank designed for couples, offering a joint wallet and linked cards to facilitate easy pooling and spending of money for shared expenses without the need for a traditional joint account.",
       tags: ["React Native", "Fintech"],
@@ -28,11 +43,12 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
       techStack: ["React Native", "Firebase", "Stripe", "Redux"],
     },
     {
-      title: "dx.fun",
-      description: "A sophisticated dApp built on Base chain featuring token creation, live chat, comments tab, and live token chart integration with Dextools. Implemented real-time on-chain data fetching for buy/sell events.",
-      tags: ["Next.js", "Base Chain", "DeFi"],
-      liveLink: "https://dx.fun",
-      techStack: ["Next.js", "Ethers.js", "Base Chain", "WebSocket"],
+      title: "SuiSage - AI-Powered Web3 Portfolio Assistant",
+      description: "A revolutionary AI-powered Web3 portfolio assistant that chains multiple AI models for superior analysis. Unlike traditional AI apps that give one response from one model, SuiSage connects OpenAI and Gemini in sequence where the second AI reads and builds upon the first AI's response. Features three modes: Chain 1 (OpenAI → Gemini), Chain 2 (Gemini → OpenAI), and Compare mode for side-by-side analysis. Includes voice responses with 30+ voices, multi-network Sui support (mainnet/testnet/devnet/localnet), portfolio security recommendations, and performance analytics to track which AI approach works best.",
+      tags: ["React Native", "AI", "Web3"],
+      githubLink: "https://github.com/bluntbrain/SuiSage-AI-Powered-Web3-Portfolio-Assistant",
+      videoDemo: "/videos/suidemo.mp4",
+      techStack: ["React Native", "OpenAI API", "Gemini API", "AI Chaining", "Voice Synthesis", "Sui Blockchain", "Portfolio Analytics"],
     },
     {
       title: "Swipable News Headlines App (React Native)",
@@ -49,22 +65,6 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
       githubLink: "https://github.com/bluntbrain/react-native-messenger-library",
       videoDemo: "/videos/locationdemo.mp4",
       techStack: ["React Native", "Mapbox", "React Context API", "Gifted Chat"],
-    },
-    {
-      title: "Jar App",
-      description: "Worked as Frontend Team Lead on this savings and investment app. Improved app performance by 60% through optimization techniques and implemented CI/CD pipelines reducing deployment time by 70%.",
-      tags: ["React Native", "Fintech", "Investment"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.jar.app",
-      screenshot: "/images/jardemo.png",
-      techStack: ["React Native", "Redux", "Performance Optimization", "CI/CD"],
-    },
-    {
-      title: "SuiSage - AI-Powered Web3 Portfolio Assistant",
-      description: "A revolutionary AI-powered Web3 portfolio assistant that chains multiple AI models for superior analysis. Unlike traditional AI apps that give one response from one model, SuiSage connects OpenAI and Gemini in sequence where the second AI reads and builds upon the first AI's response. Features three modes: Chain 1 (OpenAI → Gemini), Chain 2 (Gemini → OpenAI), and Compare mode for side-by-side analysis. Includes voice responses with 30+ voices, multi-network Sui support (mainnet/testnet/devnet/localnet), portfolio security recommendations, and performance analytics to track which AI approach works best.",
-      tags: ["React Native", "AI", "Web3"],
-      githubLink: "https://github.com/bluntbrain/SuiSage-AI-Powered-Web3-Portfolio-Assistant",
-      videoDemo: "/videos/suidemo.mp4",
-      techStack: ["React Native", "OpenAI API", "Gemini API", "AI Chaining", "Voice Synthesis", "Sui Blockchain", "Portfolio Analytics"],
     },
   ];
 
