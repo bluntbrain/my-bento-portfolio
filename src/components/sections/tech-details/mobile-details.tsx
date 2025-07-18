@@ -12,20 +12,20 @@ interface MobileDetailsProps {
 export function MobileDetails({ onBack }: MobileDetailsProps) {
   const mobileProjects = [
     {
-      title: "Coupl App",
-      description: "Led the end-to-end development of India's first neobank designed for couples. Successfully acquired more than 10,000 users within 2 months post-launch. Features joint wallet and linked cards for shared expenses.",
-      tags: ["React Native", "Fintech", "Neobank"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.couplapp",
-      screenshot: "/images/coupldemo.png",
-      techStack: ["React Native", "Redux", "Firebase", "Stripe", "Push Notifications"],
-    },
-    {
       title: "Jar App",
       description: "Worked as Frontend Team Lead on this savings and investment app. Improved app performance by 60% through optimization techniques and implemented CI/CD pipelines.",
       tags: ["React Native", "Fintech", "Investment"],
       playStoreLink: "https://play.google.com/store/apps/details?id=com.jar",
       screenshot: "/images/jardemo.png",
       techStack: ["React Native", "Redux", "Performance Optimization", "CI/CD"],
+    },
+    {
+      title: "Coupl App",
+      description: "Led the end-to-end development of India's first neobank designed for couples. Successfully acquired more than 10,000 users within 2 months post-launch. Features joint wallet and linked cards for shared expenses.",
+      tags: ["React Native", "Fintech", "Neobank"],
+      playStoreLink: "https://play.google.com/store/apps/details?id=com.couplapp",
+      screenshot: "/images/coupldemo.png",
+      techStack: ["React Native", "Redux", "Firebase", "Stripe", "Push Notifications"],
     },
     {
       title: "SuiSage - AI-Powered Web3 Portfolio Assistant",
@@ -36,20 +36,20 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
       techStack: ["React Native", "OpenAI API", "Gemini API", "AI Chaining", "Voice Synthesis", "Sui Blockchain", "Portfolio Analytics"],
     },
     {
-      title: "Swipable News Headlines App",
-      description: "This React Native app fetches and displays the top news headlines, allowing users to refresh the list, pin their favorite headlines, and delete the ones they're not interested in with swipe gestures.",
-      tags: ["React Native", "News", "Gestures"],
-      githubLink: "https://github.com/bluntbrain/swipeable-news-app",
-      videoDemo: "/videos/newsdemo.mp4",
-      techStack: ["React Native", "Gesture Handler", "AsyncStorage", "News API"],
-    },
-    {
       title: "Location-based Chat Application",
       description: "A location-based chat application built with React Native. It allows users to see other users on a map and start a chat conversation by selecting a user marker on the map.",
       tags: ["React Native", "Chat", "Location"],
       githubLink: "https://github.com/bluntbrain/react-native-messenger-library",
       videoDemo: "/videos/locationdemo.mp4",
       techStack: ["React Native", "Mapbox", "React Native Gifted Chat", "Geolocation"],
+    },
+    {
+      title: "Swipable News Headlines App",
+      description: "This React Native app fetches and displays the top news headlines, allowing users to refresh the list, pin their favorite headlines, and delete the ones they're not interested in with swipe gestures.",
+      tags: ["React Native", "News", "Gestures"],
+      githubLink: "https://github.com/bluntbrain/swipeable-news-app",
+      videoDemo: "/videos/newsdemo.mp4",
+      techStack: ["React Native", "Gesture Handler", "AsyncStorage", "News API"],
     },
   ];
 
