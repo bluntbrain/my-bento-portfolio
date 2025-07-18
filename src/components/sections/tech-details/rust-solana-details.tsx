@@ -74,183 +74,181 @@ export function RustSolanaDetails({ onBack }: RustSolanaDetailsProps) {
   ];
 
   return (
-    <div className="min-h-screen p-4 sm:p-6 bg-black text-white">
-      <div className="max-w-7xl mx-auto">
-        <motion.button
-          onClick={onBack}
-          className="mb-6 flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
-          whileHover={{ x: -5 }}
-        >
-          <ArrowLeft size={20} />
-          Back to Tech Selection
-        </motion.button>
+    <div className="space-y-6">
+      <motion.button
+        onClick={onBack}
+        className="mb-6 flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
+        whileHover={{ x: -5 }}
+      >
+        <ArrowLeft size={20} />
+        Back to Overview
+      </motion.button>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-            Rust & Solana Development
-          </h1>
-          <p className="text-gray-400 text-lg">
-            Systems programming with Rust and blockchain development on Solana
-          </p>
-        </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-8"
+      >
+        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+          Rust & Solana Development
+        </h1>
+        <p className="text-gray-400 text-lg">
+          Systems programming with Rust and blockchain development on Solana
+        </p>
+      </motion.div>
 
-        {/* Expertise */}
-        <Card className="bg-zinc-900 p-6 mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-orange-400">Technical Proficiencies</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {expertise.map((skill, index) => (
-              <div key={index} className="bg-zinc-800 p-3 rounded-lg text-center">
-                <span className="text-sm text-gray-300">{skill}</span>
+      {/* Expertise */}
+      <Card className="bg-zinc-900 p-6 mb-8">
+        <h2 className="text-2xl font-bold mb-4 text-orange-400">Technical Proficiencies</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {expertise.map((skill, index) => (
+            <div key={index} className="bg-zinc-800 p-3 rounded-lg text-center">
+              <span className="text-sm text-gray-300">{skill}</span>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* Certifications */}
+      <Card className="bg-zinc-900 p-6 mb-8">
+        <h2 className="text-2xl font-bold mb-4 text-orange-400">Certifications</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {certifications.map((cert, index) => (
+            <div key={index} className="bg-zinc-800 p-4 rounded-lg">
+              <h3 className="font-semibold text-white mb-2">{cert.name}</h3>
+              <p className="text-gray-400 mb-2">by {cert.provider}</p>
+              <a
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-orange-400 hover:underline flex items-center gap-1"
+              >
+                <ExternalLink size={14} />
+                View Certificate
+              </a>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* Rust Projects */}
+      <Card className="bg-zinc-900 p-6 mb-8">
+        <h2 className="text-2xl font-bold mb-6 text-orange-400">Rust Projects</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {rustProjects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-zinc-800 rounded-xl p-6 border border-zinc-700"
+            >
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tags.map((tag, tagIndex) => (
+                  <span
+                    key={tagIndex}
+                    className="px-2 py-1 bg-orange-400/10 text-orange-400 rounded-full text-xs"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-            ))}
-          </div>
-        </Card>
-
-        {/* Certifications */}
-        <Card className="bg-zinc-900 p-6 mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-orange-400">Certifications</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {certifications.map((cert, index) => (
-              <div key={index} className="bg-zinc-800 p-4 rounded-lg">
-                <h3 className="font-semibold text-white mb-2">{cert.name}</h3>
-                <p className="text-gray-400 mb-2">by {cert.provider}</p>
+              <h3 className="font-bold text-lg mb-3 text-orange-400">
+                {project.title}
+              </h3>
+              <p className="text-gray-400 mb-4 text-sm">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.techStack.map((tech, techIndex) => (
+                  <span
+                    key={techIndex}
+                    className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="flex gap-3">
                 <a
-                  href={cert.link}
+                  href={project.githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-orange-400 hover:underline flex items-center gap-1"
+                  className="text-blue-400 hover:underline flex items-center gap-1 text-sm"
                 >
-                  <ExternalLink size={14} />
-                  View Certificate
+                  <Github size={14} />
+                  GitHub
                 </a>
               </div>
-            ))}
-          </div>
-        </Card>
+            </motion.div>
+          ))}
+        </div>
+      </Card>
 
-        {/* Rust Projects */}
-        <Card className="bg-zinc-900 p-6 mb-8">
-          <h2 className="text-2xl font-bold mb-6 text-orange-400">Rust Projects</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {rustProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-zinc-800 rounded-xl p-6 border border-zinc-700"
-              >
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-2 py-1 bg-orange-400/10 text-orange-400 rounded-full text-xs"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <h3 className="font-bold text-lg mb-3 text-orange-400">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 mb-4 text-sm">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-3">
+      {/* Solana Projects */}
+      <Card className="bg-zinc-900 p-6">
+        <h2 className="text-2xl font-bold mb-6 text-purple-400">Solana Projects</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {solanaProjects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-zinc-800 rounded-xl p-6 border border-zinc-700"
+            >
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tags.map((tag, tagIndex) => (
+                  <span
+                    key={tagIndex}
+                    className="px-2 py-1 bg-purple-400/10 text-purple-400 rounded-full text-xs"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h3 className="font-bold text-lg mb-3 text-purple-400">
+                {project.title}
+              </h3>
+              <p className="text-gray-400 mb-4 text-sm">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.techStack.map((tech, techIndex) => (
+                  <span
+                    key={techIndex}
+                    className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="flex gap-3">
+                {project.liveLink && (
                   <a
-                    href={project.githubLink}
+                    href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-400 hover:underline flex items-center gap-1 text-sm"
+                    className="text-green-400 hover:underline flex items-center gap-1 text-sm"
                   >
-                    <Github size={14} />
-                    GitHub
+                    <ExternalLink size={14} />
+                    Live Demo
                   </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </Card>
-
-        {/* Solana Projects */}
-        <Card className="bg-zinc-900 p-6">
-          <h2 className="text-2xl font-bold mb-6 text-purple-400">Solana Projects</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {solanaProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-zinc-800 rounded-xl p-6 border border-zinc-700"
-              >
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-2 py-1 bg-purple-400/10 text-purple-400 rounded-full text-xs"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <h3 className="font-bold text-lg mb-3 text-purple-400">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 mb-4 text-sm">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  {project.liveLink && (
-                    <a
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-green-400 hover:underline flex items-center gap-1 text-sm"
-                    >
-                      <ExternalLink size={14} />
-                      Live Demo
-                    </a>
-                  )}
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:underline flex items-center gap-1 text-sm"
-                  >
-                    <Github size={14} />
-                    GitHub
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </Card>
-      </div>
+                )}
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:underline flex items-center gap-1 text-sm"
+                >
+                  <Github size={14} />
+                  GitHub
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </Card>
     </div>
   );
 }
