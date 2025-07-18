@@ -31,6 +31,7 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
       description: "This React Native app fetches and displays the top news headlines, allowing users to refresh the list, pin their favorite headlines, and delete the ones they're not interested in with swipe gestures.",
       tags: ["React Native", "News", "Gestures"],
       githubLink: "https://github.com/bluntbrain/swipeable-news-app",
+      videoDemo: "/videos/newsdemo.mp4",
       techStack: ["React Native", "Gesture Handler", "AsyncStorage", "News API"],
     },
     {
@@ -38,6 +39,7 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
       description: "A location-based chat application built with React Native. It allows users to see other users on a map and start a chat conversation by selecting a user marker on the map.",
       tags: ["React Native", "Chat", "Location"],
       githubLink: "https://github.com/bluntbrain/react-native-messenger-library",
+      videoDemo: "/videos/locationdemo.mp4",
       techStack: ["React Native", "Mapbox", "React Native Gifted Chat", "Geolocation"],
     },
     {
