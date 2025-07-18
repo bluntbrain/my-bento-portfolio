@@ -94,56 +94,56 @@ export default function Home() {
 
   return (
     <>
-    <div className="min-h-screen p-4 sm:p-6 bg-black text-white">
-      <Toaster position="top-center" />
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-        {/* Contact */}
-        <ContactSection />
-        
-        {/* Tech Selection Blocks - Only show if no tech is selected */}
-        {!selectedTech && (
-          <TechSelection onTechSelect={handleTechSelect} />
-        )}
-        
-        <Header />
+      <div className="min-h-screen p-4 sm:p-6 bg-black text-white">
+        <Toaster position="top-center" />
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {/* Contact */}
+          <ContactSection />
+          
+          {/* Tech Selection Blocks - Only show if no tech is selected */}
+          {!selectedTech && (
+            <TechSelection onTechSelect={handleTechSelect} />
+          )}
+          
+          <Header />
 
-        {/* Work Experience and Achievements side by side */}
-        <WorkExperienceSection />
-        <Achievements />
+          {/* Work Experience and Achievements side by side */}
+          <WorkExperienceSection />
+          <Achievements />
 
-        {/* Tech-specific content - Show below work experience and achievements */}
-        {renderTechContent()}
+          {/* Tech-specific content - Show below work experience and achievements */}
+          {renderTechContent()}
 
-        {/* Footer */}
-        <Footer />
+          {/* Footer */}
+          <Footer />
+        </div>
+
+        {/* Render ViewAllDialog components */}
+        <ViewAllDialog
+          title="Blockchain Projects"
+          items={blockchainProjects}
+          open={blockchainDialogOpen}
+          onOpenChange={setBlockchainDialogOpen}
+        />
+        <ViewAllDialog
+          title="Frontend Projects"
+          items={frontendProjects}
+          open={frontendDialogOpen}
+          onOpenChange={setFrontendDialogOpen}
+        />
+        <ViewAllDialog
+          title="Solana Projects"
+          items={solanaProjects}
+          open={solanaDialogOpen}
+          onOpenChange={setSolanaDialogOpen}
+        />
+        <ViewAllDialog
+          title="All Certifications"
+          items={certifications}
+          open={certificationsDialogOpen}
+          onOpenChange={setCertificationsDialogOpen}
+        />
       </div>
-
-      {/* Render ViewAllDialog components */}
-      <ViewAllDialog
-        title="Blockchain Projects"
-        items={blockchainProjects}
-        open={blockchainDialogOpen}
-        onOpenChange={setBlockchainDialogOpen}
-      />
-      <ViewAllDialog
-        title="Frontend Projects"
-        items={frontendProjects}
-        open={frontendDialogOpen}
-        onOpenChange={setFrontendDialogOpen}
-      />
-      <ViewAllDialog
-        title="Solana Projects"
-        items={solanaProjects}
-        open={solanaDialogOpen}
-        onOpenChange={setSolanaDialogOpen}
-      />
-      <ViewAllDialog
-        title="All Certifications"
-        items={certifications}
-        open={certificationsDialogOpen}
-        onOpenChange={setCertificationsDialogOpen}
-      />
     </>
-    </div>
   );
 }
