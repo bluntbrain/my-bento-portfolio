@@ -15,7 +15,7 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
       title: "Jar App",
       description: "Worked as Frontend Team Lead on this savings and investment app. Improved app performance by 60% through optimization techniques and implemented CI/CD pipelines.",
       tags: ["React Native", "Fintech", "Investment"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.jar",
+      playStoreLink: "https://play.google.com/store/apps/details?id=com.jar.app",
       screenshot: "/images/jardemo.png",
       techStack: ["React Native", "Redux", "Performance Optimization", "CI/CD"],
     },
