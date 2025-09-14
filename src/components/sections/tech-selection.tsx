@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Card } from "../ui/card";
-import { Code, Smartphone, Globe, Zap, Coins, Layers, Cpu } from "lucide-react";
+import { Smartphone, Zap, Coins, Layers } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface TechSelectionProps {
