@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import ProfileImage from "@/assets/images/avatar.jpeg";
+import ProfileImage from "@/assets/images/newdp.png";
 import { SkillSet } from "../ui/skill-set";
 import { Card } from "../ui/card";
 import { motion } from "framer-motion";

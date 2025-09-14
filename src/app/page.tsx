@@ -51,6 +51,18 @@ function HomeContent() {
     const url = new URL(window.location.href);
     url.searchParams.set('tech', tech);
     window.history.pushState({}, '', url.toString());
+    
+    // Smooth scroll to the tech content section after a brief delay
+    setTimeout(() => {
+      const techContentElement = document.getElementById('tech-content-section');
+      if (techContentElement) {
+        techContentElement.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start',
+          inline: 'nearest'
+        });
+      }
+    }, 100);
   };
 
   const handleBackToSelection = () => {
@@ -66,25 +78,25 @@ function HomeContent() {
     switch (selectedTech) {
       case 'rust-solana':
         return (
-          <div className="col-span-1 sm:col-span-2 lg:col-span-4">
+          <div id="tech-content-section" className="col-span-1 sm:col-span-2 lg:col-span-4">
             <RustSolanaDetails onBack={handleBackToSelection} />
           </div>
         );
       case 'solidity-evm':
         return (
-          <div className="col-span-1 sm:col-span-2 lg:col-span-4">
+          <div id="tech-content-section" className="col-span-1 sm:col-span-2 lg:col-span-4">
             <SolidityEvmDetails onBack={handleBackToSelection} />
           </div>
         );
       case 'frontend':
         return (
-          <div className="col-span-1 sm:col-span-2 lg:col-span-4">
+          <div id="tech-content-section" className="col-span-1 sm:col-span-2 lg:col-span-4">
             <FrontendDetails onBack={handleBackToSelection} />
           </div>
         );
       case 'mobile':
         return (
-          <div className="col-span-1 sm:col-span-2 lg:col-span-4">
+          <div id="tech-content-section" className="col-span-1 sm:col-span-2 lg:col-span-4">
             <MobileDetails onBack={handleBackToSelection} />
           </div>
         );

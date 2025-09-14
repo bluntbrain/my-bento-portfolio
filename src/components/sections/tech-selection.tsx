@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Card } from "../ui/card";
-import { Code, Smartphone, Globe } from "lucide-react";
+import { Code, Smartphone, Globe, Zap, Coins, Layers, Cpu } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface TechSelectionProps {
@@ -15,7 +15,7 @@ export function TechSelection({ onTechSelect }: TechSelectionProps) {
       id: "rust-solana",
       title: "Rust & Solana",
       description: "Systems programming with Rust and blockchain development on Solana",
-      icon: <Code size={32} />,
+      icon: <Zap size={32} />,
       color: "from-orange-500 to-red-500",
       bgColor: "bg-orange-500/10",
       borderColor: "border-orange-500/20",
@@ -26,7 +26,7 @@ export function TechSelection({ onTechSelect }: TechSelectionProps) {
       id: "solidity-evm",
       title: "Solidity & EVM",
       description: "Smart contract development and DeFi protocols on Ethereum",
-      icon: <Code size={32} />,
+      icon: <Coins size={32} />,
       color: "from-yellow-500 to-orange-500",
       bgColor: "bg-yellow-500/10",
       borderColor: "border-yellow-500/20",
@@ -37,7 +37,7 @@ export function TechSelection({ onTechSelect }: TechSelectionProps) {
       id: "frontend",
       title: "Frontend",
       description: "Next.js, React.js, and modern web development",
-      icon: <Globe size={32} />,
+      icon: <Layers size={32} />,
       color: "from-blue-500 to-cyan-500",
       bgColor: "bg-blue-500/10",
       borderColor: "border-blue-500/20",
@@ -79,14 +79,7 @@ export function TechSelection({ onTechSelect }: TechSelectionProps) {
               `}
               onClick={() => onTechSelect(tech.id)}
             >
-              {/* Hover tooltip */}
-              <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
-                <span className="text-white text-sm font-medium text-center px-4">
-                  {tech.hoverText}
-                </span>
-              </div>
-              
-              <div className="flex flex-col items-center text-center space-y-3">
+              <div className="flex flex-col items-center text-center space-y-3 h-full">
                 <div className={`p-3 rounded-full bg-gradient-to-r ${tech.color}`}>
                   <div className="text-white">
                     {tech.icon}
@@ -95,9 +88,16 @@ export function TechSelection({ onTechSelect }: TechSelectionProps) {
                 <h3 className="text-lg font-bold text-white">
                   {tech.title}
                 </h3>
-                <p className="text-gray-400 text-xs">
+                <p className="text-gray-400 text-xs flex-grow">
                   {tech.description}
                 </p>
+                
+                {/* Always visible click button */}
+                <div className="mt-auto pt-2">
+                  <div className="px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-full text-xs text-white transition-all duration-200 group-hover:scale-105">
+                    Click to see projects
+                  </div>
+                </div>
               </div>
             </Card>
           </motion.div>
