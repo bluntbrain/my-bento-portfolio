@@ -105,10 +105,10 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <motion.button
         onClick={onBack}
-        className="mb-6 flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
+        className="mb-4 sm:mb-6 flex items-center gap-2 text-accent hover:text-accent/80 transition-colors"
         whileHover={{ x: -5 }}
       >
         <ArrowLeft size={20} />
@@ -118,22 +118,22 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-8"
+        className="mb-4 sm:mb-8"
       >
-        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">
+        <h1 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           Mobile Development
         </h1>
-        <p className="text-gray-400 text-lg">
+        <p className="text-gray-300 text-base sm:text-lg">
           Cross-platform mobile development with React Native, Android, and iOS
         </p>
       </motion.div>
 
       {/* Skills */}
-      <Card className="bg-zinc-900 p-6 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-green-400">Technical Skills</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+      <Card className="bg-zinc-900 p-4 sm:p-6 mb-4 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-primary">Technical Skills</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
           {skills.map((skill, index) => (
-            <div key={index} className="bg-zinc-800 p-3 rounded-lg text-center">
+            <div key={index} className="bg-zinc-800 p-2 sm:p-3 rounded-lg text-center">
               <span className="text-sm text-gray-300">{skill}</span>
             </div>
           ))}
@@ -141,21 +141,21 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
       </Card>
 
       {/* Experience */}
-      <Card className="bg-zinc-900 p-6 mb-8">
-        <h2 className="text-2xl font-bold mb-6 text-green-400">Mobile Experience</h2>
-        <div className="space-y-6">
+      <Card className="bg-zinc-900 p-4 sm:p-6 mb-4 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-primary">Mobile Experience</h2>
+        <div className="space-y-4 sm:space-y-6">
           {experience.map((exp, index) => (
-            <div key={index} className="bg-zinc-800 p-6 rounded-lg">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
+            <div key={index} className="bg-zinc-800 p-4 sm:p-6 rounded-lg">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 sm:mb-4">
                 <div>
-                  <h3 className="font-bold text-lg text-white">{exp.role}</h3>
-                  <p className="text-green-400">{exp.company}</p>
+                  <h3 className="font-bold text-base sm:text-lg text-white">{exp.role}</h3>
+                  <p className="text-primary text-sm sm:text-base">{exp.company}</p>
                 </div>
                 <span className="text-gray-400 text-sm">{exp.period}</span>
               </div>
-              <ul className="list-disc list-inside space-y-2">
+              <ul className="list-disc list-inside space-y-1.5 sm:space-y-2">
                 {exp.achievements.map((achievement, i) => (
-                  <li key={i} className="text-gray-400 text-sm">{achievement}</li>
+                  <li key={i} className="text-gray-300 text-sm">{achievement}</li>
                 ))}
               </ul>
             </div>
@@ -164,41 +164,41 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
       </Card>
 
       {/* Projects */}
-      <Card className="bg-zinc-900 p-6">
-        <h2 className="text-2xl font-bold mb-6 text-green-400">Featured Projects</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <Card className="bg-zinc-900 p-4 sm:p-6">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-primary">Featured Projects</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {mobileProjects.map((project, index) => (
             <div key={index} className={project.videoDemo ? "lg:col-span-2" : ""}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className={`bg-zinc-800 rounded-xl p-6 border border-zinc-700 ${
-                  project.videoDemo ? "grid grid-cols-1 lg:grid-cols-2 gap-6" : ""
+                className={`bg-zinc-800 rounded-xl p-4 sm:p-6 border border-zinc-700 ${
+                  project.videoDemo ? "grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6" : ""
                 }`}
               >
                 <div>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
                     {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-2 py-1 bg-green-400/10 text-green-400 rounded-full text-xs"
+                        className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <h3 className="font-bold text-lg mb-3 text-green-400">
+                  <h3 className="font-bold text-base sm:text-lg mb-2 sm:mb-3 text-primary">
                     {project.title}
                   </h3>
-                  <p className="text-gray-400 mb-4 text-sm">
+                  <p className="text-gray-300 mb-3 sm:mb-4 text-sm">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
                     {project.techStack.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded"
+                        className="text-xs text-gray-300 bg-gray-800 px-2 py-1 rounded"
                       >
                         {tech}
                       </span>
@@ -210,7 +210,7 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
                         href={project.playStoreLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-green-400 hover:underline flex items-center gap-1 text-sm"
+                        className="text-primary hover:underline flex items-center gap-1 text-sm"
                       >
                         <ExternalLink size={14} />
                         Play Store
@@ -221,7 +221,7 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
                         href={project.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-400 hover:underline flex items-center gap-1 text-sm"
+                        className="text-accent hover:underline flex items-center gap-1 text-sm"
                       >
                         <Github size={14} />
                         GitHub

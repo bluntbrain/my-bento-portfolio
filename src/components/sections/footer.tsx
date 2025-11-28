@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "../ui/card";
-import { Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 export function Footer() {
   const links = [
@@ -11,10 +11,14 @@ export function Footer() {
       color: "hover:text-white",
     },
     {
-      icon: <Twitter size={16} />,
-      href: "https://twitter.com/bluntbrain_web3",
-      label: "Twitter",
-      color: "hover:text-blue-400",
+      icon: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+      ),
+      href: "https://x.com/bluntbrainsol",
+      label: "X",
+      color: "hover:text-white",
     },
     {
       icon: <Linkedin size={16} />,
@@ -24,9 +28,9 @@ export function Footer() {
     },
     {
       icon: <Mail size={16} />,
-      href: "mailto:ishan.lakhwani@gmail.com",
-      label: "Email",
-      color: "hover:text-red-400",
+      href: "https://t.me/bluntbrainsol?text=Hi%20Ishan%2C%20I%20came%20across%20your%20portfolio%20at%20https%3A%2F%2Fbluntbrain.com%20and%20would%20like%20to%20connect!",
+      label: "Telegram",
+      color: "hover:text-blue-400",
     },
   ];
 

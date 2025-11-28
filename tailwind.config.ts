@@ -11,6 +11,16 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        brand: {
+          'black': '#000000',
+          'prussian-blue': '#14213d',
+          'orange': '#fca311',
+          'grey': '#e5e5e5',
+          'white': '#ffffff',
+        },
+        primary: '#fca311',
+        secondary: '#3b82f6',
+        accent: '#fbbf24',
       },
       keyframes: {
         "slide-in-from-bottom-full": {

@@ -3,9 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import ProfileImage from "@/assets/images/newdp.png";
-import { SkillSet } from "../ui/skill-set";
 import { Card } from "../ui/card";
-import { motion } from "framer-motion";
+import { Smartphone, Code2 } from "lucide-react";
 
 export function Header() {
   return (
@@ -15,20 +14,20 @@ export function Header() {
           <h1 className="text-3xl sm:text-4xl font-bold mb-4">
             Hi, I&apos;m Ishan
           </h1>
-          <p className="text-gray-400 text-sm sm:text-base">
-            <span className="text-blue-400 font-semibold">
-              Full Stack Developer
+          <p className="text-gray-300 text-sm sm:text-base">
+            <span className="text-white font-bold">
+              Mobile App Developer
             </span>{" "}
-            with <span className="text-yellow-400 font-semibold">5+ years</span>{" "}
-            of experience in leading teams and developing high-quality
-            applications using{" "}
-            <span className="text-green-400 font-semibold">
-              Next.js/React.js
-            </span>
-            , <span className="text-green-400 font-semibold">React Native</span>{" "}
             &{" "}
-            <span className="text-green-400 font-semibold">
-              Nest.js/Node.js
+            <span className="text-white font-bold">
+              Rust Protocol Engineer
+            </span>{" "}
+            with <span className="text-white font-bold">6+ years</span>{" "}
+            of experience building apps scaling to{" "}
+            <span className="text-white font-bold">10M+ users</span>{" "}
+            and secure{" "}
+            <span className="text-white font-bold">
+              Solana smart contracts
             </span>
             .
           </p>
@@ -46,49 +45,72 @@ export function Header() {
         />
       </Card>
 
-      <Card className="col-span-1 sm:col-span-2 lg:col-span-2 bg-zinc-900">
-        <div className="p-2">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-2xl font-bold mb-4">Skills</h2>
-            <div className="space-y-3">
-              <SkillSet
-                title="Blockchain & Web3"
-                skills={[
-                  { name: "Solana", level: "expert", highlight: true },
-                  { name: "Solidity", level: "expert", highlight: true },
-                  { name: "Foundry", level: "expert", highlight: true },
-                  { name: "DeFi", level: "advanced", highlight: true },
-                  { name: "Hardhat", level: "advanced" },
-                  { name: "Web3.js", level: "advanced" },
-                ]}
-              />
-              <SkillSet
-                title="Frontend"
-                skills={[
-                  { name: "Next.js", level: "expert", highlight: true },
-                  { name: "React Native", level: "expert", highlight: true },
-                  { name: "React.js", level: "expert", highlight: true },
-                  { name: "TypeScript", level: "expert", highlight: true },
-                  { name: "TailwindCSS", level: "advanced" },
-                ]}
-              />
-              <SkillSet
-                title="Backend"
-                skills={[
-                  { name: "Rust", level: "advanced", highlight: true },
-                  { name: "Node.js", level: "expert", highlight: true },
-                  { name: "Go", level: "intermediate", highlight: true },
-                  { name: "PostgreSQL", level: "advanced" },
-                  { name: "MongoDB", level: "advanced" },
-                  { name: "GraphQL", level: "intermediate" },
-                ]}
-              />
+      <Card className="col-span-1 sm:col-span-2 lg:col-span-2 bg-zinc-900 p-4">
+        <div className="space-y-4">
+          {/* mobile section */}
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <Smartphone size={18} className="text-accent" />
+              <h3 className="font-semibold text-accent">Mobile & Frontend</h3>
             </div>
-          </motion.div>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { name: "React Native", primary: true },
+                { name: "Expo", primary: true },
+                { name: "Next.js", primary: true },
+                { name: "React.js", primary: true },
+                { name: "TypeScript", primary: true },
+                { name: "Push Notifications", primary: false },
+                { name: "App Store", primary: false },
+                { name: "Play Store", primary: false },
+                { name: "TailwindCSS", primary: false },
+              ].map((skill) => (
+                <span
+                  key={skill.name}
+                  className={`px-3 py-1.5 rounded-full text-sm transition-all hover:scale-105 cursor-default ${
+                    skill.primary
+                      ? "bg-accent/20 text-accent border border-accent/30"
+                      : "bg-zinc-800 text-gray-300 border border-zinc-700"
+                  }`}
+                >
+                  {skill.name}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* rust/blockchain section */}
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <Code2 size={18} className="text-primary" />
+              <h3 className="font-semibold text-primary">Rust & Blockchain</h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { name: "Rust", primary: true },
+                { name: "Solana", primary: true },
+                { name: "Anchor", primary: true },
+                { name: "Pinocchio", primary: true },
+                { name: "Solidity", primary: true },
+                { name: "Foundry", primary: false },
+                { name: "Smart Contracts", primary: false },
+                { name: "DeFi", primary: false },
+                { name: "Web3.js", primary: false },
+                { name: "Ethers.js", primary: false },
+              ].map((skill) => (
+                <span
+                  key={skill.name}
+                  className={`px-3 py-1.5 rounded-full text-sm transition-all hover:scale-105 cursor-default ${
+                    skill.primary
+                      ? "bg-primary/20 text-primary border border-primary/30"
+                      : "bg-zinc-800 text-gray-300 border border-zinc-700"
+                  }`}
+                >
+                  {skill.name}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </Card>
     </>

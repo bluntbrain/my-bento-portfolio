@@ -3,19 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* brand color palette */
+  --black: #000000;
+  --prussian-blue: #14213d;
+  --orange: #fca311;
+  --alabaster-grey: #e5e5e5;
+  --white: #ffffff;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* semantic colors */
+  --background: #000000;
+  --surface: var(--prussian-blue);
+  --card: #27272a;
+  --border: #3f3f46;
+
+  --text-primary: #fafafa;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+
+  /* accent colors from palette - using brighter versions for better contrast */
+  --primary: #fca311;
+  --secondary: #3b82f6;
+  --accent: #fbbf24;
+  --success: #10b981;
 }
 
 body {
-  color: var(--foreground);
+  color: var(--text-primary);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -23,5 +36,29 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-primary {
+    color: var(--primary);
+  }
+
+  .text-secondary {
+    color: var(--secondary);
+  }
+
+  .text-accent {
+    color: var(--accent);
+  }
+
+  .bg-primary {
+    background-color: var(--primary);
+  }
+
+  .bg-secondary {
+    background-color: var(--secondary);
+  }
+
+  .border-primary {
+    border-color: var(--primary);
   }
 }

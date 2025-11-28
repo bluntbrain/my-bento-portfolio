@@ -17,7 +17,7 @@ import { Header } from "@/components/sections/header";
 import { Achievements } from "@/components/sections/achievements";
 import { Footer } from "@/components/sections/footer";
 import { TechSelection } from "@/components/sections/tech-selection";
-import { RustSolanaDetails } from "@/components/sections/tech-details/rust-solana-details";
+import { SolanaDetails } from "@/components/sections/tech-details/solana-details";
 import { FrontendDetails } from "@/components/sections/tech-details/frontend-details";
 import { MobileDetails } from "@/components/sections/tech-details/mobile-details";
 import { SolidityEvmDetails } from "@/components/sections/tech-details/solidity-evm-details";
@@ -32,13 +32,23 @@ function HomeContent() {
     React.useState(false);
 
   useEffect(() => {
-    const tech = searchParams.get('tech');
-    if (tech && ['rust', 'rust-solana', 'solidity', 'solidity-evm', 'frontend', 'mobile'].includes(tech)) {
+    const tech = searchParams.get("tech");
+    if (
+      tech &&
+      [
+        "rust",
+        "solana",
+        "solidity",
+        "solidity-evm",
+        "frontend",
+        "mobile",
+      ].includes(tech)
+    ) {
       // Handle legacy URL params
-      if (tech === 'rust') {
-        setSelectedTech('rust-solana');
-      } else if (tech === 'solidity') {
-        setSelectedTech('solidity-evm');
+      if (tech === "rust") {
+        setSelectedTech("solana");
+      } else if (tech === "solidity") {
+        setSelectedTech("solidity-evm");
       } else {
         setSelectedTech(tech);
       }
@@ -49,17 +59,19 @@ function HomeContent() {
     setSelectedTech(tech);
     // Update URL without page reload
     const url = new URL(window.location.href);
-    url.searchParams.set('tech', tech);
-    window.history.pushState({}, '', url.toString());
-    
+    url.searchParams.set("tech", tech);
+    window.history.pushState({}, "", url.toString());
+
     // Smooth scroll to the tech content section after a brief delay
     setTimeout(() => {
-      const techContentElement = document.getElementById('tech-content-section');
+      const techContentElement = document.getElementById(
+        "tech-content-section"
+      );
       if (techContentElement) {
-        techContentElement.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start',
-          inline: 'nearest'
+        techContentElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
         });
       }
     }, 100);
@@ -69,34 +81,46 @@ function HomeContent() {
     setSelectedTech(null);
     // Remove tech param from URL
     const url = new URL(window.location.href);
-    url.searchParams.delete('tech');
-    window.history.pushState({}, '', url.toString());
+    url.searchParams.delete("tech");
+    window.history.pushState({}, "", url.toString());
   };
 
   // Render tech-specific content inline
   const renderTechContent = () => {
     switch (selectedTech) {
-      case 'rust-solana':
+      case "solana":
         return (
-          <div id="tech-content-section" className="col-span-1 sm:col-span-2 lg:col-span-4">
-            <RustSolanaDetails onBack={handleBackToSelection} />
+          <div
+            id="tech-content-section"
+            className="col-span-1 sm:col-span-2 lg:col-span-4"
+          >
+            <SolanaDetails onBack={handleBackToSelection} />
           </div>
         );
-      case 'solidity-evm':
+      case "solidity-evm":
         return (
-          <div id="tech-content-section" className="col-span-1 sm:col-span-2 lg:col-span-4">
+          <div
+            id="tech-content-section"
+            className="col-span-1 sm:col-span-2 lg:col-span-4"
+          >
             <SolidityEvmDetails onBack={handleBackToSelection} />
           </div>
         );
-      case 'frontend':
+      case "frontend":
         return (
-          <div id="tech-content-section" className="col-span-1 sm:col-span-2 lg:col-span-4">
+          <div
+            id="tech-content-section"
+            className="col-span-1 sm:col-span-2 lg:col-span-4"
+          >
             <FrontendDetails onBack={handleBackToSelection} />
           </div>
         );
-      case 'mobile':
+      case "mobile":
         return (
-          <div id="tech-content-section" className="col-span-1 sm:col-span-2 lg:col-span-4">
+          <div
+            id="tech-content-section"
+            className="col-span-1 sm:col-span-2 lg:col-span-4"
+          >
             <MobileDetails onBack={handleBackToSelection} />
           </div>
         );
@@ -112,19 +136,17 @@ function HomeContent() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {/* Contact */}
           <ContactSection />
-          
-          {/* Tech Selection Blocks - Only show if no tech is selected */}
-          {!selectedTech && (
-            <TechSelection onTechSelect={handleTechSelect} />
-          )}
-          
+
           <Header />
 
           {/* Work Experience and Achievements side by side */}
           <WorkExperienceSection />
           <Achievements />
 
-          {/* Tech-specific content - Show below work experience and achievements */}
+          {/* Tech Selection Blocks - Only show if no tech is selected */}
+          {!selectedTech && <TechSelection onTechSelect={handleTechSelect} />}
+
+          {/* Tech-specific content - Show below tech selection */}
           {renderTechContent()}
 
           {/* Footer */}

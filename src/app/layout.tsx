@@ -16,6 +16,14 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Ishan Lakhwani",
   description: "React.js, React Native, Node.js, Solana, Rust, Go, Solidity",
+  icons: {
+    icon: [
+      { url: "/icons8-solana-gradient-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icons8-solana-gradient-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons8-solana-gradient-96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: "/icons8-solana-gradient-96.png",
+  },
 };
 
 export default function RootLayout({

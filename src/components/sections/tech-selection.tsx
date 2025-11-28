@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { Card } from "../ui/card";
-import { Smartphone, Zap, Coins, Layers } from "lucide-react";
+import { Smartphone, Layers } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface TechSelectionProps {
   onTechSelect: (tech: string) => void;
@@ -12,25 +12,26 @@ interface TechSelectionProps {
 export function TechSelection({ onTechSelect }: TechSelectionProps) {
   const techBlocks = [
     {
-      id: "rust-solana",
+      id: "solana",
       title: "Rust & Solana",
-      description: "Systems programming with Rust and blockchain development on Solana",
-      icon: <Zap size={32} />,
-      color: "from-orange-500 to-red-500",
-      bgColor: "bg-orange-500/10",
-      borderColor: "border-orange-500/20",
-      hoverColor: "hover:border-orange-500/50",
+      description:
+        "Systems programming with Rust and blockchain development on Solana",
+      icon: <Image src="/images/solana.svg" alt="Solana" width={40} height={40} className="object-contain w-10 h-10" />,
+      color: "from-primary to-secondary",
+      bgColor: "bg-primary/10",
+      borderColor: "border-primary/20",
+      hoverColor: "hover:border-primary/50",
       hoverText: "Click to explore Rust & Solana projects",
     },
     {
       id: "solidity-evm",
       title: "Solidity & EVM",
       description: "Smart contract development and DeFi protocols on Ethereum",
-      icon: <Coins size={32} />,
-      color: "from-yellow-500 to-orange-500",
-      bgColor: "bg-yellow-500/10",
-      borderColor: "border-yellow-500/20",
-      hoverColor: "hover:border-yellow-500/50",
+      icon: <Image src="/images/ethereum.svg" alt="Ethereum" width={40} height={40} className="object-contain w-10 h-10" />,
+      color: "from-accent to-primary",
+      bgColor: "bg-accent/10",
+      borderColor: "border-accent/20",
+      hoverColor: "hover:border-accent/50",
       hoverText: "Click to explore Solidity & EVM projects",
     },
     {
@@ -38,10 +39,10 @@ export function TechSelection({ onTechSelect }: TechSelectionProps) {
       title: "Frontend",
       description: "Next.js, React.js, and modern web development",
       icon: <Layers size={32} />,
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-500/10",
-      borderColor: "border-blue-500/20",
-      hoverColor: "hover:border-blue-500/50",
+      color: "from-secondary to-accent",
+      bgColor: "bg-secondary/10",
+      borderColor: "border-secondary/20",
+      hoverColor: "hover:border-secondary/50",
       hoverText: "Click to explore Frontend projects",
     },
     {
@@ -49,58 +50,66 @@ export function TechSelection({ onTechSelect }: TechSelectionProps) {
       title: "Mobile",
       description: "React Native, Android, and iOS development",
       icon: <Smartphone size={32} />,
-      color: "from-green-500 to-emerald-500",
-      bgColor: "bg-green-500/10",
-      borderColor: "border-green-500/20",
-      hoverColor: "hover:border-green-500/50",
+      color: "from-primary to-accent",
+      bgColor: "bg-primary/10",
+      borderColor: "border-primary/20",
+      hoverColor: "hover:border-primary/50",
       hoverText: "Click to explore Mobile projects",
     },
   ];
 
   return (
     <div className="col-span-1 sm:col-span-2 lg:col-span-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {techBlocks.map((tech, index) => (
-          <motion.div
+          <motion.button
             key={tech.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="group relative"
+            whileHover={{ scale: 1.05, y: -4 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => onTechSelect(tech.id)}
+            className={`
+              ${tech.bgColor} ${tech.borderColor} ${tech.hoverColor}
+              group relative bg-zinc-900 rounded-xl p-4
+              border-2 cursor-pointer transition-all duration-300
+              hover:shadow-xl hover:shadow-primary/20
+              flex flex-col items-center gap-2
+            `}
           >
-            <Card
-              className={`
-                ${tech.bgColor} ${tech.borderColor} ${tech.hoverColor}
-                border cursor-pointer transition-all duration-300 relative
-                hover:shadow-lg hover:shadow-orange-500/10 bg-zinc-900 overflow-hidden
-                p-4 h-full min-h-[140px]
-              `}
-              onClick={() => onTechSelect(tech.id)}
-            >
-              <div className="flex flex-col items-center text-center space-y-3 h-full">
-                <div className={`p-3 rounded-full bg-gradient-to-r ${tech.color}`}>
-                  <div className="text-white">
-                    {tech.icon}
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold text-white">
-                  {tech.title}
-                </h3>
-                <p className="text-gray-400 text-xs flex-grow">
-                  {tech.description}
-                </p>
-                
-                {/* Always visible click button */}
-                <div className="mt-auto pt-2">
-                  <div className="px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-full text-xs text-white transition-all duration-200 group-hover:scale-105">
-                    Click to see projects
-                  </div>
-                </div>
+            {/* Icon */}
+            {tech.id === "solana" || tech.id === "solidity-evm" ? (
+              <div className="w-12 h-12 flex items-center justify-center">
+                {tech.icon}
               </div>
-            </Card>
-          </motion.div>
+            ) : (
+              <div className={`p-2 rounded-lg bg-gradient-to-br ${tech.color} shadow-lg`}>
+                <div className="text-white">{tech.icon}</div>
+              </div>
+            )}
+
+            {/* Title */}
+            <h3 className="text-sm sm:text-base font-bold text-white">
+              {tech.title}
+            </h3>
+
+            {/* Click indicator */}
+            <div className="flex items-center gap-1 text-[10px] sm:text-xs text-gray-400 group-hover:text-primary transition-colors">
+              <span>View Projects</span>
+              <svg
+                className="w-3 h-3 transform group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+
+            {/* Pulse effect on hover */}
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-300" />
+          </motion.button>
         ))}
       </div>
     </div>
