@@ -35,15 +35,15 @@ export function Footer() {
   ];
 
   return (
-    <Card className="col-span-1 sm:col-span-2 lg:col-span-4 bg-zinc-900 p-6">
+    <Card className="col-span-1 sm:col-span-2 lg:col-span-4 bg-gh-900 border border-gh-700 p-6">
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="text-center sm:text-left">
-          <p className="text-gray-400">
+          <p className="text-gh-400">
             Built with{" "}
-            <span className="text-green-400 font-medium">Next.js</span> &{" "}
-            <span className="text-blue-400 font-medium">TailwindCSS</span>
+            <span className="text-secondary font-medium">Next.js</span> &{" "}
+            <span className="text-primary font-medium">TailwindCSS</span>
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gh-500">
             © {new Date().getFullYear()} Ishan Lakhwani. All rights reserved.
           </p>
         </div>
@@ -54,7 +54,7 @@ export function Footer() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-gray-400 transition-colors duration-200 ${link.color}`}
+              className={`text-gh-400 transition-colors duration-200 ${link.color}`}
               aria-label={link.label}
             >
               {link.icon}

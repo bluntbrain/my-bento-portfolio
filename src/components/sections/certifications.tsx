@@ -10,7 +10,7 @@ export function Certifications({
 }: CertificationsProps) {
   return (
     <Card
-      className="col-span-1 sm:col-span-2 lg:col-span-4 bg-zinc-900"
+      className="col-span-1 sm:col-span-2 lg:col-span-4 bg-gh-900 border border-gh-700"
       onClick={() => setCertificationsDialogOpen(true)}
     >
       <h2 className="text-xl sm:text-2xl font-bold mb-4">Certifications</h2>

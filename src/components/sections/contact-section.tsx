@@ -5,7 +5,7 @@ import { Card } from "../ui/card";
 import { SocialIcon } from "../ui/social-icon";
 export function ContactSection() {
   return (
-    <Card className="col-span-1 sm:col-span-2 lg:col-span-4 p-4 bg-zinc-900">
+    <Card className="col-span-1 sm:col-span-2 lg:col-span-4 p-4 bg-gh-900 border border-gh-700">
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center space-x-6">
           <SocialIcon
@@ -33,7 +33,7 @@ export function ContactSection() {
           href="https://t.me/bluntbrainsol?text=Hi%20Ishan%2C%20I%20came%20across%20your%20portfolio%20at%20https%3A%2F%2Fbluntbrain.com%20and%20would%20like%20to%20connect!"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-600 transition-colors text-white text-sm font-medium"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors text-white text-sm font-medium"
         >
           <Send size={16} />
           <span>Telegram</span>

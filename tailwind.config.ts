@@ -11,16 +11,27 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        brand: {
-          'black': '#000000',
-          'prussian-blue': '#14213d',
-          'orange': '#fca311',
-          'grey': '#e5e5e5',
-          'white': '#ffffff',
+        // github dark theme
+        primary: '#58a6ff',
+        secondary: '#3fb950',
+        accent: '#f78166',
+        purple: '#a371f7',
+        success: '#3fb950',
+        warning: '#d29922',
+        // github gray scale
+        gh: {
+          black: '#000000',
+          950: '#0d1117',
+          900: '#161b22',
+          800: '#21262d',
+          700: '#30363d',
+          600: '#484f58',
+          500: '#6e7681',
+          400: '#8b949e',
+          300: '#b1bac4',
+          200: '#c9d1d9',
+          100: '#e6edf3',
         },
-        primary: '#fca311',
-        secondary: '#3b82f6',
-        accent: '#fbbf24',
       },
       keyframes: {
         "slide-in-from-bottom-full": {

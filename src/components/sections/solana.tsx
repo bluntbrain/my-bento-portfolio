@@ -35,7 +35,7 @@ export function Solana() {
 
   return (
     <Card
-      className="col-span-1 sm:col-span-2 lg:col-span-4 bg-zinc-900 p-6"
+      className="col-span-1 sm:col-span-2 lg:col-span-4 bg-gh-900 p-6"
       variant="solana"
     >
       <div className="relative z-20">
@@ -43,11 +43,11 @@ export function Solana() {
 
         {/* Expertise Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <div className="bg-zinc-800/80 backdrop-blur-sm rounded-xl p-4 border border-zinc-700">
+          <div className="bg-gh-800 backdrop-blur-sm rounded-xl p-4 border border-gh-700">
             <h3 className="font-semibold text-lg mb-4">
               Technical Proficiencies
             </h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base text-gray-400">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base text-gh-400">
               {expertise.map((skill, index) => (
                 <li key={index} className="flex items-center gap-2">
                   <span className="text-purple-400">▹</span>
@@ -57,11 +57,11 @@ export function Solana() {
             </ul>
           </div>
 
-          <div className="bg-zinc-800/80 backdrop-blur-sm rounded-xl p-4 border border-zinc-700">
+          <div className="bg-gh-800 backdrop-blur-sm rounded-xl p-4 border border-gh-700">
             <h3 className="font-semibold text-lg mb-4">
               Experience Highlights
             </h3>
-            <p className="text-gray-400 mb-4 text-sm">
+            <p className="text-gh-400 mb-4 text-sm">
               <span className="text-yellow-400 font-semibold">2+ years</span> of
               experience in{" "}
               <span className="text-purple-400 font-semibold">
@@ -105,7 +105,7 @@ export function Solana() {
           {solanaProjects.map((project, index) => (
             <div
               key={index}
-              className="bg-zinc-800/80 backdrop-blur-sm rounded-xl p-4 relative min-h-[240px] border border-zinc-700"
+              className="bg-gh-800 backdrop-blur-sm rounded-xl p-4 relative min-h-[240px] border border-gh-700"
             >
               <div className="absolute top-1 right-1 flex gap-2">
                 {project.tags.map((tag, tagIndex) => (
@@ -125,14 +125,14 @@ export function Solana() {
                 <h3 className="font-bold text-lg mb-2 text-purple-400">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 mb-4 text-sm">
+                <p className="text-gh-400 mb-4 text-sm">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.techStack.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded"
+                      className="text-xs text-gh-400 bg-gh-800 px-2 py-1 rounded"
                     >
                       {tech}
                     </span>

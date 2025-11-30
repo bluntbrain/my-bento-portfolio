@@ -36,10 +36,10 @@ export function SkillProgress({ title, icon, skills, accentColor }: SkillProgres
         {skills.map((skill, index) => (
           <div key={skill.name} className="space-y-1">
             <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-300">{skill.name}</span>
-              <span className="text-xs text-gray-500">{skill.level}%</span>
+              <span className="text-sm text-gh-300">{skill.name}</span>
+              <span className="text-xs text-gh-500">{skill.level}%</span>
             </div>
-            <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
+            <div className="h-2 bg-gh-800 rounded-full overflow-hidden">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: isVisible ? `${skill.level}%` : 0 }}

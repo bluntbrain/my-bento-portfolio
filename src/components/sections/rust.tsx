@@ -19,7 +19,7 @@ export function Rust() {
 
   return (
     <Card
-      className="col-span-1 sm:col-span-2 lg:col-span-4 bg-zinc-900 p-6"
+      className="col-span-1 sm:col-span-2 lg:col-span-4 bg-gh-900 p-6"
       variant="rust"
     >
       <div className="relative z-20">
@@ -37,12 +37,12 @@ export function Rust() {
         </div>
 
         {/* solana programs grid */}
-        <h3 className="text-lg font-bold mb-4 text-gray-300">Solana Smart Contracts & Programs</h3>
+        <h3 className="text-lg font-bold mb-4 text-gh-300">Solana Smart Contracts & Programs</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {solanaPrograms.map((program, index) => (
             <div
               key={index}
-              className="bg-zinc-800/80 backdrop-blur-sm rounded-lg p-3 border border-zinc-700 hover:border-primary/50 transition-all"
+              className="bg-gh-800 backdrop-blur-sm rounded-lg p-3 border border-gh-700 hover:border-primary/50 transition-all"
             >
               <div className="flex gap-1 mb-2">
                 {program.tags.map((tag, tagIndex) => (
@@ -63,7 +63,7 @@ export function Rust() {
               <h3 className="font-semibold text-sm text-white mb-1">
                 {program.title}
               </h3>
-              <p className="text-gray-300 text-xs mb-2">
+              <p className="text-gh-300 text-xs mb-2">
                 {program.description}
               </p>
               <a

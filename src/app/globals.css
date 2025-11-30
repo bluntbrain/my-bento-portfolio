@@ -3,28 +3,37 @@
 @tailwind utilities;
 
 :root {
-  /* brand color palette */
+  /* github dark theme colors */
   --black: #000000;
-  --prussian-blue: #14213d;
-  --orange: #fca311;
-  --alabaster-grey: #e5e5e5;
+  --gray-950: #0d1117;
+  --gray-900: #161b22;
+  --gray-800: #21262d;
+  --gray-700: #30363d;
+  --gray-600: #484f58;
+  --gray-500: #6e7681;
+  --gray-400: #8b949e;
+  --gray-300: #b1bac4;
+  --gray-200: #c9d1d9;
+  --gray-100: #e6edf3;
   --white: #ffffff;
 
   /* semantic colors */
   --background: #000000;
-  --surface: var(--prussian-blue);
-  --card: #27272a;
-  --border: #3f3f46;
+  --surface: var(--gray-950);
+  --card: var(--gray-900);
+  --border: var(--gray-700);
 
-  --text-primary: #fafafa;
-  --text-secondary: #d1d5db;
-  --text-muted: #9ca3af;
+  --text-primary: var(--gray-100);
+  --text-secondary: var(--gray-200);
+  --text-muted: var(--gray-400);
 
-  /* accent colors from palette - using brighter versions for better contrast */
-  --primary: #fca311;
-  --secondary: #3b82f6;
-  --accent: #fbbf24;
-  --success: #10b981;
+  /* github accent colors */
+  --primary: #58a6ff;
+  --secondary: #3fb950;
+  --accent: #f78166;
+  --purple: #a371f7;
+  --success: #3fb950;
+  --warning: #d29922;
 }
 
 body {

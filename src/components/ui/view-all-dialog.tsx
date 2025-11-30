@@ -30,7 +30,7 @@ export function ViewAllDialog({
         <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <DialogPrimitive.Content
           className={cn(
-            "fixed inset-y-0 right-0 z-50 h-full w-full sm:w-[700px] lg:w-[900px] border-l bg-zinc-950",
+            "fixed inset-y-0 right-0 z-50 h-full w-full sm:w-[700px] lg:w-[900px] border-l bg-gh-950",
             "data-[state=open]:animate-in data-[state=closed]:animate-out",
             "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right",
             "duration-300 ease-in-out"
@@ -38,11 +38,11 @@ export function ViewAllDialog({
         >
           <div className="h-full flex flex-col">
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-zinc-800 p-6">
+            <div className="flex items-center justify-between border-b border-gh-800 p-6">
               <h2 className="text-2xl font-semibold">{title}</h2>
               <button
                 onClick={() => onOpenChange(false)}
-                className="rounded-full p-2.5 bg-zinc-900 hover:bg-zinc-800 transition-colors"
+                className="rounded-full p-2.5 bg-gh-900 hover:bg-gh-800 transition-colors"
               >
                 <X className="h-5 w-5" />
                 <span className="sr-only">Close</span>
@@ -55,12 +55,12 @@ export function ViewAllDialog({
                 {items.map((item, index) => (
                   <div
                     key={index}
-                    className="p-4 bg-zinc-900/50 rounded-xl hover:bg-zinc-900 transition-colors"
+                    className="p-4 bg-gh-900/50 rounded-xl hover:bg-gh-900 transition-colors"
                   >
                     <h3 className="font-semibold text-lg mb-2 text-yellow-400">
                       {item.name}
                     </h3>
-                    <p className="text-gray-400 mb-4">{item.description}</p>
+                    <p className="text-gh-400 mb-4">{item.description}</p>
                     <div className="flex gap-4">
                       {item.github && (
                         <a

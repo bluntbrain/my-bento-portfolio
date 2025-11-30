@@ -57,7 +57,7 @@ export function Achievements() {
   };
 
   return (
-    <Card className="col-span-1 sm:col-span-2 lg:col-span-2 bg-zinc-900 p-4">
+    <Card className="col-span-1 sm:col-span-2 lg:col-span-2 bg-gh-900 border border-gh-700 p-4">
       <h2 className="text-xl font-bold mb-3">Hackathon Wins</h2>
 
       {/* compact grid layout for achievements */}
@@ -65,7 +65,7 @@ export function Achievements() {
         {hackathons.map((hackathon, index) => (
           <div
             key={index}
-            className="bg-zinc-800/80 backdrop-blur-sm rounded-lg overflow-hidden border border-zinc-700 hover:border-primary/50 transition-all"
+            className="bg-gh-800 backdrop-blur-sm rounded-lg overflow-hidden border border-gh-700 hover:border-primary/50 transition-all"
           >
             <div className="flex">
               {/* image - left side, full height */}
@@ -92,11 +92,11 @@ export function Achievements() {
                   </span>
                 </div>
 
-                <p className="text-xs text-gray-300">
+                <p className="text-xs text-gh-300">
                   {hackathon.project}
                 </p>
 
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-gh-400 mt-1">
                   {hackathon.description}
                 </p>
 
@@ -106,13 +106,13 @@ export function Achievements() {
                     {hackathon.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="px-1.5 py-0.5 bg-zinc-700 text-gray-300 rounded text-[10px]"
+                        className="px-1.5 py-0.5 bg-gh-700 text-gh-300 rounded text-[10px]"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <span className="text-[10px] text-gray-500">{hackathon.period}</span>
+                  <span className="text-[10px] text-gh-500">{hackathon.period}</span>
                 </div>
 
                 {/* action buttons */}
