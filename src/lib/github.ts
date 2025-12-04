@@ -104,13 +104,14 @@ export async function fetchOrgRepos(org: string): Promise<{ repos: GitHubRepo[];
   }
 }
 
-// fetch open issues for a repo
+// fetch open issues for a repo (optionally filter out PRs)
 export async function fetchRepoIssues(
   owner: string,
-  repo: string
+  repo: string,
+  issuesOnly: boolean = false
 ): Promise<{ issues: GitHubIssue[]; rateLimited: boolean }> {
   try {
-    const url = `${GITHUB_API}/repos/${owner}/${repo}/issues?state=open&per_page=30&sort=updated`;
+    const url = `${GITHUB_API}/repos/${owner}/${repo}/issues?state=open&per_page=100&sort=updated`;
 
     const response = await fetch(url, {
       headers: getHeaders(),
@@ -130,7 +131,12 @@ export async function fetchRepoIssues(
       return { issues: [], rateLimited: false };
     }
 
-    const issues: GitHubIssue[] = await response.json();
+    let issues: GitHubIssue[] = await response.json();
+
+    // filter out PRs if issuesOnly is true (github api returns prs in issues endpoint)
+    if (issuesOnly) {
+      issues = issues.filter((issue) => !issue.html_url.includes("/pull/"));
+    }
 
     // add repo and org info to each issue
     const enrichedIssues = issues.map((issue) => ({
@@ -220,6 +226,80 @@ export async function fetchOrgIssues(org: string): Promise<GitHubIssue[]> {
   }
 
   return allIssues;
+}
+
+// fetch only issues (not PRs) from an org and cache to firestore
+export async function fetchAndCacheOrgIssues(
+  org: string,
+  onProgress?: (message: string) => void
+): Promise<{ success: boolean; count: number; error?: string }> {
+  try {
+    onProgress?.(`Fetching repos for ${org}...`);
+    const { repos, rateLimited: repoRateLimited } = await fetchOrgRepos(org);
+
+    if (repoRateLimited) {
+      return { success: false, count: 0, error: "Rate limited by GitHub API" };
+    }
+
+    const reposWithIssues = repos.filter((repo) => repo.open_issues_count > 0);
+    onProgress?.(`Found ${reposWithIssues.length} repos with open issues`);
+
+    const allIssues: GitHubIssue[] = [];
+
+    for (let i = 0; i < reposWithIssues.length; i++) {
+      const repo = reposWithIssues[i];
+      onProgress?.(`Fetching issues from ${repo.name} (${i + 1}/${reposWithIssues.length})...`);
+
+      const { issues, rateLimited } = await fetchRepoIssues(org, repo.name, true);
+
+      if (rateLimited) {
+        return {
+          success: false,
+          count: allIssues.length,
+          error: `Rate limited after fetching ${allIssues.length} issues`
+        };
+      }
+
+      allIssues.push(...issues);
+    }
+
+    if (allIssues.length === 0) {
+      onProgress?.(`No issues found for ${org}`);
+      return { success: true, count: 0 };
+    }
+
+    onProgress?.(`Caching ${allIssues.length} issues to Firestore...`);
+
+    const issuesToCache: IssueToCache[] = allIssues.map((issue) => ({
+      id: issue.id,
+      number: issue.number,
+      title: issue.title,
+      body: issue.body,
+      html_url: issue.html_url,
+      state: issue.state,
+      created_at: issue.created_at,
+      updated_at: issue.updated_at,
+      comments: issue.comments,
+      labels: issue.labels,
+      user: issue.user,
+      repo_name: issue.repo_name || "",
+      org_name: issue.org_name || org,
+      repository_url: issue.repository_url,
+      type: "issue",
+    }));
+
+    await cacheIssues(issuesToCache);
+    onProgress?.(`Successfully cached ${allIssues.length} issues for ${org}`);
+
+    return { success: true, count: allIssues.length };
+  } catch (error) {
+    console.error(`Error fetching issues for ${org}:`, error);
+    return {
+      success: false,
+      count: 0,
+      error: error instanceof Error ? error.message : "Unknown error"
+    };
+  }
 }
 
 // helper to format relative time
