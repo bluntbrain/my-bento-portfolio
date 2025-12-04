@@ -171,6 +171,7 @@ export function IssuesClient() {
   // initial fetch
   useEffect(() => {
     fetchIssues(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOrg, typeFilter]);
 
   // load more handler
@@ -331,7 +332,7 @@ export function IssuesClient() {
             />
           </svg>
           <p className="mt-5 text-lg text-[#8b949e]">No issues found</p>
-          <p className="mt-2 text-sm text-[#8b949e]">Select an organization and click "Fetch Issues" to load data</p>
+          <p className="mt-2 text-sm text-[#8b949e]">Select an organization and click Fetch Issues to load data</p>
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
