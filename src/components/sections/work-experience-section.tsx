@@ -144,26 +144,23 @@ export function WorkExperienceSection() {
 
                   <div className="flex-1 min-w-0">
                     {/* title */}
-                    <h3 className="font-semibold text-white text-base">{exp.title}</h3>
+                    <h3 className="font-semibold text-white text-lg">{exp.title}</h3>
 
                     {/* company and type */}
-                    <p className="text-gh-300 text-sm">
+                    <p className="text-gh-300 text-base">
                       {exp.company} · {exp.type}
                     </p>
 
-                    {/* period and duration */}
+                    {/* period, duration and location */}
                     <p className="text-gh-400 text-sm">
-                      {exp.period} · {exp.duration}
+                      {exp.period} · {exp.duration} · {exp.location}
                     </p>
-
-                    {/* location */}
-                    <p className="text-gh-400 text-sm">{exp.location}</p>
 
                     {/* expandable description */}
                     <div className={`overflow-hidden transition-all duration-200 ${isExpanded ? 'max-h-96 mt-3' : 'max-h-0'}`}>
                       <ul className="space-y-1.5">
                         {exp.description.map((item, i) => (
-                          <li key={i} className="text-sm text-gh-300 flex items-start gap-2">
+                          <li key={i} className="text-base text-gh-300 flex items-start gap-2">
                             <span className="text-gh-500 mt-0.5">•</span>
                             <span>{item}</span>
                           </li>

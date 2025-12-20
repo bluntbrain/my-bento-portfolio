@@ -16,6 +16,9 @@ import { Header } from "@/components/sections/header";
 import { Achievements } from "@/components/sections/achievements";
 import { Footer } from "@/components/sections/footer";
 import { FeaturedProjects } from "@/components/sections/featured-projects";
+import { OpenSourceContribution } from "@/components/sections/opensource-contribution";
+import { NearMeShowcase } from "@/components/sections/nearme-showcase";
+import { ParticlesBackground } from "@/components/ui/particles-background";
 
 function HomeContent() {
   const [blockchainDialogOpen, setBlockchainDialogOpen] = React.useState(false);
@@ -26,7 +29,9 @@ function HomeContent() {
 
   return (
     <>
-      <div className="min-h-screen p-4 sm:p-6 bg-black text-white">
+      {/* particles parallax background */}
+      <ParticlesBackground />
+      <div className="min-h-screen p-4 sm:p-6 text-white relative" style={{ zIndex: 1 }}>
         <Toaster position="top-center" />
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {/* contact */}
@@ -37,6 +42,12 @@ function HomeContent() {
           {/* work experience and achievements side by side */}
           <WorkExperienceSection />
           <Achievements />
+
+          {/* nearme viral app showcase */}
+          <NearMeShowcase />
+
+          {/* open source contributions */}
+          <OpenSourceContribution />
 
           {/* featured projects from each category */}
           <FeaturedProjects />

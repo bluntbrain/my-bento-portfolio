@@ -1,16 +1,41 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "../../ui/card";
-import { ExternalLink, Github, ArrowLeft } from "lucide-react";
-import { motion } from "framer-motion";
+import { ExternalLink, Github, ArrowLeft, Play, Maximize2, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { SkillRadial } from "../../ui/skill-radial";
+import Image from "next/image";
+
+// lightbox state type
+interface LightboxState {
+  isOpen: boolean;
+  type: "image" | "video" | null;
+  src: string;
+  title: string;
+}
 
 interface MobileDetailsProps {
   onBack: () => void;
 }
 
 export function MobileDetails({ onBack }: MobileDetailsProps) {
+  // lightbox state for fullscreen view
+  const [lightbox, setLightbox] = useState<LightboxState>({
+    isOpen: false,
+    type: null,
+    src: "",
+    title: "",
+  });
+
+  const openLightbox = (type: "image" | "video", src: string, title: string) => {
+    setLightbox({ isOpen: true, type, src, title });
+  };
+
+  const closeLightbox = () => {
+    setLightbox({ isOpen: false, type: null, src: "", title: "" });
+  };
+
   const mobileProjects = [
     {
       title: "Jar App",
@@ -25,7 +50,7 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
       description: "Led the end-to-end development of India's first neobank designed for couples. Successfully acquired more than 10,000 users within 2 months post-launch. Features joint wallet and linked cards for shared expenses.",
       tags: ["React Native", "Fintech", "Neobank"],
       playStoreLink: "https://play.google.com/store/apps/details?id=com.couplapp",
-      screenshot: "/images/coupldemo.png",
+      videoDemo: "/videos/couple_demo.mp4",
       techStack: ["React Native", "Redux", "Firebase", "Stripe", "Push Notifications"],
     },
     {
@@ -253,106 +278,178 @@ export function MobileDetails({ onBack }: MobileDetailsProps) {
       {/* Projects */}
       <Card className="bg-gh-900 p-4 sm:p-6">
         <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-primary">Featured Projects</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {mobileProjects.map((project, index) => (
-            <div key={index} className={project.videoDemo ? "lg:col-span-2" : ""}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className={`bg-gh-800 rounded-xl p-4 sm:p-6 border border-gh-700 ${
-                  project.videoDemo ? "grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6" : ""
-                }`}
-              >
-                <div>
-                  <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs"
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-gh-800 rounded-xl border border-gh-700 hover:border-gh-600 transition-colors overflow-hidden"
+            >
+              {/* video/screenshot in phone frame with click to fullscreen */}
+              {(project.screenshot || project.videoDemo) && (
+                <div className="relative bg-gh-900 flex justify-center py-4">
+                  <div
+                    className="relative rounded-2xl overflow-hidden border-4 border-gh-600 shadow-xl cursor-pointer group"
+                    onClick={() => {
+                      if (project.videoDemo) {
+                        openLightbox("video", project.videoDemo, project.title);
+                      } else if (project.screenshot) {
+                        openLightbox("image", project.screenshot, project.title);
+                      }
+                    }}
+                  >
+                    {project.videoDemo ? (
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="h-72 w-auto object-cover"
                       >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="font-bold text-base sm:text-lg mb-2 sm:mb-3 text-primary">
-                    {project.title}
-                  </h3>
-                  <p className="text-gh-300 mb-3 sm:mb-4 text-sm">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
-                    {project.techStack.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="text-xs text-gh-300 bg-gh-800 px-2 py-1 rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-3">
-                    {project.playStoreLink && (
-                      <a
-                        href={project.playStoreLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:underline flex items-center gap-1 text-sm"
-                      >
-                        <ExternalLink size={14} />
-                        Play Store
-                      </a>
-                    )}
-                    {project.githubLink && (
-                      <a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-accent hover:underline flex items-center gap-1 text-sm"
-                      >
-                        <Github size={14} />
-                        GitHub
-                      </a>
-                    )}
+                        <source src={project.videoDemo} type="video/mp4" />
+                      </video>
+                    ) : project.screenshot ? (
+                      <Image
+                        src={project.screenshot}
+                        alt={`${project.title} screenshot`}
+                        width={200}
+                        height={400}
+                        className="h-72 w-auto object-cover"
+                      />
+                    ) : null}
+                    {/* maximize overlay on hover */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                      <Maximize2 className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
                   </div>
                 </div>
-                
-                {project.screenshot && (
-                  <div className="flex items-center justify-center">
+              )}
+
+              {/* content */}
+              <div className="p-4">
+                {/* tags */}
+                <div className="flex flex-wrap gap-1.5 mb-2">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="px-2 py-0.5 bg-cyan-500/10 text-cyan-400 rounded-full text-xs font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* title */}
+                <h3 className="font-bold text-base mb-1.5 text-cyan-400">
+                  {project.title}
+                </h3>
+                <p className="text-gh-300 text-sm mb-3 line-clamp-2">
+                  {project.description}
+                </p>
+
+                {/* tech stack */}
+                <div className="flex flex-wrap gap-1 mb-3">
+                  {project.techStack.slice(0, 4).map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="text-xs text-gh-400 bg-gh-700 px-1.5 py-0.5 rounded"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.techStack.length > 4 && (
+                    <span className="text-xs text-gh-400">+{project.techStack.length - 4}</span>
+                  )}
+                </div>
+
+                {/* action buttons */}
+                <div className="flex flex-wrap gap-2">
+                  {project.playStoreLink && (
                     <a
                       href={project.playStoreLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block transition-transform hover:scale-105"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 border border-cyan-500/30 rounded-lg text-xs font-medium transition-colors"
                     >
-                      <img
-                        src={project.screenshot}
-                        alt={`${project.title} screenshot`}
-                        className="w-full max-w-xs rounded-lg shadow-lg cursor-pointer"
-                      />
+                      <Play size={12} />
+                      Play Store
                     </a>
-                  </div>
-                )}
-                
-                {project.videoDemo && (
-                  <div className="flex items-center justify-center">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full max-w-xs rounded-lg shadow-lg"
+                  )}
+                  {project.githubLink && (
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#238636] hover:bg-[#2ea043] text-white rounded-lg text-xs font-medium transition-colors"
                     >
-                      <source src={project.videoDemo} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                )}
-              </motion.div>
-            </div>
+                      <Github size={12} />
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </Card>
+
+      {/* lightbox modal for fullscreen view */}
+      <AnimatePresence>
+        {lightbox.isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            onClick={closeLightbox}
+          >
+            {/* close button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-50 p-2 bg-gh-800/80 hover:bg-gh-700 rounded-full transition-colors"
+            >
+              <X className="w-6 h-6 text-white" />
+            </button>
+
+            {/* title */}
+            <div className="absolute top-4 left-4 z-50">
+              <h3 className="text-white text-lg font-semibold">{lightbox.title}</h3>
+            </div>
+
+            {/* content - vertical phone format */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-h-[85vh] max-w-[400px] rounded-3xl overflow-hidden border-4 border-gh-600 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {lightbox.type === "video" ? (
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  controls
+                  className="max-h-[85vh] w-auto object-contain"
+                >
+                  <source src={lightbox.src} type="video/mp4" />
+                </video>
+              ) : (
+                <Image
+                  src={lightbox.src}
+                  alt={lightbox.title}
+                  width={400}
+                  height={800}
+                  className="max-h-[85vh] w-auto object-contain"
+                />
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
