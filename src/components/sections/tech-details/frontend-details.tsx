@@ -5,6 +5,7 @@ import { Card } from "../../ui/card";
 import { ExternalLink, Github, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import { SkillRadial } from "../../ui/skill-radial";
+import Image from "next/image";
 
 interface FrontendDetailsProps {
   onBack: () => void;
