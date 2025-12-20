@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Card } from "../../ui/card";
-import { ExternalLink, Github, ArrowLeft, Play, Maximize2, X } from "lucide-react";
+import { Github, ArrowLeft, Play, Maximize2, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SkillRadial } from "../../ui/skill-radial";
 import Image from "next/image";

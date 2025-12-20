@@ -345,9 +345,11 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
                       rel="noopener noreferrer"
                       className="block transition-transform hover:scale-105"
                     >
-                      <img
+                      <Image
                         src={project.screenshot}
                         alt={`${project.title} screenshot`}
+                        width={320}
+                        height={640}
                         className="w-full max-w-xs rounded-lg shadow-lg cursor-pointer"
                       />
                     </a>
