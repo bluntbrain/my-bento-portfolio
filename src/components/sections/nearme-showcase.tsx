@@ -9,9 +9,11 @@ import {
   Store,
   Maximize2,
   X,
+  ArrowRight,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 // lightbox state type
 interface LightboxState {
@@ -80,10 +82,18 @@ export function NearMeShowcase() {
               </div>
             </div>
 
-            <p className="text-gh-400 text-sm">
-              All <span className="text-[#58a6ff]">.skr</span> reviews from
-              genuine Seeker owners
-            </p>
+            <div className="flex items-center gap-3">
+              <p className="text-gh-400 text-sm">
+                All <span className="text-[#58a6ff]">.skr</span> reviews from Seeker owners
+              </p>
+              <Link
+                href="/seeker"
+                className="inline-flex items-center gap-1 text-primary text-sm font-medium hover:underline"
+              >
+                All Apps
+                <ArrowRight size={14} />
+              </Link>
+            </div>
           </div>
 
           {/* images - horizontal on mobile, vertical side panel on desktop */}
