@@ -1,153 +1,205 @@
+"use client";
+
 import React, { useState } from "react";
 import { Card } from "../ui/card";
-import { Github, ExternalLink } from "lucide-react";
-import Image from "next/image";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
+import { Github, Play, X, Maximize2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-// compact achievements section - displays hackathon wins in a smaller card format
+interface MobileDemo {
+  title: string;
+  description: string;
+  video: string;
+  tags: string[];
+  githubLink?: string;
+  playStoreLink?: string;
+}
+
+// lightbox state
+interface LightboxState {
+  isOpen: boolean;
+  src: string;
+  title: string;
+}
+
 export function Achievements() {
-  const [open, setOpen] = useState(false);
-  const [imageIndex, setImageIndex] = useState(0);
+  const [lightbox, setLightbox] = useState<LightboxState>({
+    isOpen: false,
+    src: "",
+    title: "",
+  });
 
-  const hackathons = [
+  const demos: MobileDemo[] = [
     {
-      title: "StarkHack Winner",
-      prize: "$4,000",
-      project: "Chain Monsters",
-      description: "On-chain monster battling game built on StarkNet using Cairo",
-      period: "Mar 2024",
-      ethGlobalLink: "https://ethglobal.com/showcase/chain-monsters-o26dw",
-      githubLink: "https://github.com/Krane-Apps/chain-monsters",
-      tags: ["StarkNet", "Cairo"],
-      image: "/images/achievements/starkhack.png",
+      title: "Coupl App",
+      description: "India's first neobank for couples with joint wallet & linked cards",
+      video: "/videos/couple_demo.mp4",
+      tags: ["React Native", "Fintech"],
+      playStoreLink: "https://play.google.com/store/apps/details?id=com.couplapp",
     },
     {
-      title: "SuperHack Winner",
-      prize: "$10,000",
-      project: "Repo Reward",
-      description: "Decentralized bounty platform for open source contributions on Base",
-      period: "Feb 2024",
-      ethGlobalLink: "https://ethglobal.com/showcase/repo-rewards-su0bh",
-      githubLink: "https://github.com/Krane-Apps/repo-rewards-superhack-2024",
-      tags: ["Base", "Solidity"],
-      image: "/images/achievements/superhack.png",
+      title: "SuiSage AI",
+      description: "AI-powered Web3 portfolio assistant with voice responses",
+      video: "/videos/suidemo.mp4",
+      tags: ["React Native", "AI"],
+      githubLink: "https://github.com/bluntbrain/SuiSage-AI-Powered-Web3-Portfolio-Assistant",
     },
     {
-      title: "ETH Bangkok Winner",
-      prize: "$2,000",
-      project: "ZK Credit Score",
-      description: "Privacy-preserving credit scoring using zero-knowledge proofs",
-      period: "Dec 2023",
-      ethGlobalLink: "https://ethglobal.com/showcase/zk-credit-score-pa7r4",
-      githubLink: "https://ethglobal.com/showcase/zk-credit-score-pa7r4",
-      tags: ["ZK Proofs", "DeFi"],
-      image: "/images/achievements/ethbangkok.png",
+      title: "Location Chat",
+      description: "Map-based real-time chat with nearby users via Mapbox",
+      video: "/videos/locationdemo.mp4",
+      tags: ["React Native", "Mapbox"],
+      githubLink: "https://github.com/bluntbrain/react-native-messenger-library",
+    },
+    {
+      title: "Swipable News",
+      description: "Swipeable headlines with pinning, offline cache & auto-refresh",
+      video: "/videos/newsdemo.mp4",
+      tags: ["React Native", "News"],
+      githubLink: "https://github.com/bluntbrain/swipeable-news-app",
     },
   ];
 
-  const slides = hackathons.map((hackathon) => ({
-    src: hackathon.image,
-    alt: hackathon.title,
-  }));
+  const openLightbox = (src: string, title: string) => {
+    setLightbox({ isOpen: true, src, title });
+  };
 
-  const openLightbox = (index: number) => {
-    setImageIndex(index);
-    setOpen(true);
+  const closeLightbox = () => {
+    setLightbox({ isOpen: false, src: "", title: "" });
   };
 
   return (
-    <Card className="col-span-1 sm:col-span-2 lg:col-span-2 bg-gh-900 border border-gh-700 p-4">
-      <h2 className="text-xl font-bold mb-3">Hackathon Wins</h2>
+    <>
+      <Card className="col-span-1 sm:col-span-2 lg:col-span-2 bg-gh-900 border border-gh-700 p-4">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="text-cyan-400">
+            <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
+              <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
+            </svg>
+          </div>
+          <h2 className="text-xl font-bold text-cyan-400">Mobile App Demos</h2>
+        </div>
 
-      {/* compact grid layout for achievements */}
-      <div className="space-y-3">
-        {hackathons.map((hackathon, index) => (
-          <div
-            key={index}
-            className="bg-gh-800 backdrop-blur-sm rounded-lg overflow-hidden border border-gh-700 hover:border-primary/50 transition-all"
-          >
-            <div className="flex">
-              {/* image - left side, full height */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {demos.map((demo, index) => (
+            <div
+              key={index}
+              className="bg-gh-800 rounded-xl border border-gh-700 hover:border-cyan-500/50 transition-all overflow-hidden group"
+            >
+              {/* video thumbnail */}
               <div
-                className="relative w-40 flex-shrink-0 cursor-pointer"
-                onClick={() => openLightbox(index)}
+                className="relative cursor-pointer"
+                onClick={() => openLightbox(demo.video, demo.title)}
               >
-                <Image
-                  src={hackathon.image}
-                  alt={hackathon.title}
-                  fill
-                  className="object-cover transition-transform duration-300 hover:scale-110"
-                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center z-10">
+                  <Maximize2
+                    className="text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                    size={22}
+                  />
+                </div>
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-44 object-cover"
+                >
+                  <source src={demo.video} type="video/mp4" />
+                </video>
               </div>
 
-              {/* content section - right side */}
-              <div className="flex-1 p-3 min-w-0">
-                <div className="flex items-center justify-between mb-1">
-                  <h3 className="font-semibold text-sm text-primary">
-                    {hackathon.title}
-                  </h3>
-                  <span className="text-lg font-bold text-accent">
-                    {hackathon.prize}
-                  </span>
+              {/* info */}
+              <div className="p-2.5">
+                <div className="flex flex-wrap gap-1 mb-1.5">
+                  {demo.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="px-1.5 py-0.5 bg-gh-700 text-gh-200 rounded text-[10px] font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-
-                <p className="text-xs text-gh-300">
-                  {hackathon.project}
+                <h3 className="font-semibold text-sm text-cyan-400 mb-0.5 line-clamp-1">
+                  {demo.title}
+                </h3>
+                <p className="text-gh-400 text-xs mb-2 line-clamp-2">
+                  {demo.description}
                 </p>
-
-                <p className="text-xs text-gh-400 mt-1">
-                  {hackathon.description}
-                </p>
-
-                {/* tags and period row */}
-                <div className="flex items-center justify-between mt-1.5">
-                  <div className="flex items-center gap-1.5">
-                    {hackathon.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="px-1.5 py-0.5 bg-gh-700 text-gh-300 rounded text-[10px]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <span className="text-[10px] text-gh-500">{hackathon.period}</span>
-                </div>
-
-                {/* action buttons */}
-                <div className="flex gap-2 mt-2">
-                  <a
-                    href={hackathon.ethGlobalLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 px-2 py-1 bg-primary/10 text-primary hover:bg-primary/20 rounded text-[10px] border border-primary/20 transition-colors"
-                  >
-                    <ExternalLink size={10} />
-                    ETH Global
-                  </a>
-                  <a
-                    href={hackathon.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 px-2 py-1 bg-secondary/10 text-secondary hover:bg-secondary/20 rounded text-[10px] border border-secondary/20 transition-colors"
-                  >
-                    <Github size={10} />
-                    Source Code
-                  </a>
+                <div className="flex gap-1.5">
+                  {demo.githubLink && (
+                    <a
+                      href={demo.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-2 py-1 bg-[#238636] hover:bg-[#2ea043] text-white rounded text-[10px] font-medium transition-colors"
+                    >
+                      <Github size={10} />
+                      GitHub
+                    </a>
+                  )}
+                  {demo.playStoreLink && (
+                    <a
+                      href={demo.playStoreLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-2 py-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 border border-cyan-500/30 rounded text-[10px] font-medium transition-colors"
+                    >
+                      <Play size={10} />
+                      Store
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Card>
 
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        index={imageIndex}
-        slides={slides}
-      />
-    </Card>
+      {/* video lightbox */}
+      <AnimatePresence>
+        {lightbox.isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+            onClick={closeLightbox}
+          >
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 p-2 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-full transition-colors z-50"
+            >
+              <X size={28} />
+            </button>
+
+            <div className="absolute top-4 left-4 text-white text-lg font-semibold">
+              {lightbox.title}
+            </div>
+
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="max-w-full max-h-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video
+                autoPlay
+                loop
+                controls
+                playsInline
+                className="max-h-[85vh] w-auto rounded-lg"
+              >
+                <source src={lightbox.src} type="video/mp4" />
+              </video>
+            </motion.div>
+
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-sm">
+              Click anywhere to close
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
