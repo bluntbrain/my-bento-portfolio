@@ -1,3 +1,4 @@
+// featured project cards for each category - unified monochrome + blue accent theme
 "use client";
 
 import React, { useState } from "react";
@@ -7,7 +8,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-// project type definition
 interface Project {
   title: string;
   description: string;
@@ -20,7 +20,6 @@ interface Project {
   isVerticalVideo?: boolean;
 }
 
-// lightbox state type
 interface LightboxState {
   isOpen: boolean;
   type: "image" | "video" | null;
@@ -29,7 +28,6 @@ interface LightboxState {
   isVertical?: boolean;
 }
 
-// shared lightbox component
 function MediaLightbox({
   lightbox,
   onClose,
@@ -73,8 +71,8 @@ function MediaLightbox({
                 playsInline
                 className={
                   lightbox.isVertical
-                    ? "max-h-[85vh] w-auto rounded-lg"
-                    : "max-w-full max-h-[85vh] rounded-lg"
+                    ? "max-h-[85vh] w-auto rounded-2xl"
+                    : "max-w-full max-h-[85vh] rounded-2xl"
                 }
               >
                 <source src={lightbox.src} type="video/mp4" />
@@ -85,7 +83,7 @@ function MediaLightbox({
                 alt={lightbox.title}
                 width={1200}
                 height={800}
-                className="max-w-full max-h-[85vh] object-contain rounded-lg"
+                className="max-w-full max-h-[85vh] object-contain rounded-2xl"
               />
             )}
           </motion.div>
@@ -99,7 +97,7 @@ function MediaLightbox({
   );
 }
 
-// mobile apps card component
+// mobile apps card - two big autoplaying portrait videos side by side
 export function MobileAppsCard() {
   const [lightbox, setLightbox] = useState<LightboxState>({
     isOpen: false,
@@ -122,133 +120,58 @@ export function MobileAppsCard() {
     setLightbox({ isOpen: false, type: null, src: "", title: "", isVertical: false });
   };
 
-  const projects: Project[] = [
-    {
-      title: "Jar App",
-      description:
-        "Led Frontend team for savings app with 10M+ users. Improved performance by 60% and reduced deployment time by 70%.",
-      tags: ["React Native", "Fintech", "10M+ Users"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.jar.app",
-      screenshot: "/images/jardemo.png",
-    },
+  const apps = [
     {
       title: "Coupl App",
-      description:
-        "India's first neobank for couples - acquired 10K+ users in 2 months. Joint wallet and linked cards for shared expenses.",
-      tags: ["React Native", "Neobank", "10K+ Users"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.couplapp",
       videoDemo: "/videos/couple_demo.mp4",
-      isVerticalVideo: true,
+      link: "https://play.google.com/store/apps/details?id=com.couplapp",
     },
     {
-      title: "SuiSage - AI Portfolio Assistant",
-      description:
-        "AI-powered Web3 portfolio assistant that chains OpenAI and Gemini for superior analysis with voice responses.",
-      tags: ["React Native", "AI", "Web3"],
-      githubLink:
-        "https://github.com/bluntbrain/SuiSage-AI-Powered-Web3-Portfolio-Assistant",
+      title: "SuiSage",
       videoDemo: "/videos/suidemo.mp4",
-      isVerticalVideo: true,
+      link: "https://github.com/bluntbrain/SuiSage-AI-Powered-Web3-Portfolio-Assistant",
     },
   ];
 
   return (
     <>
-      <Card className="col-span-1 sm:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5">
-        {/* header */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="text-cyan-400">
-              <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
-                <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
-              </svg>
-            </div>
-            <h3 className="font-bold text-xl text-cyan-400">Mobile Apps</h3>
-          </div>
+      <Card className="col-span-1 sm:col-span-2 lg:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5 flex flex-col">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-bold text-lg text-white">Mobile Apps I Built</h3>
           <Link
             href="/mobile"
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 hover:bg-cyan-500/30"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20"
           >
             View All
             <ArrowRight size={14} />
           </Link>
         </div>
 
-        {/* projects grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-gh-800 rounded-xl border border-gh-700 hover:border-gh-600 transition-colors overflow-hidden"
-            >
-              {/* media */}
-              {(project.screenshot || project.videoDemo) && (
-                <div
-                  className="relative bg-gh-900 cursor-pointer group flex justify-center py-3"
-                  onClick={() => {
-                    if (project.videoDemo) {
-                      openLightbox("video", project.videoDemo, project.title, project.isVerticalVideo);
-                    } else if (project.screenshot) {
-                      openLightbox("image", project.screenshot, project.title);
-                    }
-                  }}
+        <div className="grid grid-cols-2 gap-4 flex-1">
+          {apps.map((app, index) => (
+            <div key={index} className="flex flex-col min-h-0">
+              <div
+                className="relative bg-gh-950 rounded-2xl overflow-hidden border border-gh-700 cursor-pointer group flex justify-center flex-1"
+                onClick={() => openLightbox("video", app.videoDemo, app.title, true)}
+              >
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center z-10">
+                  <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={24} />
+                </div>
+                <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+                  <source src={app.videoDemo} type="video/mp4" />
+                </video>
+              </div>
+              <div className="mt-2 flex items-center justify-between">
+                <span className="font-semibold text-sm text-white">{app.title}</span>
+                <a
+                  href={app.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-primary text-xs font-medium underline underline-offset-2 hover:text-primary/80 transition-colors"
                 >
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center z-10">
-                    <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={24} />
-                  </div>
-                  <div className="relative rounded-xl overflow-hidden border-2 border-gh-600 shadow-lg">
-                    {project.videoDemo ? (
-                      <video autoPlay loop muted playsInline className="h-36 w-auto object-cover">
-                        <source src={project.videoDemo} type="video/mp4" />
-                      </video>
-                    ) : project.screenshot ? (
-                      <Image
-                        src={project.screenshot}
-                        alt={project.title}
-                        width={150}
-                        height={300}
-                        className="h-36 w-auto object-cover"
-                      />
-                    ) : null}
-                  </div>
-                </div>
-              )}
-
-              {/* content */}
-              <div className="p-3">
-                <div className="flex flex-wrap gap-1.5 mb-2">
-                  {project.tags.slice(0, 2).map((tag, i) => (
-                    <span key={i} className="px-2 py-0.5 bg-gh-700 text-gh-200 rounded text-xs font-medium">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <h4 className="font-bold text-base text-cyan-400 mb-1 line-clamp-1">{project.title}</h4>
-                <p className="text-gh-300 text-sm mb-2 line-clamp-2">{project.description}</p>
-                <div className="flex gap-1.5">
-                  {project.githubLink && (
-                    <a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#238636] hover:bg-[#2ea043] text-white rounded text-xs font-medium transition-colors"
-                    >
-                      <Github size={14} />
-                      GitHub
-                    </a>
-                  )}
-                  {project.playStoreLink && (
-                    <a
-                      href={project.playStoreLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 border border-cyan-500/30 rounded text-xs font-medium transition-colors"
-                    >
-                      <Play size={14} />
-                      Store
-                    </a>
-                  )}
-                </div>
+                  View
+                  <ArrowRight size={12} />
+                </a>
               </div>
             </div>
           ))}
@@ -259,7 +182,57 @@ export function MobileAppsCard() {
   );
 }
 
-// rust & solana card component
+// jar app - production scale experience story card
+export function JarAppCard() {
+  return (
+    <Card className="col-span-1 sm:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5">
+      <div className="flex items-center gap-3 mb-4">
+        <Image
+          src="/images/jarapp.png"
+          alt="Jar App"
+          width={40}
+          height={40}
+          className="rounded-xl"
+        />
+        <div>
+          <h3 className="font-bold text-lg text-white">Jar App</h3>
+          <p className="text-gh-400 text-xs">Feb 2022 - Feb 2023</p>
+        </div>
+        <a
+          href="https://play.google.com/store/apps/details?id=com.jar.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-auto p-1.5 bg-gh-700 hover:bg-gh-600 text-white rounded-xl transition-colors"
+        >
+          <Play size={14} />
+        </a>
+      </div>
+
+      <p className="text-gh-200 text-sm leading-relaxed mb-3">
+        Led the <span className="text-white font-medium">iOS app team of 8 engineers</span> at
+        India&apos;s fastest-growing digital gold savings app.
+        Built with <span className="text-white font-medium">TypeScript</span>,{" "}
+        <span className="text-white font-medium">React Native</span>, and{" "}
+        <span className="text-white font-medium">Swift</span>.
+      </p>
+
+      <p className="text-gh-200 text-sm leading-relaxed mb-4">
+        With <span className="text-white font-semibold">10M+ users</span>, even a minor bug meant{" "}
+        <span className="text-white font-semibold">3,000+ support tickets within minutes</span>.
+        The customer support team would escalate directly to me to resolve production
+        issues fast. I learned what it takes to ship reliable code at scale and keep
+        millions of users unaffected.
+      </p>
+
+      <div className="flex flex-wrap gap-2">
+        <span className="px-2.5 py-1 bg-gh-800 border border-gh-600 rounded-full text-xs text-gh-200">10M+ Users</span>
+        <span className="px-2.5 py-1 bg-gh-800 border border-gh-600 rounded-full text-xs text-gh-200">8 Engineers</span>
+        <span className="px-2.5 py-1 bg-gh-800 border border-gh-600 rounded-full text-xs text-gh-200">Production Scale</span>
+      </div>
+    </Card>
+  );
+}
+
 export function SolanaProjectsCard() {
   const projects: Project[] = [
     {
@@ -280,40 +253,38 @@ export function SolanaProjectsCard() {
 
   return (
     <Card className="col-span-1 sm:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5">
-      {/* header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
           <Image src="/images/solana.svg" alt="Solana" width={28} height={28} className="w-7 h-7" />
-          <h3 className="font-bold text-xl text-primary">Rust & Solana</h3>
+          <h3 className="font-bold text-xl text-white">Rust & Solana</h3>
         </div>
         <Link
           href="/solana"
-          className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-primary/20 text-primary border border-primary/40 hover:bg-primary/30"
+          className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20"
         >
           View All
           <ArrowRight size={14} />
         </Link>
       </div>
 
-      {/* projects grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {projects.map((project, index) => (
-          <div key={index} className="bg-gh-800 rounded-xl border border-gh-700 hover:border-gh-600 transition-colors overflow-hidden p-4">
+          <div key={index} className="bg-gh-800 rounded-2xl border border-gh-700 hover:border-gh-600 transition-colors overflow-hidden p-4">
             <div className="flex flex-wrap gap-1.5 mb-2">
               {project.tags.map((tag, i) => (
-                <span key={i} className="px-2 py-0.5 bg-gh-700 text-gh-200 rounded text-xs font-medium">
+                <span key={i} className="px-2 py-0.5 bg-gh-700 text-gh-200 rounded-full text-xs font-medium">
                   {tag}
                 </span>
               ))}
             </div>
-            <h4 className="font-bold text-base text-primary mb-1">{project.title}</h4>
+            <h4 className="font-bold text-base text-white mb-1">{project.title}</h4>
             <p className="text-gh-300 text-sm mb-3">{project.description}</p>
             {project.githubLink && (
               <a
                 href={project.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#238636] hover:bg-[#2ea043] text-white rounded text-xs font-medium transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gh-700 hover:bg-gh-600 text-white rounded-full text-xs font-medium transition-colors"
               >
                 <Github size={14} />
                 GitHub
@@ -326,20 +297,7 @@ export function SolanaProjectsCard() {
   );
 }
 
-// solidity & evm card component
 export function EthereumProjectsCard() {
-  const [lightbox, setLightbox] = useState<LightboxState>({
-    isOpen: false,
-    type: null,
-    src: "",
-    title: "",
-    isVertical: false,
-  });
-
-  const closeLightbox = () => {
-    setLightbox({ isOpen: false, type: null, src: "", title: "", isVertical: false });
-  };
-
   const projects: Project[] = [
     {
       title: "Decentralized Stablecoin",
@@ -358,70 +316,64 @@ export function EthereumProjectsCard() {
   ];
 
   return (
-    <>
-      <Card className="col-span-1 sm:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5">
-        {/* header */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <Image src="/images/ethereum.svg" alt="Ethereum" width={28} height={28} className="w-7 h-7" />
-            <h3 className="font-bold text-xl text-accent">Solidity & EVM</h3>
-          </div>
-          <Link
-            href="/ethereum"
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-accent/20 text-accent border border-accent/40 hover:bg-accent/30"
-          >
-            View All
-            <ArrowRight size={14} />
-          </Link>
+    <Card className="col-span-1 sm:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <Image src="/images/ethereum.svg" alt="Ethereum" width={28} height={28} className="w-7 h-7" />
+          <h3 className="font-bold text-xl text-white">Solidity & EVM</h3>
         </div>
+        <Link
+          href="/ethereum"
+          className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20"
+        >
+          View All
+          <ArrowRight size={14} />
+        </Link>
+      </div>
 
-        {/* projects grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {projects.map((project, index) => (
-            <div key={index} className="bg-gh-800 rounded-xl border border-gh-700 hover:border-gh-600 transition-colors overflow-hidden p-4">
-              <div className="flex flex-wrap gap-1.5 mb-2">
-                {project.tags.map((tag, i) => (
-                  <span key={i} className="px-2 py-0.5 bg-gh-700 text-gh-200 rounded text-xs font-medium">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <h4 className="font-bold text-base text-accent mb-1">{project.title}</h4>
-              <p className="text-gh-300 text-sm mb-3">{project.description}</p>
-              <div className="flex gap-1.5">
-                {project.githubLink && (
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#238636] hover:bg-[#2ea043] text-white rounded text-xs font-medium transition-colors"
-                  >
-                    <Github size={14} />
-                    GitHub
-                  </a>
-                )}
-                {project.liveLink && (
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent/20 hover:bg-accent/30 text-accent border border-accent/30 rounded text-xs font-medium transition-colors"
-                  >
-                    <ExternalLink size={14} />
-                    Live
-                  </a>
-                )}
-              </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {projects.map((project, index) => (
+          <div key={index} className="bg-gh-800 rounded-2xl border border-gh-700 hover:border-gh-600 transition-colors overflow-hidden p-4">
+            <div className="flex flex-wrap gap-1.5 mb-2">
+              {project.tags.map((tag, i) => (
+                <span key={i} className="px-2 py-0.5 bg-gh-700 text-gh-200 rounded-full text-xs font-medium">
+                  {tag}
+                </span>
+              ))}
             </div>
-          ))}
-        </div>
-      </Card>
-      <MediaLightbox lightbox={lightbox} onClose={closeLightbox} />
-    </>
+            <h4 className="font-bold text-base text-white mb-1">{project.title}</h4>
+            <p className="text-gh-300 text-sm mb-3">{project.description}</p>
+            <div className="flex gap-1.5">
+              {project.githubLink && (
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gh-700 hover:bg-gh-600 text-white rounded-full text-xs font-medium transition-colors"
+                >
+                  <Github size={14} />
+                  GitHub
+                </a>
+              )}
+              {project.liveLink && (
+                <a
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 rounded-full text-xs font-medium transition-colors"
+                >
+                  <ExternalLink size={14} />
+                  Live
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Card>
   );
 }
 
-// frontend card component
 export function FrontendProjectsCard() {
   const [lightbox, setLightbox] = useState<LightboxState>({
     isOpen: false,
@@ -466,30 +418,27 @@ export function FrontendProjectsCard() {
   return (
     <>
       <Card className="col-span-1 sm:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5">
-        {/* header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
-            <div className="text-secondary">
+            <div className="text-white">
               <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
                 <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
               </svg>
             </div>
-            <h3 className="font-bold text-xl text-secondary">Frontend</h3>
+            <h3 className="font-bold text-xl text-white">Frontend</h3>
           </div>
           <Link
             href="/frontend"
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-secondary/20 text-secondary border border-secondary/40 hover:bg-secondary/30"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20"
           >
             View All
             <ArrowRight size={14} />
           </Link>
         </div>
 
-        {/* projects grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {projects.map((project, index) => (
-            <div key={index} className="bg-gh-800 rounded-xl border border-gh-700 hover:border-gh-600 transition-colors overflow-hidden">
-              {/* media */}
+            <div key={index} className="bg-gh-800 rounded-2xl border border-gh-700 hover:border-gh-600 transition-colors overflow-hidden">
               {project.videoDemo && (
                 <div
                   className="relative bg-gh-900 cursor-pointer group"
@@ -504,16 +453,15 @@ export function FrontendProjectsCard() {
                 </div>
               )}
 
-              {/* content */}
               <div className="p-3">
                 <div className="flex flex-wrap gap-1.5 mb-2">
                   {project.tags.slice(0, 2).map((tag, i) => (
-                    <span key={i} className="px-2 py-0.5 bg-gh-700 text-gh-200 rounded text-xs font-medium">
+                    <span key={i} className="px-2 py-0.5 bg-gh-700 text-gh-200 rounded-full text-xs font-medium">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <h4 className="font-bold text-base text-secondary mb-1">{project.title}</h4>
+                <h4 className="font-bold text-base text-white mb-1">{project.title}</h4>
                 <p className="text-gh-300 text-sm mb-2 line-clamp-2">{project.description}</p>
                 <div className="flex gap-1.5">
                   {project.githubLink && (
@@ -521,7 +469,7 @@ export function FrontendProjectsCard() {
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#238636] hover:bg-[#2ea043] text-white rounded text-xs font-medium transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gh-700 hover:bg-gh-600 text-white rounded-full text-xs font-medium transition-colors"
                     >
                       <Github size={14} />
                       GitHub
@@ -532,7 +480,7 @@ export function FrontendProjectsCard() {
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-secondary/20 hover:bg-secondary/30 text-secondary border border-secondary/30 rounded text-xs font-medium transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 rounded-full text-xs font-medium transition-colors"
                     >
                       <ExternalLink size={14} />
                       Live
@@ -549,7 +497,6 @@ export function FrontendProjectsCard() {
   );
 }
 
-// legacy export for backwards compatibility
 export function FeaturedProjects() {
   return (
     <>

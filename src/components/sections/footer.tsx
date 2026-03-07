@@ -40,8 +40,8 @@ export function Footer() {
         <div className="text-center sm:text-left">
           <p className="text-gh-400">
             Built with{" "}
-            <span className="text-secondary font-medium">Next.js</span> &{" "}
-            <span className="text-primary font-medium">TailwindCSS</span>
+            <span className="text-white font-medium">Next.js</span> &{" "}
+            <span className="text-white font-medium">TailwindCSS</span>
           </p>
           <p className="text-sm text-gh-500">
             © {new Date().getFullYear()} Ishan Lakhwani. All rights reserved.

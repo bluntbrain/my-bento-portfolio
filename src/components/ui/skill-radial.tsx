@@ -41,27 +41,8 @@ function RadialProgress({
   }, []);
 
   // extract color for svg stroke
-  const getStrokeColor = (colorClass: string) => {
-    const colorMap: { [key: string]: string } = {
-      "text-blue-500": "#3b82f6",
-      "text-blue-400": "#60a5fa",
-      "text-cyan-400": "#22d3ee",
-      "text-green-500": "#22c55e",
-      "text-green-400": "#4ade80",
-      "text-yellow-500": "#eab308",
-      "text-yellow-400": "#facc15",
-      "text-orange-500": "#f97316",
-      "text-orange-400": "#fb923c",
-      "text-red-500": "#ef4444",
-      "text-purple-500": "#a855f7",
-      "text-purple-400": "#c084fc",
-      "text-pink-500": "#ec4899",
-      "text-indigo-500": "#6366f1",
-      "text-primary": "#9945FF",
-      "text-accent": "#14F195",
-      "text-secondary": "#00D4FF",
-    };
-    return colorMap[colorClass] || "#9945FF";
+  const getStrokeColor = () => {
+    return "#58a6ff";
   };
 
   return (
@@ -86,7 +67,7 @@ function RadialProgress({
             cy={size / 2}
             r={radius}
             fill="none"
-            stroke={getStrokeColor(color)}
+            stroke={getStrokeColor()}
             strokeWidth={strokeWidth}
             strokeLinecap="round"
             strokeDasharray={circumference}

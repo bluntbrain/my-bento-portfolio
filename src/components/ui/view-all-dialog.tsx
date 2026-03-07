@@ -55,9 +55,9 @@ export function ViewAllDialog({
                 {items.map((item, index) => (
                   <div
                     key={index}
-                    className="p-4 bg-gh-900/50 rounded-xl hover:bg-gh-900 transition-colors"
+                    className="p-4 bg-gh-900/50 rounded-2xl hover:bg-gh-900 transition-colors"
                   >
-                    <h3 className="font-semibold text-lg mb-2 text-yellow-400">
+                    <h3 className="font-semibold text-lg mb-2 text-white">
                       {item.name}
                     </h3>
                     <p className="text-gh-400 mb-4">{item.description}</p>
@@ -67,7 +67,7 @@ export function ViewAllDialog({
                           href={item.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-blue-400 hover:text-blue-300 hover:underline flex items-center gap-1.5"
+                          className="text-primary hover:text-primary/80 hover:underline flex items-center gap-1.5"
                         >
                           <Github size={18} />
                           <span>GitHub</span>
@@ -78,7 +78,7 @@ export function ViewAllDialog({
                           href={item.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-green-400 hover:text-green-300 hover:underline flex items-center gap-1.5"
+                          className="text-gh-300 hover:text-white hover:underline flex items-center gap-1.5"
                         >
                           <ExternalLink size={18} />
                           <span>Live App</span>

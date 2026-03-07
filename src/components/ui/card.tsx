@@ -31,7 +31,7 @@ export function Card({ children, className, variant, ...props }: CardProps) {
 
   return (
     <div
-      className={cn("rounded-xl overflow-hidden relative", className)}
+      className={cn("rounded-[28px] overflow-hidden relative", className)}
       {...props}
     >
       {bgImage && (

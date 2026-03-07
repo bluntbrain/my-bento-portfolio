@@ -65,7 +65,7 @@ export function Achievements() {
         {hackathons.map((hackathon, index) => (
           <div
             key={index}
-            className="bg-gh-800 backdrop-blur-sm rounded-lg overflow-hidden border border-gh-700 hover:border-primary/50 transition-all"
+            className="bg-gh-800 backdrop-blur-sm rounded-2xl overflow-hidden border border-gh-700 hover:border-gh-600 transition-all"
           >
             <div className="flex">
               {/* image - left side, full height */}
@@ -84,10 +84,10 @@ export function Achievements() {
               {/* content section - right side */}
               <div className="flex-1 p-3 min-w-0">
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className="font-semibold text-sm text-primary">
+                  <h3 className="font-semibold text-sm text-white">
                     {hackathon.title}
                   </h3>
-                  <span className="text-lg font-bold text-accent">
+                  <span className="text-lg font-bold text-primary">
                     {hackathon.prize}
                   </span>
                 </div>
@@ -106,7 +106,7 @@ export function Achievements() {
                     {hackathon.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="px-1.5 py-0.5 bg-gh-700 text-gh-300 rounded text-[10px]"
+                        className="px-1.5 py-0.5 bg-gh-700 text-gh-300 rounded-full text-[10px]"
                       >
                         {tag}
                       </span>
@@ -121,7 +121,7 @@ export function Achievements() {
                     href={hackathon.ethGlobalLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 px-2 py-1 bg-primary/10 text-primary hover:bg-primary/20 rounded text-[10px] border border-primary/20 transition-colors"
+                    className="flex items-center gap-1 px-2 py-1 bg-primary/10 text-primary hover:bg-primary/20 rounded-full text-[10px] border border-primary/20 transition-colors"
                   >
                     <ExternalLink size={10} />
                     ETH Global
@@ -130,7 +130,7 @@ export function Achievements() {
                     href={hackathon.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 px-2 py-1 bg-secondary/10 text-secondary hover:bg-secondary/20 rounded text-[10px] border border-secondary/20 transition-colors"
+                    className="flex items-center gap-1 px-2 py-1 bg-gh-700 text-gh-200 hover:bg-gh-600 rounded-full text-[10px] border border-gh-600 transition-colors"
                   >
                     <Github size={10} />
                     Source Code

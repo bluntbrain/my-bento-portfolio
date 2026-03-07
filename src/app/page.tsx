@@ -15,7 +15,7 @@ import { ContactSection } from "@/components/sections/contact-section";
 import { Header } from "@/components/sections/header";
 import { Achievements } from "@/components/sections/achievements";
 import { Footer } from "@/components/sections/footer";
-import { FeaturedProjects } from "@/components/sections/featured-projects";
+import { MobileAppsCard, JarAppCard, SolanaProjectsCard, EthereumProjectsCard, FrontendProjectsCard } from "@/components/sections/featured-projects";
 import { OpenSourceContribution } from "@/components/sections/opensource-contribution";
 import { NearMeShowcase } from "@/components/sections/nearme-showcase";
 import { ParticlesBackground } from "@/components/ui/particles-background";
@@ -39,18 +39,24 @@ function HomeContent() {
 
           <Header />
 
-          {/* work experience and achievements side by side */}
+          {/* work experience and mobile apps side by side */}
           <WorkExperienceSection />
-          <Achievements />
+          <MobileAppsCard />
 
-          {/* nearme viral app showcase */}
+          {/* app stories */}
+          <JarAppCard />
           <NearMeShowcase />
 
           {/* open source contributions */}
           <OpenSourceContribution />
 
-          {/* featured projects from each category */}
-          <FeaturedProjects />
+          {/* project categories */}
+          <SolanaProjectsCard />
+          <EthereumProjectsCard />
+          <FrontendProjectsCard />
+
+          {/* hackathon wins */}
+          <Achievements />
 
           {/* footer */}
           <Footer />

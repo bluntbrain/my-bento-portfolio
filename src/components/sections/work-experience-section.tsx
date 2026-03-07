@@ -8,7 +8,7 @@ import Image from "next/image";
 function CompanyLogo({ company, logo }: { company: string; logo?: string }) {
   if (logo) {
     return (
-      <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-gh-800">
+      <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-gh-800">
         <Image
           src={logo}
           alt={company}
@@ -21,19 +21,12 @@ function CompanyLogo({ company, logo }: { company: string; logo?: string }) {
   }
 
   // fallback to company initial with branded background
-  const getCompanyColor = (name: string) => {
-    const colors: { [key: string]: string } = {
-      "SendAI": "bg-primary/20 text-primary",
-      "DxSale Network": "bg-accent/20 text-accent",
-      "Krane Apps": "bg-secondary/20 text-secondary",
-      "Jar App": "bg-yellow-500/20 text-yellow-400",
-      "Fleek": "bg-purple/20 text-purple",
-    };
-    return colors[name] || "bg-gh-700 text-gh-300";
+  const getCompanyColor = () => {
+    return "bg-gh-700 text-gh-300";
   };
 
   return (
-    <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${getCompanyColor(company)}`}>
+    <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${getCompanyColor()}`}>
       <span className="text-lg font-bold">{company.charAt(0)}</span>
     </div>
   );
@@ -53,9 +46,9 @@ export function WorkExperienceSection() {
       duration: "3 mos",
       location: "Remote",
       description: [
-        <>Building consumer mobile apps at the intersection of <span className="text-primary">Solana</span> and <span className="text-primary">AI</span></>,
-        <>Developing scalable mobile-first apps on <span className="text-accent">Solana</span> blockchain</>,
-        <>Leveraging <span className="text-accent">6 years</span> of mobile dev to build apps scaling to <span className="text-accent">10M+ users</span></>,
+        <>Building consumer mobile apps at the intersection of <span className="text-white">Solana</span> and <span className="text-white">AI</span></>,
+        <>Developing scalable mobile-first apps on <span className="text-white">Solana</span> blockchain</>,
+        <>Leveraging <span className="text-white">6 years</span> of mobile dev to build apps scaling to <span className="text-white">10M+ users</span></>,
       ],
     },
     {
@@ -67,10 +60,10 @@ export function WorkExperienceSection() {
       duration: "1 yr 6 mos",
       location: "Remote",
       description: [
-        <>Built core frontend for DeFi launchpad using <span className="text-primary">Next.js</span> and <span className="text-primary">TailwindCSS</span></>,
-        <>Integrated wallet interactions with <span className="text-primary">Ethers.js</span> and <span className="text-primary">Web3.js</span></>,
-        <>Launched <span className="text-accent">500+</span> token sales, generating <span className="text-accent">$100K+</span> in fees from <span className="text-accent">$10M+</span> volume</>,
-        <>Improved organic traffic by <span className="text-accent">3x</span> through SEO optimization</>,
+        <>Built core frontend for DeFi launchpad using <span className="text-white">Next.js</span> and <span className="text-white">TailwindCSS</span></>,
+        <>Integrated wallet interactions with <span className="text-white">Ethers.js</span> and <span className="text-white">Web3.js</span></>,
+        <>Launched <span className="text-white">500+</span> token sales, generating <span className="text-white">$100K+</span> in fees from <span className="text-white">$10M+</span> volume</>,
+        <>Improved organic traffic by <span className="text-white">3x</span> through SEO optimization</>,
       ],
     },
     {
@@ -82,9 +75,9 @@ export function WorkExperienceSection() {
       duration: "1 yr 2 mos",
       location: "Remote",
       description: [
-        <>Led team of <span className="text-accent">10</span> using <span className="text-primary">Nest.js</span> and <span className="text-primary">Next.js</span></>,
-        <>Built <span className="text-accent">blockchain projects</span> and <span className="text-accent">DeFi apps</span> like Glitter Finance</>,
-        <>Improved team productivity by <span className="text-accent">40%</span> with agile methodologies</>,
+        <>Led team of <span className="text-white">10</span> using <span className="text-white">Nest.js</span> and <span className="text-white">Next.js</span></>,
+        <>Built <span className="text-white">blockchain projects</span> and <span className="text-white">DeFi apps</span> like Glitter Finance</>,
+        <>Improved team productivity by <span className="text-white">40%</span> with agile methodologies</>,
       ],
     },
     {
@@ -97,8 +90,8 @@ export function WorkExperienceSection() {
       location: "Bangalore, India",
       description: [
         <>Led Frontend team, mentored devs, conducted peer reviews</>,
-        <>Improved app performance by <span className="text-accent">60%</span></>,
-        <>Reduced deployment time by <span className="text-accent">70%</span> with CI/CD</>,
+        <>Improved app performance by <span className="text-white">60%</span></>,
+        <>Reduced deployment time by <span className="text-white">70%</span> with CI/CD</>,
       ],
     },
     {
@@ -110,8 +103,8 @@ export function WorkExperienceSection() {
       duration: "2 yrs 2 mos",
       location: "Remote",
       description: [
-        <>Developed PWA in <span className="text-primary">React.js</span> and flagship app in <span className="text-primary">React Native</span></>,
-        <>Reduced bundle size by <span className="text-accent">45%</span> through code splitting</>,
+        <>Developed PWA in <span className="text-white">React.js</span> and flagship app in <span className="text-white">React Native</span></>,
+        <>Reduced bundle size by <span className="text-white">45%</span> through code splitting</>,
       ],
     },
   ];
@@ -135,7 +128,7 @@ export function WorkExperienceSection() {
               className={`relative ${!isLast ? 'border-b border-gh-700' : ''}`}
             >
               <div
-                className="py-3 cursor-pointer hover:bg-gh-800/50 transition-colors rounded-lg px-2 -mx-2"
+                className="py-3 cursor-pointer hover:bg-gh-800/50 transition-colors rounded-xl px-2 -mx-2"
                 onClick={toggleExpand}
               >
                 {/* main row with logo */}
