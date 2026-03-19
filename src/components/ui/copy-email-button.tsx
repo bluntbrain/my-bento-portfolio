@@ -22,10 +22,10 @@ export function CopyEmailButton({ email }: CopyEmailButtonProps) {
   return (
     <button
       onClick={copyEmail}
-      className="flex items-center gap-2 text-gray-400 hover:text-primary transition-colors"
+      className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
       aria-label="Copy Email"
     >
-      <Mail size={24} />
+      <Mail size={20} aria-hidden="true" />
     </button>
   );
 }

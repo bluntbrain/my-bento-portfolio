@@ -1,9 +1,9 @@
-// featured project cards for each category - unified monochrome + blue accent theme
+// featured project cards for each category
 "use client";
 
 import React, { useState } from "react";
 import { Card } from "../ui/card";
-import { ExternalLink, Github, ArrowRight, Play, X, Maximize2 } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, X, Maximize2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -47,9 +47,10 @@ function MediaLightbox({
         >
           <button
             onClick={onClose}
+            aria-label="Close lightbox"
             className="absolute top-4 right-4 p-2 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-full transition-colors z-50"
           >
-            <X size={28} />
+            <X size={28} aria-hidden="true" />
           </button>
 
           <div className="absolute top-4 left-4 text-white text-lg font-semibold">
@@ -97,7 +98,64 @@ function MediaLightbox({
   );
 }
 
-// mobile apps card - two big autoplaying portrait videos side by side
+function Tag({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="px-2 py-0.5 bg-white/[0.06] text-gh-400 rounded-md text-xs font-medium">
+      {children}
+    </span>
+  );
+}
+
+function ViewAllLink({ href, label = "View All" }: { href: string; label?: string }) {
+  return (
+    <Link
+      href={href}
+      className="flex items-center gap-1.5 text-gh-400 hover:text-gh-200 text-sm font-medium transition-colors"
+    >
+      {label}
+      <ArrowRight size={14} aria-hidden="true" />
+    </Link>
+  );
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <div className="bg-white/[0.03] rounded-xl border border-white/[0.06] hover:border-white/[0.1] transition-colors p-4">
+      <div className="flex flex-wrap gap-1.5 mb-2">
+        {project.tags.map((tag, i) => (
+          <Tag key={i}>{tag}</Tag>
+        ))}
+      </div>
+      <h4 className="font-semibold text-sm text-white mb-1">{project.title}</h4>
+      <p className="text-gh-500 text-sm mb-3 leading-relaxed">{project.description}</p>
+      <div className="flex gap-2">
+        {project.githubLink && (
+          <a
+            href={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.06] hover:bg-white/[0.1] text-gh-300 rounded-lg text-xs font-medium transition-colors"
+          >
+            <Github size={13} />
+            GitHub
+          </a>
+        )}
+        {project.liveLink && (
+          <a
+            href={project.liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.06] hover:bg-white/[0.1] text-gh-300 rounded-lg text-xs font-medium transition-colors"
+          >
+            <ExternalLink size={13} />
+            Live
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function MobileAppsCard() {
   const [lightbox, setLightbox] = useState<LightboxState>({
     isOpen: false,
@@ -135,23 +193,19 @@ export function MobileAppsCard() {
 
   return (
     <>
-      <Card className="col-span-1 sm:col-span-2 lg:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5 flex flex-col">
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="font-bold text-lg text-white">Mobile Apps I Built</h3>
-          <Link
-            href="/mobile"
-            className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20"
-          >
-            View All
-            <ArrowRight size={14} />
-          </Link>
+      <Card className="col-span-1 sm:col-span-2 lg:col-span-2 p-5 flex flex-col">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="font-medium text-gh-500 text-xs uppercase tracking-wider">Mobile Apps</h3>
+          <ViewAllLink href="/mobile" />
         </div>
 
         <div className="grid grid-cols-2 gap-4 flex-1">
           {apps.map((app, index) => (
             <div key={index} className="flex flex-col min-h-0">
-              <div
-                className="relative bg-gh-950 rounded-2xl overflow-hidden border border-gh-700 cursor-pointer group flex justify-center flex-1"
+              <button
+                type="button"
+                aria-label={`Expand ${app.title} video`}
+                className="relative bg-black rounded-xl overflow-hidden border border-white/[0.06] cursor-pointer group flex justify-center flex-1 w-full"
                 onClick={() => openLightbox("video", app.videoDemo, app.title, true)}
               >
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center z-10">
@@ -160,17 +214,16 @@ export function MobileAppsCard() {
                 <video autoPlay loop muted playsInline className="w-full h-full object-cover">
                   <source src={app.videoDemo} type="video/mp4" />
                 </video>
-              </div>
+              </button>
               <div className="mt-2 flex items-center justify-between">
-                <span className="font-semibold text-sm text-white">{app.title}</span>
+                <span className="font-medium text-sm text-gh-300">{app.title}</span>
                 <a
                   href={app.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-primary text-xs font-medium underline underline-offset-2 hover:text-primary/80 transition-colors"
+                  className="text-gh-500 hover:text-gh-300 text-xs font-medium transition-colors"
                 >
-                  View
-                  <ArrowRight size={12} />
+                  View →
                 </a>
               </div>
             </div>
@@ -182,52 +235,46 @@ export function MobileAppsCard() {
   );
 }
 
-// jar app - production scale experience story card
 export function JarAppCard() {
   return (
-    <Card className="col-span-1 sm:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5">
+    <Card className="col-span-1 sm:col-span-2 p-5">
       <div className="flex items-center gap-3 mb-4">
         <Image
           src="/images/jarapp.png"
           alt="Jar App"
-          width={40}
-          height={40}
+          width={36}
+          height={36}
           className="rounded-xl"
         />
         <div>
-          <h3 className="font-bold text-lg text-white">Jar App</h3>
-          <p className="text-gh-400 text-xs">Feb 2022 - Feb 2023</p>
+          <h3 className="font-medium text-sm text-white">Jar App</h3>
+          <p className="text-gh-500 text-xs">Feb 2022 – Feb 2023</p>
         </div>
         <a
           href="https://play.google.com/store/apps/details?id=com.jar.app"
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-auto p-1.5 bg-gh-700 hover:bg-gh-600 text-white rounded-xl transition-colors"
+          className="ml-auto p-2 bg-white/[0.06] hover:bg-white/[0.1] text-gh-400 rounded-xl transition-colors"
         >
-          <Play size={14} />
+          <ExternalLink size={14} />
         </a>
       </div>
 
-      <p className="text-gh-200 text-sm leading-relaxed mb-3">
+      <p className="text-gh-400 text-sm leading-relaxed mb-3">
         Led the <span className="text-white font-medium">iOS app team of 8 engineers</span> at
         India&apos;s fastest-growing digital gold savings app.
-        Built with <span className="text-white font-medium">TypeScript</span>,{" "}
-        <span className="text-white font-medium">React Native</span>, and{" "}
-        <span className="text-white font-medium">Swift</span>.
       </p>
 
-      <p className="text-gh-200 text-sm leading-relaxed mb-4">
-        With <span className="text-white font-semibold">10M+ users</span>, even a minor bug meant{" "}
-        <span className="text-white font-semibold">3,000+ support tickets within minutes</span>.
-        The customer support team would escalate directly to me to resolve production
-        issues fast. I learned what it takes to ship reliable code at scale and keep
-        millions of users unaffected.
+      <p className="text-gh-400 text-sm leading-relaxed mb-4">
+        With <span className="text-white font-medium">10M+ users</span>, even a minor bug meant{" "}
+        <span className="text-white font-medium">3,000+ support tickets within minutes</span>.
+        Learned what it takes to ship reliable code at scale.
       </p>
 
       <div className="flex flex-wrap gap-2">
-        <span className="px-2.5 py-1 bg-gh-800 border border-gh-600 rounded-full text-xs text-gh-200">10M+ Users</span>
-        <span className="px-2.5 py-1 bg-gh-800 border border-gh-600 rounded-full text-xs text-gh-200">8 Engineers</span>
-        <span className="px-2.5 py-1 bg-gh-800 border border-gh-600 rounded-full text-xs text-gh-200">Production Scale</span>
+        <Tag>10M+ Users</Tag>
+        <Tag>8 Engineers</Tag>
+        <Tag>Production Scale</Tag>
       </div>
     </Card>
   );
@@ -238,7 +285,7 @@ export function SolanaProjectsCard() {
     {
       title: "Staking Contract",
       description:
-        "SOL staking with points accumulation system built with Anchor framework. Secure deposits, withdrawals, and reward distribution.",
+        "SOL staking with points accumulation built with Anchor. Secure deposits, withdrawals, and reward distribution.",
       tags: ["Anchor", "DeFi", "Rust"],
       githubLink: "https://github.com/bluntbrain/solana-projects",
     },
@@ -252,45 +299,18 @@ export function SolanaProjectsCard() {
   ];
 
   return (
-    <Card className="col-span-1 sm:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5">
+    <Card className="col-span-1 sm:col-span-2 p-5">
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <Image src="/images/solana.svg" alt="Solana" width={28} height={28} className="w-7 h-7" />
-          <h3 className="font-bold text-xl text-white">Rust & Solana</h3>
+        <div className="flex items-center gap-2.5">
+          <Image src="/images/solana.svg" alt="Solana" width={24} height={24} className="w-6 h-6" />
+          <h3 className="font-medium text-sm text-white">Rust & Solana</h3>
         </div>
-        <Link
-          href="/solana"
-          className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20"
-        >
-          View All
-          <ArrowRight size={14} />
-        </Link>
+        <ViewAllLink href="/solana" />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {projects.map((project, index) => (
-          <div key={index} className="bg-gh-800 rounded-2xl border border-gh-700 hover:border-gh-600 transition-colors overflow-hidden p-4">
-            <div className="flex flex-wrap gap-1.5 mb-2">
-              {project.tags.map((tag, i) => (
-                <span key={i} className="px-2 py-0.5 bg-gh-700 text-gh-200 rounded-full text-xs font-medium">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <h4 className="font-bold text-base text-white mb-1">{project.title}</h4>
-            <p className="text-gh-300 text-sm mb-3">{project.description}</p>
-            {project.githubLink && (
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gh-700 hover:bg-gh-600 text-white rounded-full text-xs font-medium transition-colors"
-              >
-                <Github size={14} />
-                GitHub
-              </a>
-            )}
-          </div>
+          <ProjectCard key={index} project={project} />
         ))}
       </div>
     </Card>
@@ -316,58 +336,18 @@ export function EthereumProjectsCard() {
   ];
 
   return (
-    <Card className="col-span-1 sm:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5">
+    <Card className="col-span-1 sm:col-span-2 p-5">
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <Image src="/images/ethereum.svg" alt="Ethereum" width={28} height={28} className="w-7 h-7" />
-          <h3 className="font-bold text-xl text-white">Solidity & EVM</h3>
+        <div className="flex items-center gap-2.5">
+          <Image src="/images/ethereum.svg" alt="Ethereum" width={24} height={24} className="w-6 h-6" />
+          <h3 className="font-medium text-sm text-white">Solidity & EVM</h3>
         </div>
-        <Link
-          href="/ethereum"
-          className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20"
-        >
-          View All
-          <ArrowRight size={14} />
-        </Link>
+        <ViewAllLink href="/ethereum" />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {projects.map((project, index) => (
-          <div key={index} className="bg-gh-800 rounded-2xl border border-gh-700 hover:border-gh-600 transition-colors overflow-hidden p-4">
-            <div className="flex flex-wrap gap-1.5 mb-2">
-              {project.tags.map((tag, i) => (
-                <span key={i} className="px-2 py-0.5 bg-gh-700 text-gh-200 rounded-full text-xs font-medium">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <h4 className="font-bold text-base text-white mb-1">{project.title}</h4>
-            <p className="text-gh-300 text-sm mb-3">{project.description}</p>
-            <div className="flex gap-1.5">
-              {project.githubLink && (
-                <a
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gh-700 hover:bg-gh-600 text-white rounded-full text-xs font-medium transition-colors"
-                >
-                  <Github size={14} />
-                  GitHub
-                </a>
-              )}
-              {project.liveLink && (
-                <a
-                  href={project.liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 rounded-full text-xs font-medium transition-colors"
-                >
-                  <ExternalLink size={14} />
-                  Live
-                </a>
-              )}
-            </div>
-          </div>
+          <ProjectCard key={index} project={project} />
         ))}
       </div>
     </Card>
@@ -405,84 +385,77 @@ export function FrontendProjectsCard() {
       liveLink: "https://dxsale.network",
       videoDemo: "/videos/dxfun_demo.mp4",
     },
-    {
-      title: "Movie Ballot App",
-      description:
-        "Real-time voting app with live results, built with Next.js and TypeScript for movie award voting.",
-      tags: ["Next.js", "TypeScript"],
-      githubLink: "https://github.com/bluntbrain/next-js-movie-ballot-app",
-      liveLink: "https://next-js-movie-ballot-app.vercel.app/",
-    },
   ];
 
   return (
     <>
-      <Card className="col-span-1 sm:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="text-white">
-              <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
-                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
-              </svg>
-            </div>
-            <h3 className="font-bold text-xl text-white">Frontend</h3>
-          </div>
-          <Link
-            href="/frontend"
-            className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20"
-          >
-            View All
-            <ArrowRight size={14} />
-          </Link>
-        </div>
+      <Card className="col-span-1 sm:col-span-2 lg:col-span-4 p-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Info */}
+          <div className="flex flex-col justify-between py-1">
+            <div>
+              <div className="flex items-center justify-between mb-5">
+                <h3 className="font-medium text-gh-500 text-xs uppercase tracking-wider">Frontend</h3>
+                <ViewAllLink href="/frontend" />
+              </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <h4 className="text-white text-lg font-semibold mb-3">DeFi Interfaces & Web Apps</h4>
+
+              <p className="text-gh-400 text-sm leading-relaxed mb-4">
+                Shipped the frontend for <span className="text-white font-medium">DxSale</span> — a DeFi
+                launchpad powering <span className="text-white font-medium">500+ token launches</span> with{" "}
+                <span className="text-white font-medium">$10M+</span> in volume. Integrated wallet
+                flows with Ethers.js and grew organic traffic{" "}
+                <span className="text-white font-medium">3x</span> through SEO.
+              </p>
+
+              <p className="text-gh-500 text-sm leading-relaxed mb-5">
+                Previously built real-time explorers and multi-chain dashboards at Krane Apps & Glitter Finance.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-1.5">
+              {["Next.js", "React", "TypeScript", "TailwindCSS", "Ethers.js", "Redux", "GraphQL"].map((skill) => (
+                <span key={skill} className="px-2.5 py-1 bg-white/[0.06] text-gh-400 rounded-lg text-xs font-medium">{skill}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Project card */}
           {projects.map((project, index) => (
-            <div key={index} className="bg-gh-800 rounded-2xl border border-gh-700 hover:border-gh-600 transition-colors overflow-hidden">
+            <div key={index} className="bg-white/[0.03] rounded-xl border border-white/[0.06] hover:border-white/[0.1] transition-colors overflow-hidden flex flex-col">
               {project.videoDemo && (
-                <div
-                  className="relative bg-gh-900 cursor-pointer group"
+                <button
+                  type="button"
+                  aria-label={`Expand ${project.title} video`}
+                  className="relative bg-black cursor-pointer group w-full"
                   onClick={() => openLightbox("video", project.videoDemo!, project.title)}
                 >
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center z-10">
                     <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={24} />
                   </div>
-                  <video autoPlay loop muted playsInline className="w-full h-28 object-cover">
+                  <video autoPlay loop muted playsInline className="w-full h-48 object-cover">
                     <source src={project.videoDemo} type="video/mp4" />
                   </video>
-                </div>
+                </button>
               )}
-
-              <div className="p-3">
+              <div className="p-4 flex-1 flex flex-col">
                 <div className="flex flex-wrap gap-1.5 mb-2">
-                  {project.tags.slice(0, 2).map((tag, i) => (
-                    <span key={i} className="px-2 py-0.5 bg-gh-700 text-gh-200 rounded-full text-xs font-medium">
-                      {tag}
-                    </span>
+                  {project.tags.map((tag, i) => (
+                    <Tag key={i}>{tag}</Tag>
                   ))}
                 </div>
-                <h4 className="font-bold text-base text-white mb-1">{project.title}</h4>
-                <p className="text-gh-300 text-sm mb-2 line-clamp-2">{project.description}</p>
-                <div className="flex gap-1.5">
-                  {project.githubLink && (
-                    <a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gh-700 hover:bg-gh-600 text-white rounded-full text-xs font-medium transition-colors"
-                    >
-                      <Github size={14} />
-                      GitHub
-                    </a>
-                  )}
+                <h4 className="font-medium text-sm text-white mb-1">{project.title}</h4>
+                <p className="text-gh-400 text-sm mb-3 leading-relaxed">{project.description}</p>
+                <div className="flex gap-2 mt-auto">
                   {project.liveLink && (
                     <a
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 rounded-full text-xs font-medium transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.06] hover:bg-white/[0.1] text-gh-300 rounded-lg text-xs font-medium transition-colors"
                     >
-                      <ExternalLink size={14} />
+                      <ExternalLink size={13} />
                       Live
                     </a>
                   )}

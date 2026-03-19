@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 :root {
-  /* github dark theme colors */
+  /* vercel-style pure neutral scale */
   --black: #000000;
-  --gray-950: #0d1117;
-  --gray-900: #161b22;
-  --gray-800: #21262d;
-  --gray-700: #30363d;
-  --gray-600: #484f58;
-  --gray-500: #6e7681;
-  --gray-400: #8b949e;
-  --gray-300: #b1bac4;
-  --gray-200: #c9d1d9;
-  --gray-100: #e6edf3;
+  --gray-950: #0a0a0a;
+  --gray-900: #111111;
+  --gray-800: #1a1a1a;
+  --gray-700: #262626;
+  --gray-600: #3f3f3f;
+  --gray-500: #666666;
+  --gray-400: #888888;
+  --gray-300: #a1a1a1;
+  --gray-200: #d4d4d4;
+  --gray-100: #ededed;
   --white: #ffffff;
 
   /* semantic colors */
@@ -27,13 +27,13 @@
   --text-secondary: var(--gray-200);
   --text-muted: var(--gray-400);
 
-  /* github accent colors */
-  --primary: #58a6ff;
-  --secondary: #3fb950;
-  --accent: #f78166;
-  --purple: #a371f7;
-  --success: #3fb950;
-  --warning: #d29922;
+  /* accent colors — b&w */
+  --primary: #ededed;
+  --secondary: #a1a1a1;
+  --accent: #d4d4d4;
+  --purple: #888888;
+  --success: #a1a1a1;
+  --warning: #888888;
 }
 
 body {
@@ -46,6 +46,21 @@ body {
 
 html {
   background: #000000;
+  scroll-behavior: smooth;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 @layer utilities {
@@ -75,5 +90,60 @@ html {
 
   .border-primary {
     border-color: var(--primary);
+  }
+}
+
+/* Stagger animation for bento cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid > * {
+  animation: fadeInUp 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.grid > *:nth-child(1) { animation-delay: 0ms; }
+.grid > *:nth-child(2) { animation-delay: 50ms; }
+.grid > *:nth-child(3) { animation-delay: 100ms; }
+.grid > *:nth-child(4) { animation-delay: 150ms; }
+.grid > *:nth-child(5) { animation-delay: 200ms; }
+.grid > *:nth-child(6) { animation-delay: 250ms; }
+.grid > *:nth-child(7) { animation-delay: 300ms; }
+.grid > *:nth-child(8) { animation-delay: 350ms; }
+.grid > *:nth-child(9) { animation-delay: 400ms; }
+.grid > *:nth-child(10) { animation-delay: 450ms; }
+.grid > *:nth-child(11) { animation-delay: 500ms; }
+.grid > *:nth-child(12) { animation-delay: 550ms; }
+.grid > *:nth-child(n+13) { animation-delay: 600ms; }
+
+/* Button press feedback */
+a[class*="rounded"], button {
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+a[class*="rounded"]:active, button:active {
+  transform: scale(0.97);
+}
+
+/* Hover only on pointer devices */
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

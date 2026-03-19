@@ -4,15 +4,13 @@ import React from "react";
 import { Card } from "@/components/ui/card";
 import { ArrowLeft, Shield } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { ParticlesBackground } from "@/components/ui/particles-background";
 
 export default function PrivacyPolicyPage() {
   const router = useRouter();
 
   return (
     <>
-      <ParticlesBackground />
-      <div className="min-h-screen p-4 sm:p-6 text-white relative" style={{ zIndex: 1 }}>
+      <div className="min-h-screen p-4 sm:p-6 text-white relative">
         <div className="max-w-4xl mx-auto">
           <Card className="bg-gh-900 border border-gh-700 p-6 sm:p-8">
             {/* header */}
@@ -143,7 +141,7 @@ export default function PrivacyPolicyPage() {
               <h2 className="text-xl font-semibold text-white mt-8 mb-4">Contact Us</h2>
               <p className="text-gray-300">
                 If you have questions about this Privacy Policy, please contact us at{" "}
-                <a href="mailto:ishan.lakhwani@gmail.com" className="text-primary hover:underline">
+                <a href="mailto:ishan.lakhwani@gmail.com" className="text-white hover:underline">
                   ishan.lakhwani@gmail.com
                 </a>
               </p>

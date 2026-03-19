@@ -1,4 +1,4 @@
-// nearme viral app showcase - monochrome theme
+// nearme viral app showcase
 "use client";
 
 import React, { useState } from "react";
@@ -37,58 +37,57 @@ export function NearMeShowcase() {
     setLightbox({ isOpen: false, src: "", alt: "" });
   };
 
+  const stats = [
+    { icon: Download, label: "20K+", },
+    { icon: Star, label: "4.2", },
+    { icon: MessageSquare, label: "1.1K+", },
+    { icon: Store, label: "10K+", },
+  ];
+
   return (
     <>
-      <Card className="col-span-1 sm:col-span-2 bg-gh-900 border border-gh-700 p-0 overflow-hidden">
+      <Card className="col-span-1 sm:col-span-2 p-0 overflow-hidden">
         <div className="flex flex-col sm:flex-row h-full sm:min-h-[280px]">
-          <div className="flex-1 p-4 sm:p-5 flex flex-col justify-between">
-            <p className="text-gh-200 text-base leading-relaxed mb-3">
+          <div className="flex-1 p-5 flex flex-col justify-between">
+            <p className="text-gh-400 text-sm leading-relaxed mb-4">
               Built and published{" "}
-              <span className="text-white font-semibold">NearMe App</span> on{" "}
-              <span className="text-white font-semibold">Solana Seeker</span>{" "}
-              in <span className="text-white font-semibold">2 days</span> - went{" "}
-              <span className="text-white font-semibold">viral</span>.
+              <span className="text-white font-medium">NearMe App</span> on{" "}
+              <span className="text-white font-medium">Solana Seeker</span>{" "}
+              in <span className="text-white font-medium">2 days</span> — went{" "}
+              <span className="text-white font-medium">viral</span>.
               Scraped{" "}
               <span className="text-white font-medium">10K+ merchants</span>{" "}
               accepting SOL worldwide.
             </p>
 
-            <div className="flex flex-wrap items-center gap-2 mb-3">
-              <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gh-800 border border-gh-600 rounded-full">
-                <Download className="w-4 h-4 text-gh-400" />
-                <span className="text-white text-sm font-semibold">20K+</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gh-800 border border-gh-600 rounded-full">
-                <Star className="w-4 h-4 text-gh-400" />
-                <span className="text-white text-sm font-semibold">4.2</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gh-800 border border-gh-600 rounded-full">
-                <MessageSquare className="w-4 h-4 text-gh-400" />
-                <span className="text-white text-sm font-semibold">1.1K+</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gh-800 border border-gh-600 rounded-full">
-                <Store className="w-4 h-4 text-gh-400" />
-                <span className="text-white text-sm font-semibold">10K+</span>
-              </div>
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              {stats.map((stat, i) => (
+                <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.06] rounded-lg">
+                  <stat.icon className="w-3.5 h-3.5 text-gh-500" />
+                  <span className="text-gh-300 text-xs font-medium">{stat.label}</span>
+                </div>
+              ))}
             </div>
 
             <div className="flex items-center gap-3">
-              <p className="text-gh-400 text-sm">
-                All <span className="text-primary">.skr</span> reviews from Seeker owners
+              <p className="text-gh-500 text-xs">
+                All <span className="text-white">.skr</span> reviews from Seeker owners
               </p>
               <Link
                 href="/seeker"
-                className="inline-flex items-center gap-1 text-primary text-sm font-medium hover:underline"
+                className="inline-flex items-center gap-1 text-gh-400 hover:text-gh-200 text-xs font-medium transition-colors"
               >
                 All Apps
-                <ArrowRight size={14} />
+                <ArrowRight size={12} />
               </Link>
             </div>
           </div>
 
           <div className="flex justify-center gap-3 p-3 sm:h-full sm:min-h-[280px] sm:self-stretch">
-            <div
-              className="relative w-28 h-48 sm:w-44 sm:h-full sm:min-h-[260px] rounded-2xl overflow-hidden border border-gh-600 cursor-pointer group"
+            <button
+              type="button"
+              aria-label="View NearMe App Store listing"
+              className="relative w-28 h-48 sm:w-44 sm:h-full sm:min-h-[260px] rounded-xl overflow-hidden border border-white/[0.06] cursor-pointer group"
               onClick={() =>
                 openLightbox("/images/nearme1.jpeg", "NearMe App Store listing")
               }
@@ -100,11 +99,13 @@ export function NearMeShowcase() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                <Maximize2 className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Maximize2 className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-            </div>
-            <div
-              className="relative w-28 h-48 sm:w-44 sm:h-full sm:min-h-[260px] rounded-2xl overflow-hidden border border-gh-600 cursor-pointer group"
+            </button>
+            <button
+              type="button"
+              aria-label="View NearMe App reviews"
+              className="relative w-28 h-48 sm:w-44 sm:h-full sm:min-h-[260px] rounded-xl overflow-hidden border border-white/[0.06] cursor-pointer group"
               onClick={() =>
                 openLightbox("/images/nearme2.jpeg", "NearMe App reviews")
               }
@@ -116,9 +117,9 @@ export function NearMeShowcase() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                <Maximize2 className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Maximize2 className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-            </div>
+            </button>
           </div>
         </div>
       </Card>
@@ -134,9 +135,10 @@ export function NearMeShowcase() {
           >
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 z-50 p-2 bg-gh-800/80 hover:bg-gh-700 rounded-full transition-colors"
+              aria-label="Close lightbox"
+              className="absolute top-4 right-4 z-50 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
             >
-              <X className="w-6 h-6 text-white" />
+              <X className="w-6 h-6 text-white" aria-hidden="true" />
             </button>
 
             <div className="absolute top-4 left-4 z-50">
@@ -149,7 +151,7 @@ export function NearMeShowcase() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-h-[85vh] max-w-[400px] rounded-[34px] overflow-hidden border-4 border-gh-600 shadow-2xl"
+              className="relative max-h-[85vh] max-w-[400px] rounded-2xl overflow-hidden border border-white/[0.1] shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <Image

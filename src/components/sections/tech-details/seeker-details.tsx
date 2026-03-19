@@ -104,7 +104,7 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
         </div>
 
         {/* seeker info banner */}
-        <div className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-xl p-4 mb-6">
+        <div className="bg-gradient-to-r from-white/[0.04] to-white/[0.04] border border-white/[0.08] rounded-xl p-4 mb-6">
           <div className="flex items-start gap-3">
             <Image
               src="/images/solana.svg"
@@ -127,7 +127,7 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
         {/* how to download info */}
         <div className="bg-gh-800/50 border border-gh-600 rounded-xl p-4 mb-6">
           <div className="flex items-center gap-2 mb-2">
-            <Search className="w-5 h-5 text-primary" />
+            <Search className="w-5 h-5 text-white" />
             <h3 className="font-semibold text-white">How to Download</h3>
           </div>
           <p className="text-gray-300 text-sm">
@@ -181,7 +181,7 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
                   <div className="flex items-center gap-2 text-sm">
                     <Search className="w-4 h-4 text-gray-400" />
                     <span className="text-gray-400">Search:</span>
-                    <code className="px-2 py-0.5 bg-black/40 text-primary rounded font-mono text-xs">
+                    <code className="px-2 py-0.5 bg-black/40 text-white rounded font-mono text-xs">
                       {app.searchName}
                     </code>
                   </div>
@@ -192,7 +192,7 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
                   {app.screenshots.map((screenshot, i) => (
                     <div
                       key={i}
-                      className="relative w-24 sm:w-28 aspect-[9/16] bg-gh-900 rounded-lg overflow-hidden cursor-pointer group border-2 border-gh-600 hover:border-primary/50 transition-colors"
+                      className="relative w-24 sm:w-28 aspect-[9/16] bg-gh-900 rounded-lg overflow-hidden cursor-pointer group border-2 border-gh-600 hover:border-white/[0.15] transition-colors"
                       onClick={() => openLightbox(screenshot, `${app.title} - Screenshot ${i + 1}`)}
                     >
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center z-10">

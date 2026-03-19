@@ -29,7 +29,7 @@ export function Rust() {
             href={REPO_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-3 py-1.5 bg-primary/20 text-primary rounded-lg hover:bg-primary/30 transition-colors border border-primary/30 text-sm"
+            className="flex items-center gap-2 px-3 py-1.5 bg-white/[0.08] text-white rounded-lg hover:bg-white/[0.12] transition-colors border border-white/[0.1] text-sm"
           >
             <ExternalLink size={14} />
             View All on GitHub
@@ -42,7 +42,7 @@ export function Rust() {
           {solanaPrograms.map((program, index) => (
             <div
               key={index}
-              className="bg-gh-800 backdrop-blur-sm rounded-lg p-3 border border-gh-700 hover:border-primary/50 transition-all"
+              className="bg-gh-800 backdrop-blur-sm rounded-lg p-3 border border-gh-700 hover:border-white/[0.15] transition-all"
             >
               <div className="flex gap-1 mb-2">
                 {program.tags.map((tag, tagIndex) => (
@@ -53,7 +53,7 @@ export function Rust() {
                         ? "bg-accent/10 text-accent"
                         : tag === "Assembly"
                         ? "bg-secondary/10 text-secondary"
-                        : "bg-primary/10 text-primary"
+                        : "bg-white/[0.06] text-white"
                     } rounded text-[10px]`}
                   >
                     {tag}
@@ -70,7 +70,7 @@ export function Rust() {
                 href={REPO_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 px-2 py-1 bg-primary/10 text-primary hover:bg-primary/20 rounded text-[10px] border border-primary/20 transition-colors w-fit"
+                className="flex items-center gap-1 px-2 py-1 bg-white/[0.06] text-white hover:bg-white/[0.1] rounded text-[10px] border border-white/[0.08] transition-colors w-fit"
               >
                 <ExternalLink size={10} />
                 View Source

@@ -4,35 +4,21 @@ import React, { useState } from "react";
 import { Card } from "../ui/card";
 import Image from "next/image";
 
-// company logo component - uses image if available, fallback to initial
 function CompanyLogo({ company, logo }: { company: string; logo?: string }) {
   if (logo) {
     return (
-      <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-gh-800">
-        <Image
-          src={logo}
-          alt={company}
-          width={48}
-          height={48}
-          className="w-full h-full object-cover"
-        />
+      <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 bg-white/[0.04]">
+        <Image src={logo} alt={company} width={40} height={40} className="w-full h-full object-cover" />
       </div>
     );
   }
-
-  // fallback to company initial with branded background
-  const getCompanyColor = () => {
-    return "bg-gh-700 text-gh-300";
-  };
-
   return (
-    <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${getCompanyColor()}`}>
-      <span className="text-lg font-bold">{company.charAt(0)}</span>
+    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-white/[0.04]">
+      <span className="text-sm font-bold text-gh-400">{company.charAt(0)}</span>
     </div>
   );
 }
 
-// linkedin-style work experience section
 export function WorkExperienceSection() {
   const [expandedIndices, setExpandedIndices] = useState<number[]>([]);
 
@@ -44,11 +30,10 @@ export function WorkExperienceSection() {
       type: "Full-time",
       period: "Sep 2025 - Present",
       duration: "3 mos",
-      location: "Remote",
       description: [
-        <>Building consumer mobile apps at the intersection of <span className="text-white">Solana</span> and <span className="text-white">AI</span></>,
-        <>Developing scalable mobile-first apps on <span className="text-white">Solana</span> blockchain</>,
-        <>Leveraging <span className="text-white">6 years</span> of mobile dev to build apps scaling to <span className="text-white">10M+ users</span></>,
+        <>Building consumer mobile apps at the intersection of <span className="text-white font-medium">Solana</span> and <span className="text-white font-medium">AI</span></>,
+        <>Developing scalable mobile-first apps on <span className="text-white font-medium">Solana</span> blockchain</>,
+        <>Leveraging <span className="text-white font-medium">6 years</span> of mobile dev to build apps scaling to <span className="text-white font-medium">10M+ users</span></>,
       ],
     },
     {
@@ -58,12 +43,10 @@ export function WorkExperienceSection() {
       type: "Full-time",
       period: "Mar 2024 - Aug 2025",
       duration: "1 yr 6 mos",
-      location: "Remote",
       description: [
-        <>Built core frontend for DeFi launchpad using <span className="text-white">Next.js</span> and <span className="text-white">TailwindCSS</span></>,
-        <>Integrated wallet interactions with <span className="text-white">Ethers.js</span> and <span className="text-white">Web3.js</span></>,
-        <>Launched <span className="text-white">500+</span> token sales, generating <span className="text-white">$100K+</span> in fees from <span className="text-white">$10M+</span> volume</>,
-        <>Improved organic traffic by <span className="text-white">3x</span> through SEO optimization</>,
+        <>Built core frontend for DeFi launchpad using <span className="text-white font-medium">Next.js</span> and <span className="text-white font-medium">TailwindCSS</span></>,
+        <>Launched <span className="text-white font-medium">500+</span> token sales, generating <span className="text-white font-medium">$100K+</span> in fees from <span className="text-white font-medium">$10M+</span> volume</>,
+        <>Improved organic traffic by <span className="text-white font-medium">3x</span> through SEO optimization</>,
       ],
     },
     {
@@ -73,11 +56,9 @@ export function WorkExperienceSection() {
       type: "Full-time",
       period: "Feb 2023 - Mar 2024",
       duration: "1 yr 2 mos",
-      location: "Remote",
       description: [
-        <>Led team of <span className="text-white">10</span> using <span className="text-white">Nest.js</span> and <span className="text-white">Next.js</span></>,
-        <>Built <span className="text-white">blockchain projects</span> and <span className="text-white">DeFi apps</span> like Glitter Finance</>,
-        <>Improved team productivity by <span className="text-white">40%</span> with agile methodologies</>,
+        <>Led team of <span className="text-white font-medium">10</span> using <span className="text-white font-medium">Nest.js</span> and <span className="text-white font-medium">Next.js</span></>,
+        <>Built <span className="text-white font-medium">blockchain projects</span> and <span className="text-white font-medium">DeFi apps</span> like Glitter Finance</>,
       ],
     },
     {
@@ -87,11 +68,9 @@ export function WorkExperienceSection() {
       type: "Full-time",
       period: "Feb 2022 - Feb 2023",
       duration: "1 yr",
-      location: "Bangalore, India",
       description: [
         <>Led Frontend team, mentored devs, conducted peer reviews</>,
-        <>Improved app performance by <span className="text-white">60%</span></>,
-        <>Reduced deployment time by <span className="text-white">70%</span> with CI/CD</>,
+        <>Improved app performance by <span className="text-white font-medium">60%</span></>,
       ],
     },
     {
@@ -101,17 +80,16 @@ export function WorkExperienceSection() {
       type: "Full-time",
       period: "Jan 2020 - Feb 2022",
       duration: "2 yrs 2 mos",
-      location: "Remote",
       description: [
-        <>Developed PWA in <span className="text-white">React.js</span> and flagship app in <span className="text-white">React Native</span></>,
-        <>Reduced bundle size by <span className="text-white">45%</span> through code splitting</>,
+        <>Developed PWA in <span className="text-white font-medium">React.js</span> and flagship app in <span className="text-white font-medium">React Native</span></>,
+        <>Reduced bundle size by <span className="text-white font-medium">45%</span> through code splitting</>,
       ],
     },
   ];
 
   return (
-    <Card className="col-span-1 sm:col-span-2 lg:col-span-2 bg-gh-900 border border-gh-700 p-4">
-      <h2 className="text-xl font-bold mb-4">Experience</h2>
+    <Card className="p-5 pb-3">
+      <h2 className="font-medium text-gh-500 text-xs uppercase tracking-wider mb-4">Experience</h2>
       <div className="space-y-0">
         {experiences.map((exp, index) => {
           const isExpanded = expandedIndices.includes(index);
@@ -121,60 +99,38 @@ export function WorkExperienceSection() {
               isExpanded ? prev.filter(i => i !== index) : [...prev, index]
             );
           };
-
           return (
-            <div
-              key={index}
-              className={`relative ${!isLast ? 'border-b border-gh-700' : ''}`}
-            >
-              <div
-                className="py-3 cursor-pointer hover:bg-gh-800/50 transition-colors rounded-xl px-2 -mx-2"
+            <div key={index} className={`relative ${!isLast ? 'border-b border-white/[0.06]' : ''}`}>
+              <button
+                type="button"
+                aria-expanded={isExpanded}
+                className={`pt-3 ${isLast ? 'pb-0' : 'pb-3'} cursor-pointer hover:bg-white/[0.03] transition-colors rounded-xl px-2 -mx-2 w-full text-left`}
                 onClick={toggleExpand}
               >
-                {/* main row with logo */}
                 <div className="flex gap-3">
                   <CompanyLogo company={exp.company} logo={exp.logo} />
-
                   <div className="flex-1 min-w-0">
-                    {/* title */}
-                    <h3 className="font-semibold text-white text-lg">{exp.title}</h3>
-
-                    {/* company and type */}
-                    <p className="text-gh-300 text-base">
-                      {exp.company} · {exp.type}
-                    </p>
-
-                    {/* period, duration and location */}
-                    <p className="text-gh-400 text-sm">
-                      {exp.period} · {exp.duration} · {exp.location}
-                    </p>
-
-                    {/* expandable description */}
+                    <h3 className="font-medium text-white text-sm">{exp.title}</h3>
+                    <p className="text-gh-400 text-sm">{exp.company} · {exp.type}</p>
+                    <p className="text-gh-500 text-xs mt-0.5">{exp.period} · {exp.duration}</p>
                     <div className={`overflow-hidden transition-all duration-200 ${isExpanded ? 'max-h-96 mt-3' : 'max-h-0'}`}>
                       <ul className="space-y-1.5">
                         {exp.description.map((item, i) => (
-                          <li key={i} className="text-base text-gh-300 flex items-start gap-2">
-                            <span className="text-gh-500 mt-0.5">•</span>
+                          <li key={i} className="text-sm text-gh-400 flex items-start gap-2">
+                            <span className="text-white mt-0.5">•</span>
                             <span>{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
                   </div>
-
-                  {/* expand indicator */}
-                  <div className="flex-shrink-0 self-start mt-1">
-                    <svg
-                      className={`w-4 h-4 text-gh-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
+                  <div className="flex-shrink-0 self-start mt-1" aria-hidden="true">
+                    <svg className={`w-4 h-4 text-gh-500 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </div>
-              </div>
+              </button>
             </div>
           );
         })}

@@ -42,7 +42,7 @@ function RadialProgress({
 
   // extract color for svg stroke
   const getStrokeColor = () => {
-    return "#58a6ff";
+    return "#ededed";
   };
 
   return (
@@ -55,7 +55,7 @@ function RadialProgress({
             cy={size / 2}
             r={radius}
             fill="none"
-            stroke="#21262d"
+            stroke="#262626"
             strokeWidth={strokeWidth}
           />
         </svg>
