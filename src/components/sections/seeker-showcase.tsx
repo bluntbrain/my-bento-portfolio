@@ -10,7 +10,7 @@ export function SeekerShowcase() {
   return (
     <Card className="col-span-1 sm:col-span-2 bg-gh-900 border border-gh-700 p-4 sm:p-5 overflow-hidden relative">
       {/* gradient accent */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/20 to-transparent rounded-bl-full" />
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/\[0.08\] to-transparent rounded-bl-full" />
 
       {/* header */}
       <div className="flex items-center justify-between mb-4 relative z-10">
@@ -19,13 +19,13 @@ export function SeekerShowcase() {
             <Smartphone className="w-4 h-4 text-black" />
           </div>
           <div>
-            <h3 className="font-bold text-xl text-primary">Solana Seeker Apps</h3>
+            <h3 className="font-bold text-xl text-white">Solana Seeker Apps</h3>
             <p className="text-gh-400 text-xs">My apps on the dApp Store</p>
           </div>
         </div>
         <Link
           href="/seeker"
-          className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-primary/20 text-primary border border-primary/40 hover:bg-primary/30"
+          className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-white/[0.08] text-white border border-white/[0.12] hover:bg-white/[0.12]"
         >
           View All
           <ArrowRight size={14} />
@@ -35,7 +35,7 @@ export function SeekerShowcase() {
       {/* apps preview */}
       <div className="grid grid-cols-2 gap-3 relative z-10">
         {/* nearme card */}
-        <div className="bg-gh-800 rounded-xl border border-gh-700 p-3 hover:border-primary/50 transition-colors">
+        <div className="bg-gh-800 rounded-xl border border-gh-700 p-3 hover:border-white/[0.15] transition-colors">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
               <span className="text-white text-xs font-bold">NM</span>
@@ -53,7 +53,7 @@ export function SeekerShowcase() {
         </div>
 
         {/* onesol card */}
-        <div className="bg-gh-800 rounded-xl border border-gh-700 p-3 hover:border-primary/50 transition-colors">
+        <div className="bg-gh-800 rounded-xl border border-gh-700 p-3 hover:border-white/[0.15] transition-colors">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
               <span className="text-black text-xs font-bold">1S</span>

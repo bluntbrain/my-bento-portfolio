@@ -67,7 +67,7 @@ export function ViewAllDialog({
                           href={item.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-primary hover:text-primary/80 hover:underline flex items-center gap-1.5"
+                          className="text-white hover:text-gh-300 hover:underline flex items-center gap-1.5"
                         >
                           <Github size={18} />
                           <span>GitHub</span>

@@ -31,17 +31,19 @@ export function Card({ children, className, variant, ...props }: CardProps) {
 
   return (
     <div
-      className={cn("rounded-[28px] overflow-hidden relative", className)}
+      className={cn(
+        "rounded-2xl overflow-hidden relative bg-gh-900/80 border border-white/[0.06] backdrop-blur-sm shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06),inset_0_0_30px_rgba(255,255,255,0.03)] transition-[transform,border-color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-white/[0.12] hover:scale-[1.01]",
+        className
+      )}
       {...props}
     >
       {bgImage && (
         <div className="absolute inset-0 z-0">
           <Image
             src={bgImage}
-            alt="Background"
-            layout="fill"
-            objectFit="cover"
-            className="opacity-70"
+            alt=""
+            fill
+            className="opacity-70 object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/50" />
         </div>

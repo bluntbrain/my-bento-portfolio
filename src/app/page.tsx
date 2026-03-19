@@ -18,7 +18,6 @@ import { Footer } from "@/components/sections/footer";
 import { MobileAppsCard, JarAppCard, SolanaProjectsCard, EthereumProjectsCard, FrontendProjectsCard } from "@/components/sections/featured-projects";
 import { OpenSourceContribution } from "@/components/sections/opensource-contribution";
 import { NearMeShowcase } from "@/components/sections/nearme-showcase";
-import { ParticlesBackground } from "@/components/ui/particles-background";
 
 function HomeContent() {
   const [blockchainDialogOpen, setBlockchainDialogOpen] = React.useState(false);
@@ -29,30 +28,29 @@ function HomeContent() {
 
   return (
     <>
-      {/* particles parallax background */}
-      <ParticlesBackground />
-      <div className="min-h-screen p-4 sm:p-6 text-white relative" style={{ zIndex: 1 }}>
+      <div className="min-h-screen p-4 sm:p-6 text-white relative">
         <Toaster position="top-center" />
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {/* contact */}
           <ContactSection />
 
           <Header />
 
-          {/* work experience and mobile apps side by side */}
-          <WorkExperienceSection />
+          {/* work experience + open source stacked left, mobile apps right */}
+          <div className="col-span-1 sm:col-span-2 lg:col-span-2 flex flex-col gap-4 sm:gap-6">
+            <WorkExperienceSection />
+            <OpenSourceContribution />
+          </div>
           <MobileAppsCard />
 
           {/* app stories */}
           <JarAppCard />
           <NearMeShowcase />
 
-          {/* open source contributions */}
-          <OpenSourceContribution />
-
-          {/* project categories */}
+          {/* web3 projects side by side */}
           <SolanaProjectsCard />
           <EthereumProjectsCard />
+
+          {/* frontend */}
           <FrontendProjectsCard />
 
           {/* hackathon wins */}
