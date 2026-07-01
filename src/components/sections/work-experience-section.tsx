@@ -24,24 +24,12 @@ export function WorkExperienceSection() {
 
   const experiences = [
     {
-      title: "Founder, CEO (Marketing & Product)",
-      company: "Talkamore",
-      logo: "/images/talkamore.png",
-      type: "Full-time",
-      period: "Apr 2026 - Present",
-      duration: "2 mos",
-      description: [
-        <>Building <span className="text-white font-medium">Talkamore</span>, an <span className="text-white font-medium">AI journal app</span> powered by <span className="text-white font-medium">super memory</span></>,
-        <>Heading <span className="text-white font-medium">marketing</span> and <span className="text-white font-medium">product</span> as CEO</>,
-      ],
-    },
-    {
       title: "Senior Software Engineer",
       company: "SendAI",
       logo: "/images/sendai.png",
       type: "Full-time",
-      period: "Sep 2025 - Apr 2026",
-      duration: "8 mos",
+      period: "Sep 2025 - Present",
+      duration: "10 mos",
       description: [
         <>Building consumer mobile apps at the intersection of <span className="text-white font-medium">Solana</span> and <span className="text-white font-medium">AI</span></>,
         <>Developing scalable mobile-first apps on <span className="text-white font-medium">Solana</span> blockchain</>,
