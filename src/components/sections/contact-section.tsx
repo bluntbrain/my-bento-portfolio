@@ -1,56 +1,48 @@
+// top nav for the sub-pages. the home page has its own bottom pill instead.
+"use client";
+
 import React from "react";
-import { CopyEmailButton } from "../ui/copy-email-button";
-import { Github, Linkedin, Send } from "lucide-react";
-import { SocialIcon } from "../ui/social-icon";
-import { Card } from "../ui/card";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { PillButton } from "../ui/pill-button";
+
+const TELEGRAM =
+  "https://t.me/bluntbrainsol?text=Hi%20Ishan%2C%20I%20came%20across%20your%20portfolio%20at%20https%3A%2F%2Fbluntbrain.com%20and%20would%20like%20to%20connect!";
+
+const LINKS = [
+  { label: "Solana", href: "/solana" },
+  { label: "Mobile", href: "/mobile" },
+  { label: "Frontend", href: "/frontend" },
+  { label: "EVM", href: "/ethereum" },
+  { label: "Seeker", href: "/seeker" },
+];
 
 export function ContactSection() {
   return (
-    <Card className="col-span-1 sm:col-span-2 lg:col-span-4 px-5 py-4">
-      <div className="flex items-center justify-between">
-        {/* Logo */}
-        <a
-          href="/"
-          className="text-white font-semibold text-sm shrink-0 hover:text-gh-300 transition-colors"
-        >
-          BluntBrain
-        </a>
+    <header className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-x-6 gap-y-4 px-6 py-8">
+      <Link
+        href="/"
+        className="inline-flex items-center gap-2 font-serif text-2xl font-semibold text-[#051A24]"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        bluntbrain
+      </Link>
 
-        {/* Center social links */}
-        <div className="flex items-center gap-5">
-          <SocialIcon
-            href="https://x.com/bluntbrain"
-            icon={
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            }
-            label="X"
-          />
-          <SocialIcon
-            href="https://github.com/bluntbrain"
-            icon={<Github size={20} />}
-            label="GitHub"
-          />
-          <SocialIcon
-            href="https://linkedin.com/in/ishanl"
-            icon={<Linkedin size={20} />}
-            label="LinkedIn"
-          />
-          <CopyEmailButton email="ishan.lakhwani@gmail.com" />
-        </div>
+      <nav className="ml-auto flex flex-wrap items-center gap-x-6 gap-y-2">
+        {LINKS.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="text-sm text-[#051A24] transition-opacity hover:opacity-60"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </nav>
 
-        {/* Right CTA */}
-        <a
-          href="https://t.me/bluntbrainsol?text=Hi%20Ishan%2C%20I%20came%20across%20your%20portfolio%20at%20https%3A%2F%2Fbluntbrain.com%20and%20would%20like%20to%20connect!"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors"
-        >
-          <Send size={14} />
-          <span>Telegram</span>
-        </a>
-      </div>
-    </Card>
+      <PillButton href={TELEGRAM} external className="px-6 py-2.5 text-xs">
+        Start a chat
+      </PillButton>
+    </header>
   );
 }

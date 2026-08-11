@@ -27,7 +27,7 @@ export function SkillSet({ title, skills }: SkillSetProps) {
               ${
                 skill.highlight
                   ? "bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
-                  : "bg-gh-800 text-gh-400 hover:bg-gh-700"
+                  : "bg-[#051A24]/[0.05] text-[#051A24]/65 hover:bg-[#051A24]/[0.09]"
               }
             `}
           >

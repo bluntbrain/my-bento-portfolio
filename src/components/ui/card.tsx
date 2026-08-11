@@ -32,20 +32,16 @@ export function Card({ children, className, variant, ...props }: CardProps) {
   return (
     <div
       className={cn(
-        "rounded-2xl overflow-hidden relative bg-gh-900/80 border border-white/[0.06] backdrop-blur-sm shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06),inset_0_0_30px_rgba(255,255,255,0.03)] transition-[transform,border-color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-white/[0.12] hover:scale-[1.01]",
+        "relative overflow-hidden rounded-[28px] bg-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_4px_20px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_4px_30px_rgba(0,0,0,0.1)]",
         className
       )}
       {...props}
     >
+      {/* the tech background sits at a whisper on white, as a tint rather than art */}
       {bgImage && (
         <div className="absolute inset-0 z-0">
-          <Image
-            src={bgImage}
-            alt=""
-            fill
-            className="opacity-70 object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/50" />
+          <Image src={bgImage} alt="" fill className="object-cover opacity-[0.06]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/85 to-white/70" />
         </div>
       )}
       <div className="relative z-10">{children}</div>

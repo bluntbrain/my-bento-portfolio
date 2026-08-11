@@ -74,7 +74,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
     {
       name: "React",
       level: 95,
-      color: "text-gh-200",
+      color: "text-[#051A24]/80",
       icon: (
         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
           <path d="M12 13.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1.5c3.5 0 6.5-1.5 8-3.5-1.5-2-4.5-3.5-8-3.5S5.5 9.5 4 11.5c1.5 2 4.5 3.5 8 3.5z"/>
@@ -87,7 +87,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
     {
       name: "Next.js",
       level: 90,
-      color: "text-gh-200",
+      color: "text-[#051A24]/80",
       icon: (
         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4.5l6 7.5c-1.5.6-3.1 1-4.9 1-.4 0-.7 0-1.1-.1V17zm7.5-2.5L11 5.5V7h2v6l5.5 6.5c.3-.9.5-1.9.5-3v-.5-.5z"/>
@@ -97,7 +97,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
     {
       name: "TypeScript",
       level: 90,
-      color: "text-gh-200",
+      color: "text-[#051A24]/80",
       icon: (
         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
           <path d="M3 3h18v18H3V3zm10.71 14.86c.5.98 1.51 1.73 3.09 1.73 1.6 0 2.8-.83 2.8-2.36 0-1.41-.81-2.04-2.25-2.66l-.42-.18c-.73-.31-1.04-.52-1.04-1.02 0-.41.31-.73.81-.73.48 0 .8.21 1.09.73l1.31-.87c-.55-.96-1.33-1.33-2.4-1.33-1.51 0-2.48.96-2.48 2.23 0 1.38.81 2.03 2.03 2.55l.42.18c.78.34 1.24.55 1.24 1.13 0 .48-.45.83-1.15.83-.83 0-1.31-.43-1.67-1.03l-1.38.8zM14 12h-3v6h1.5v-4.5h1.5V12zm-7-1h6v1.5H9.5V18H8v-5.5H5V11h2z"/>
@@ -107,7 +107,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
     {
       name: "JavaScript",
       level: 95,
-      color: "text-gh-200",
+      color: "text-[#051A24]/80",
       icon: (
         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
           <path d="M3 3h18v18H3V3zm4.73 15.04c.4.85 1.19 1.55 2.54 1.55 1.5 0 2.53-.8 2.53-2.55v-5.78h-1.7v5.74c0 .86-.35 1.08-.9 1.08-.58 0-.82-.4-1.09-.87l-1.38.83zm5.98-.18c.5.98 1.51 1.73 3.09 1.73 1.6 0 2.8-.83 2.8-2.36 0-1.41-.81-2.04-2.25-2.66l-.42-.18c-.73-.31-1.04-.52-1.04-1.02 0-.41.31-.73.81-.73.48 0 .8.21 1.09.73l1.31-.87c-.55-.96-1.33-1.33-2.4-1.33-1.51 0-2.48.96-2.48 2.23 0 1.38.81 2.03 2.03 2.55l.42.18c.78.34 1.24.55 1.24 1.13 0 .48-.45.83-1.15.83-.83 0-1.31-.43-1.67-1.03l-1.38.8z"/>
@@ -117,7 +117,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
     {
       name: "Tailwind",
       level: 92,
-      color: "text-gh-200",
+      color: "text-[#051A24]/80",
       icon: (
         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
           <path d="M12 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.31.74 1.91 1.35.98 1 2.09 2.15 4.59 2.15 2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.91-1.35C15.61 7.15 14.5 6 12 6zm-5 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.3.74 1.91 1.35C8.39 16.85 9.5 18 12 18c2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.91-1.35C10.61 13.15 9.5 12 7 12z"/>
@@ -127,7 +127,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
     {
       name: "Redux",
       level: 85,
-      color: "text-gh-200",
+      color: "text-[#051A24]/80",
       icon: (
         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
           <path d="M16.63 16.56c.83-.09 1.46-.82 1.41-1.66a1.57 1.57 0 0 0-1.57-1.48h-.05c-.87.03-1.55.75-1.52 1.62.02.44.19.82.47 1.09-1 1.97-2.51 3.42-4.78 4.63-1.54.82-3.14 1.12-4.74.92-1.31-.16-2.34-.73-3-1.65-1-1.38-1.09-2.87-.29-4.37.57-1.07 1.46-1.86 2.04-2.28-.11-.39-.29-1.05-.38-1.54-4.41 3.2-3.96 7.52-2.65 9.33.97 1.35 2.95 2.19 5.13 2.19.56 0 1.13-.05 1.7-.15 3.62-.65 6.36-2.91 7.86-5.65h.37zm4.11-4.17c-2.32-2.72-5.74-4.22-9.64-4.22h-.5a1.55 1.55 0 0 0-1.38-.85h-.05c-.87.03-1.55.75-1.52 1.62.03.86.75 1.54 1.62 1.51h.05a1.57 1.57 0 0 0 1.35-.99h.55c2.33 0 4.53.68 6.53 2.01 1.53 1.02 2.63 2.34 3.24 3.92.52 1.3.5 2.58-.07 3.66-.87 1.65-2.33 2.55-4.26 2.55-1.24 0-2.43-.38-3.05-.64-.31.27-.86.72-1.24.99 1.2.55 2.43.84 3.61.84 2.69 0 4.68-1.49 5.45-2.98 1.02-2.04.99-5.35-2.7-8.42zM6.86 14.39c.03.86.75 1.54 1.62 1.51h.05a1.57 1.57 0 0 0 1.52-1.62 1.57 1.57 0 0 0-1.57-1.48h-.05c-.06 0-.14 0-.21.02-.98-1.64-1.39-3.43-1.24-5.36.11-1.44.57-2.69 1.39-3.72.67-.85 1.97-1.27 2.84-1.3 2.44-.04 3.48 3 3.55 4.22.39.09 1.05.29 1.51.44-.22-3.66-2.05-5.73-4.9-5.73-2.68 0-5.19 1.95-6.17 4.83-.66 1.92-.58 3.78.22 5.55.57 1.25 1.48 2.31 2.02 2.9-.15.19-.22.44-.2.74h-.38z"/>
@@ -137,7 +137,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
     {
       name: "Node.js",
       level: 80,
-      color: "text-gh-200",
+      color: "text-[#051A24]/80",
       icon: (
         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
           <path d="M12 1.85c-.27 0-.55.07-.78.2L3.78 6.35c-.48.28-.78.8-.78 1.36v8.58c0 .56.3 1.08.78 1.36l7.44 4.3c.46.27 1.04.27 1.5 0l7.44-4.3c.48-.28.78-.8.78-1.36V7.71c0-.56-.3-1.08-.78-1.36l-7.44-4.3c-.23-.13-.5-.2-.78-.2h.06zm0 2.75L18 8.05v7.9l-6 3.45-6-3.45v-7.9l6-3.45z"/>
@@ -147,7 +147,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
     {
       name: "Git",
       level: 88,
-      color: "text-gh-200",
+      color: "text-[#051A24]/80",
       icon: (
         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
           <path d="M21.62 11.11l-8.73-8.73a1.3 1.3 0 0 0-1.84 0L9.23 4.2l2.33 2.33a1.54 1.54 0 0 1 1.96 1.96l2.24 2.24a1.54 1.54 0 1 1-.92.86l-2.09-2.09v5.5a1.54 1.54 0 1 1-1.27-.05V9.36a1.54 1.54 0 0 1-.84-2.02L8.33 5.03 2.38 11a1.3 1.3 0 0 0 0 1.84l8.73 8.73a1.3 1.3 0 0 0 1.84 0l8.67-8.67a1.3 1.3 0 0 0 0-1.84v.05z"/>
@@ -157,7 +157,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
     {
       name: "GraphQL",
       level: 75,
-      color: "text-gh-200",
+      color: "text-[#051A24]/80",
       icon: (
         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
           <path d="M12.48 2.63l7.45 4.3v8.6l-7.45 4.3-7.45-4.3v-8.6l7.45-4.3m0-1.73L3.6 6.2v9.6l8.88 5.13 8.88-5.13V6.2L12.48.9z"/>
@@ -173,7 +173,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
     {
       name: "Jest",
       level: 78,
-      color: "text-gh-200",
+      color: "text-[#051A24]/80",
       icon: (
         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
           <path d="M22.25 11.85c-.33-.98-1.05-1.68-2.03-2.03.23-.66.3-1.35.2-2.05-.15-1.05-.66-1.93-1.48-2.55a4.1 4.1 0 0 0-2.55-.91c-.4 0-.8.05-1.2.15-.25-.65-.63-1.2-1.15-1.65a4.15 4.15 0 0 0-2.68-1c-.95 0-1.88.33-2.68 1-.53.45-.9 1-1.15 1.65-.4-.1-.8-.15-1.2-.15-.9 0-1.78.3-2.55.91-.83.62-1.33 1.5-1.48 2.55-.1.7-.03 1.4.2 2.05-.98.35-1.7 1.05-2.03 2.03-.33.98-.28 2.03.15 2.98.43.95 1.2 1.65 2.18 1.98-.08.43-.1.85-.08 1.28.08 1.05.5 2 1.25 2.7a4.1 4.1 0 0 0 2.93 1.18h.38c.5.8 1.18 1.43 2.03 1.83a4.4 4.4 0 0 0 2.03.5c.7 0 1.38-.18 2.03-.5.85-.4 1.53-1.03 2.03-1.83h.38c1.08 0 2.13-.4 2.93-1.18a4.12 4.12 0 0 0 1.25-2.7c.03-.43 0-.85-.08-1.28.98-.33 1.75-1.03 2.18-1.98.43-.95.48-2 .15-2.98zM12 17.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
@@ -210,7 +210,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
     <div className="space-y-4 sm:space-y-6">
       <motion.button
         onClick={onBack}
-        className="mb-4 sm:mb-6 flex items-center gap-2 px-3 py-1.5 text-gh-400 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] rounded-lg transition-colors text-sm"
+        className="mb-4 sm:mb-6 flex items-center gap-2 px-3 py-1.5 text-[#051A24]/65 hover:text-[#051A24] bg-white hover:bg-[#051A24]/[0.06] border border-[#051A24]/10 rounded-lg transition-colors text-sm"
         whileHover={{ x: -3 }}
       >
         <ArrowLeft size={16} />
@@ -222,36 +222,36 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
         animate={{ opacity: 1, y: 0 }}
         className="mb-4 sm:mb-8"
       >
-        <h1 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4 text-white">
+        <h1 className="text-[32px] leading-[1.1] tracking-tight text-[#0D212C] md:text-[40px] lg:text-[44px] mb-3">
           Frontend Development
         </h1>
-        <p className="text-gh-400 text-sm">
+        <p className="text-[#051A24]/65 text-sm">
           Modern web development with Next.js, React.js, and cutting-edge technologies
         </p>
       </motion.div>
 
       {/* Skills */}
       <Card className="p-5">
-        <h2 className="font-medium text-gh-500 text-xs uppercase tracking-wider mb-4">Technical Skills</h2>
+        <h2 className="font-medium text-[#051A24]/50 text-xs uppercase tracking-wider mb-4">Technical Skills</h2>
         <SkillRadial skills={skills} />
       </Card>
 
       {/* Experience */}
       <Card className="p-5">
-        <h2 className="font-medium text-gh-500 text-xs uppercase tracking-wider mb-4">Frontend Experience</h2>
+        <h2 className="font-medium text-[#051A24]/50 text-xs uppercase tracking-wider mb-4">Frontend Experience</h2>
         <div className="space-y-3">
           {experience.map((exp, index) => (
-            <div key={index} className="bg-white/[0.03] rounded-xl p-4 border border-white/[0.06] hover:border-white/[0.1] transition-colors">
+            <div key={index} className="bg-white rounded-xl p-4 border border-[#051A24]/10 hover:border-[#051A24]/25 transition-colors">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
                 <div>
-                  <h3 className="font-medium text-sm text-white">{exp.role}</h3>
-                  <p className="text-gh-400 text-sm">{exp.company}</p>
+                  <h3 className="font-medium text-sm text-[#051A24]">{exp.role}</h3>
+                  <p className="text-[#051A24]/65 text-sm">{exp.company}</p>
                 </div>
-                <span className="text-gh-500 text-xs">{exp.period}</span>
+                <span className="text-[#051A24]/50 text-xs">{exp.period}</span>
               </div>
               <div className="space-y-1.5">
                 {exp.achievements.map((achievement, i) => (
-                  <p key={i} className="text-gh-400 text-sm leading-relaxed">· {achievement}</p>
+                  <p key={i} className="text-[#051A24]/65 text-sm leading-relaxed">· {achievement}</p>
                 ))}
               </div>
             </div>
@@ -261,7 +261,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
 
       {/* Projects */}
       <Card className="p-5">
-        <h2 className="font-medium text-gh-500 text-xs uppercase tracking-wider mb-4">Featured Projects</h2>
+        <h2 className="font-medium text-[#051A24]/50 text-xs uppercase tracking-wider mb-4">Featured Projects</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
           {frontendProjects.map((project, index) => (
             <div key={index} className={project.videoDemo ? "lg:col-span-2" : ""}>
@@ -269,7 +269,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className={`bg-white/[0.03] rounded-xl p-4 border border-white/[0.06] hover:border-white/[0.1] transition-colors ${
+                className={`bg-white rounded-xl p-4 border border-[#051A24]/10 hover:border-[#051A24]/25 transition-colors ${
                   project.videoDemo ? "grid grid-cols-1 lg:grid-cols-2 gap-4" : ""
                 }`}
               >
@@ -278,23 +278,23 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
                     {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-2 py-0.5 bg-white/[0.06] text-gh-400 rounded-md text-xs font-medium"
+                        className="px-2 py-0.5 bg-[#051A24]/[0.05] text-[#051A24]/65 rounded-md text-xs font-medium"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <h3 className="font-medium text-sm text-white mb-2">
+                  <h3 className="font-medium text-sm text-[#051A24] mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-gh-400 text-sm leading-relaxed mb-3">
+                  <p className="text-[#051A24]/65 text-sm leading-relaxed mb-3">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5 mb-3">
                     {project.techStack.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="text-xs text-gh-500 bg-white/[0.04] px-1.5 py-0.5 rounded-md"
+                        className="text-xs text-[#051A24]/50 bg-white px-1.5 py-0.5 rounded-md"
                       >
                         {tech}
                       </span>
@@ -306,7 +306,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
                         href={project.liveLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.06] hover:bg-white/[0.1] text-gh-300 rounded-lg text-xs font-medium transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#051A24]/[0.05] hover:bg-[#051A24]/[0.08] text-[#051A24]/75 rounded-lg text-xs font-medium transition-colors"
                       >
                         <ExternalLink size={12} />
                         Live Demo
@@ -317,7 +317,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
                         href={project.playStoreLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.06] hover:bg-white/[0.1] text-gh-300 rounded-lg text-xs font-medium transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#051A24]/[0.05] hover:bg-[#051A24]/[0.08] text-[#051A24]/75 rounded-lg text-xs font-medium transition-colors"
                       >
                         <ExternalLink size={12} />
                         Play Store
@@ -328,7 +328,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
                         href={project.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.06] hover:bg-white/[0.1] text-gh-300 rounded-lg text-xs font-medium transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#051A24]/[0.05] hover:bg-[#051A24]/[0.08] text-[#051A24]/75 rounded-lg text-xs font-medium transition-colors"
                       >
                         <Github size={12} />
                         GitHub
@@ -358,7 +358,7 @@ export function FrontendDetails({ onBack }: FrontendDetailsProps) {
 
                 {project.videoDemo && (
                   <div className="flex items-center justify-center">
-                    <div className="bg-black/30 rounded-xl overflow-hidden border border-white/[0.06] w-full max-w-xs">
+                    <div className="bg-[#051A24]/[0.04] rounded-xl overflow-hidden border border-[#051A24]/10 w-full max-w-xs">
                       <video
                         autoPlay
                         loop

@@ -1,61 +1,283 @@
+// opening cluster of the home page: hero, the work marquee, and the pull quote
 "use client";
 
 import React from "react";
 import Image from "next/image";
+import { Quote, Github, Linkedin, Send, ArrowUpRight } from "lucide-react";
 import ProfileImage from "@/assets/images/newdp.png";
-import { Card } from "../ui/card";
-import { SkillRadial } from "../ui/skill-radial";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRust, faReact, faEthereum, faDocker, faGitAlt } from "@fortawesome/free-brands-svg-icons";
-import { faDatabase, faShield, faBolt, faTerminal, faAnchor } from "@fortawesome/free-solid-svg-icons";
+import { Em, PillButton } from "../ui/pill-button";
+import { CopyEmailButton } from "../ui/copy-email-button";
+import { useInView } from "@/lib/utils";
+
+const TELEGRAM =
+  "https://t.me/bluntbrainsol?text=Hi%20Ishan%2C%20I%20came%20across%20your%20portfolio%20at%20https%3A%2F%2Fbluntbrain.com%20and%20would%20like%20to%20connect!";
+
+const XIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
+export const EMAIL = "ishan.lakhwani@gmail.com";
+
+const SOCIALS = [
+  { label: "GitHub", href: "https://github.com/bluntbrain", icon: <Github size={15} /> },
+  { label: "X", href: "https://x.com/bluntbrain", icon: <XIcon /> },
+  { label: "LinkedIn", href: "https://linkedin.com/in/ishanl", icon: <Linkedin size={15} /> },
+  { label: "Telegram", href: TELEGRAM, icon: <Send size={15} /> },
+];
+
+const PILL =
+  "inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm text-[#051A24] shadow-[0_0_0_0.5px_rgba(0,0,0,0.08),0_2px_10px_rgba(0,0,0,0.05)] transition-transform hover:-translate-y-0.5";
+const ROW =
+  "flex items-center gap-2 text-base text-[#051A24] transition-opacity hover:opacity-70";
+
+// one list, three render sites. email copies rather than opening a mail client.
+export function SocialLinks({ variant = "pill" }: { variant?: "pill" | "row" }) {
+  const style = variant === "pill" ? PILL : ROW;
+  return (
+    <>
+      {SOCIALS.map((social) => (
+        <a
+          key={social.label}
+          href={social.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={social.label}
+          className={style}
+        >
+          {social.icon}
+          {social.label}
+        </a>
+      ))}
+      <CopyEmailButton email={EMAIL} className={style} />
+    </>
+  );
+}
+
+// real shipped work, not stock loops
+const REEL: { src: string; kind: "video" | "image"; alt: string }[] = [
+  { src: "/videos/couple_demo.mp4", kind: "video", alt: "Coupl app demo" },
+  { src: "/images/nearme1.jpeg", kind: "image", alt: "NearMe on the Seeker dApp Store" },
+  { src: "/videos/dxfun_demo.mp4", kind: "video", alt: "DxSale launchpad demo" },
+  { src: "/videos/suidemo.mp4", kind: "video", alt: "SuiSage demo" },
+  { src: "/images/achievements/starkhack.png", kind: "image", alt: "StarkHack win" },
+  { src: "/videos/locationdemo.mp4", kind: "video", alt: "Location app demo" },
+  { src: "/images/nearme2.jpeg", kind: "image", alt: "NearMe reviews" },
+  { src: "/videos/newsdemo.mp4", kind: "video", alt: "News app demo" },
+  { src: "/images/achievements/superhack.png", kind: "image", alt: "SuperHack win" },
+];
+
+export const MARQUEE_MEDIA = REEL.map((item) => item.src);
+
+const Fade = ({
+  delay,
+  children,
+  className = "",
+}: {
+  delay: number;
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      className={`reveal ${inView ? "in-view" : ""} ${className}`}
+      style={{ animationDelay: `${delay}s` }}
+    >
+      {children}
+    </div>
+  );
+};
 
 export function Header() {
   return (
     <>
-      <Card className="col-span-1 sm:col-span-2 lg:col-span-1 p-5">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-balance">
-          Hi, I&apos;m Ishan
-        </h1>
-        <p className="text-gh-400 text-sm leading-relaxed">
-          <span className="text-white font-medium">Mobile App Developer</span> &{" "}
-          <span className="text-white font-medium">Rust Protocol Engineer</span> with{" "}
-          <span className="text-white font-medium">6+ years</span> of experience building
-          apps scaling to <span className="text-white font-medium">10M+ users</span> and
-          secure <span className="text-white font-medium">Solana smart contracts</span>.
-        </p>
-      </Card>
+      <section className="mx-auto max-w-[560px] px-6 pt-12 md:pt-16">
+        <Fade delay={0.1}>
+          <p className="font-serif text-[32px] font-semibold tracking-tight text-[#051A24] md:text-[40px] lg:text-[44px]">
+            bluntbrain
+          </p>
+        </Fade>
 
-      <Card className="col-span-1 sm:col-span-2 lg:col-span-1 p-0 aspect-square">
-        <Image
-          src={ProfileImage}
-          alt="Ishan"
-          width={400}
-          height={400}
-          className="object-cover rounded-2xl w-full h-auto"
-        />
-      </Card>
+        <Fade delay={0.2}>
+          <p className="mt-4 font-mono text-xs text-[#051A24] md:text-sm">
+            Ishan Lakhwani, fullstack and infrastructure
+          </p>
+        </Fade>
 
-      <Card className="col-span-1 sm:col-span-2 lg:col-span-2 p-5">
-        <h3 className="font-medium text-gh-500 text-xs uppercase tracking-wider mb-4">Skills</h3>
-        <SkillRadial skills={[
-          { name: "Rust", level: 88, color: "text-gh-200", icon: <FontAwesomeIcon icon={faRust} className="w-5 h-5" /> },
-          { name: "Solana", level: 85, color: "text-gh-200", icon: <Image src="/images/solana.svg" alt="Solana" width={20} height={20} className="w-5 h-5" /> },
-          { name: "Anchor", level: 85, color: "text-gh-200", icon: <FontAwesomeIcon icon={faAnchor} className="w-5 h-5" /> },
-          { name: "React Native", level: 95, color: "text-gh-200", icon: <FontAwesomeIcon icon={faReact} className="w-5 h-5" /> },
-          { name: "TypeScript", level: 90, color: "text-gh-200", icon: (
-            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden="true">
-              <path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/>
-            </svg>
-          ) },
-          { name: "Solidity", level: 85, color: "text-gh-200", icon: <FontAwesomeIcon icon={faEthereum} className="w-5 h-5" /> },
-          { name: "PDAs/CPIs", level: 85, color: "text-gh-200", icon: <FontAwesomeIcon icon={faDatabase} className="w-5 h-5" /> },
-          { name: "Security", level: 82, color: "text-gh-200", icon: <FontAwesomeIcon icon={faShield} className="w-5 h-5" /> },
-          { name: "DeFi", level: 85, color: "text-gh-200", icon: <FontAwesomeIcon icon={faBolt} className="w-5 h-5" /> },
-          { name: "CLI Tools", level: 80, color: "text-gh-200", icon: <FontAwesomeIcon icon={faTerminal} className="w-5 h-5" /> },
-          { name: "Docker", level: 78, color: "text-gh-200", icon: <FontAwesomeIcon icon={faDocker} className="w-5 h-5" /> },
-          { name: "Git", level: 90, color: "text-gh-200", icon: <FontAwesomeIcon icon={faGitAlt} className="w-5 h-5" /> },
-        ]} />
-      </Card>
+        <Fade delay={0.3}>
+          <h1 className="mt-2 text-[32px] leading-[1.1] tracking-tight text-[#0D212C] md:text-[40px] lg:text-[44px]">
+            From <span className="font-serif">Terraform</span>
+            <br />
+            to the <span className="font-serif">smart contract.</span>
+          </h1>
+        </Fade>
+
+        <Fade delay={0.4}>
+          <div className="mt-5 flex flex-col gap-6 text-sm leading-relaxed text-[#051A24] md:mt-6 md:text-base">
+            <p>
+              <Em>Senior fullstack engineer who owns the infrastructure too.</Em>{" "}
+              Terraform, AWS, Fargate, RDS and Kubernetes underneath. React Native and
+              Next.js on top. Rust and Solidity where the money moves.
+            </p>
+            <p>
+              <Em>Seven years</Em> of it, including the frontend team at Jar at{" "}
+              <Em>10M+ users</Em>, where a release either held or the whole support
+              queue found out. That is where I learned what shipping reliable code
+              actually costs.
+            </p>
+            <p>
+              Today I am <Em>Infrastructure Lead at Spout Finance</Em>. Before that,
+              consumer apps on Solana at SendAI. Same person on the cluster, the app,
+              the contract and the frontend.
+            </p>
+            <p>Open to interesting work. Telegram is the fastest way to reach out to me.</p>
+          </div>
+        </Fade>
+
+        <Fade delay={0.5}>
+          <div className="mt-5 flex flex-col gap-3 md:mt-6 md:flex-row md:gap-4">
+            <PillButton href={TELEGRAM} external>
+              Start a chat
+            </PillButton>
+            <PillButton href="#work" variant="secondary">
+              View the work
+            </PillButton>
+          </div>
+        </Fade>
+
+        {/* socials were footer-only and nobody scrolls that far */}
+        <Fade delay={0.6}>
+          <div className="mt-7 flex flex-wrap items-center gap-2">
+            <SocialLinks />
+          </div>
+        </Fade>
+
+        {/* the video side of things, deliberately quiet: a doorway, not a pitch */}
+        <Fade delay={0.7}>
+          <p className="mt-6 text-sm leading-relaxed text-[#051A24]/55">
+            Separately, I make AI UGC and launch videos with Higgsfield, Remotion and
+            ffmpeg.{" "}
+            <a
+              href="https://creative.bluntbrain.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[#051A24] underline underline-offset-4"
+            >
+              creative.bluntbrain.com
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          </p>
+        </Fade>
+      </section>
+
+      <Marquee />
+      <PullQuote />
     </>
+  );
+}
+
+function Marquee() {
+  const items = [...REEL, ...REEL];
+  return (
+    <div className="mb-16 mt-16 w-full overflow-hidden md:mt-20">
+      <div className="flex w-max animate-marquee">
+        {items.map((item, i) => (
+          <div key={i} className="mx-3 h-[280px] shrink-0 md:h-[440px]">
+            {item.kind === "video" ? (
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-label={item.alt}
+                className="h-full w-auto rounded-2xl object-cover shadow-lg"
+              >
+                <source src={item.src} type="video/mp4" />
+              </video>
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="h-full w-auto rounded-2xl object-cover shadow-lg"
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PullQuote() {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = React.useState(0);
+
+  // parallax on the portrait, capped so it never drifts out of its box
+  React.useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    let frame = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const rect = node.getBoundingClientRect();
+        const progress = 1 - rect.top / window.innerHeight;
+        setOffset(Math.max(-40, Math.min(40, progress * 60 - 30)));
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, [ref]);
+
+  return (
+    <section className="mx-auto max-w-2xl px-6 py-12 text-center">
+      <Fade delay={0.1}>
+        <Quote className="mx-auto h-6 w-6 text-slate-900" />
+      </Fade>
+
+      <Fade delay={0.2}>
+        <p className="mt-6 text-[32px] leading-[1.1] tracking-tight text-[#0D212C] md:text-[40px] lg:text-[44px]">
+          One bad release at Jar meant{" "}
+          <span className="font-serif">3,000 support tickets</span> before lunch
+        </p>
+      </Fade>
+
+      <Fade delay={0.3}>
+        <p className="mt-6 text-sm italic text-[#273C46]">
+          Ishan Lakhwani, on leading the frontend team at Jar App
+        </p>
+      </Fade>
+
+      <Fade delay={0.4}>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-2xl font-medium text-slate-900">
+          <span>Spout</span>
+          <span>SendAI</span>
+          <span>DxSale</span>
+          <span>Jar</span>
+          <span>Fleek</span>
+        </div>
+      </Fade>
+
+      <Fade delay={0.5} className="mt-12 flex justify-center">
+        <div ref={ref} className="w-full max-w-xs overflow-hidden rounded-2xl shadow-lg">
+          <Image
+            src={ProfileImage}
+            alt="Ishan Lakhwani"
+            width={400}
+            height={400}
+            style={{ transform: `translateY(${offset}px) scale(1.12)` }}
+            className="h-full w-full object-cover"
+          />
+        </div>
+      </Fade>
+    </section>
   );
 }

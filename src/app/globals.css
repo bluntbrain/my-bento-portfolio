@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* the two faces named in the brief are not usable here: the webflow-hosted
+   pp neue montreal 403s off-origin, and pp mondwest is not licensable. body
+   runs on the local geist face, serif accent on instrument serif (layout.tsx) */
+
 :root {
   /* vercel-style pure neutral scale */
   --black: #000000;
@@ -45,22 +49,8 @@ body {
 }
 
 html {
-  background: #000000;
+  background: #ffffff;
   scroll-behavior: smooth;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
-  pointer-events: none;
-  z-index: -1;
 }
 
 @layer utilities {
@@ -137,6 +127,73 @@ a[class*="rounded"]:active, button:active {
   .hover-lift:hover {
     transform: translateY(-2px);
   }
+}
+
+/* ---- light home page (.ink). everything below is scoped to it so the dark
+   sub-pages keep the bento treatment above ---- */
+
+.ink {
+  background: #ffffff;
+  color: #051A24;
+  /* the marquee is wider than the page by design; never let it scroll the body */
+  overflow-x: hidden;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* keyboard users get a real focus ring, not just the hover states */
+.ink a:focus-visible,
+.ink button:focus-visible,
+.ink [tabindex]:focus-visible {
+  outline: 2px solid #051a24;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* the bento stagger above would fight the scroll-triggered reveal here */
+.ink .grid > * {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+.ink .font-serif {
+  font-family: var(--font-serif), 'Times New Roman', serif;
+  font-weight: 400;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 10s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .animate-marquee { animation-duration: 45s; }
+}
+
+/* cursor trail thumbnails in the partner section */
+@keyframes trailOut {
+  0% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ink .reveal { opacity: 0; }
+
+.ink .reveal.in-view {
+  animation: revealUp 0.8s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ink .reveal { opacity: 1; }
+  .animate-marquee { animation: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

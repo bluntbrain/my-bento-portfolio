@@ -84,7 +84,7 @@ function RadialProgress({
       </div>
 
       {/* skill name */}
-      <span className="text-xs text-gh-400 text-center max-w-[64px] leading-tight">
+      <span className="text-xs text-[#051A24]/65 text-center max-w-[64px] leading-tight">
         {name}
       </span>
     </div>

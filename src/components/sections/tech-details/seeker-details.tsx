@@ -70,10 +70,8 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
         "Win exclusive NFTs",
         "Low fees & fast execution",
       ],
-      screenshots: [
-        "/images/seeker/onesol-1.png",
-        "/images/seeker/onesol-2.png",
-      ],
+      // onesol has not shipped, so there is nothing real to screenshot yet
+      screenshots: [],
       status: "coming_soon",
       searchName: "OneSOL",
     },
@@ -81,30 +79,30 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
 
   return (
     <>
-      <Card className="bg-gh-900 border border-gh-700 p-4 sm:p-6">
+      <Card className="bg-white border border-[#051A24]/10 p-4 sm:p-6">
         {/* header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <button
               onClick={onBack}
-              className="p-2 rounded-lg bg-gh-800 hover:bg-gh-700 text-gh-300 hover:text-white transition-colors"
+              className="p-2 rounded-lg bg-[#051A24]/[0.04] hover:bg-[#051A24]/[0.09] text-[#051A24]/75 hover:text-[#051A24] transition-colors"
             >
               <ArrowLeft size={20} />
             </button>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/50 flex items-center justify-center">
-                <Smartphone className="w-5 h-5 text-black" />
+              <div className="w-10 h-10 rounded-xl bg-[#051A24] flex items-center justify-center">
+                <Smartphone className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">Solana Seeker Apps</h1>
-                <p className="text-gh-400 text-sm">My apps on the Solana dApp Store</p>
+                <h1 className="font-serif text-3xl text-[#0D212C]">Solana Seeker Apps</h1>
+                <p className="text-[#051A24]/65 text-sm">My apps on the Solana dApp Store</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* seeker info banner */}
-        <div className="bg-gradient-to-r from-white/[0.04] to-white/[0.04] border border-white/[0.08] rounded-xl p-4 mb-6">
+        <div className="bg-gradient-to-r from-white/[0.04] to-white/[0.04] border border-[#051A24]/15 rounded-xl p-4 mb-6">
           <div className="flex items-start gap-3">
             <Image
               src="/images/solana.svg"
@@ -114,8 +112,8 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
               className="w-6 h-6 mt-0.5"
             />
             <div>
-              <h3 className="font-semibold text-white mb-1">What is Solana Seeker?</h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <h3 className="font-semibold text-[#051A24] mb-1">What is Solana Seeker?</h3>
+              <p className="text-[#051A24]/70 text-sm leading-relaxed">
                 Solana Seeker is the next-generation Web3 mobile phone by Solana Mobile.
                 It features a built-in Seed Vault wallet, the Solana dApp Store 2.0 with 100+ decentralized apps,
                 and exclusive rewards through the Genesis Token and $SKR token ecosystem.
@@ -125,12 +123,12 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
         </div>
 
         {/* how to download info */}
-        <div className="bg-gh-800/50 border border-gh-600 rounded-xl p-4 mb-6">
+        <div className="bg-[#051A24]/[0.04] border border-[#051A24]/10 rounded-xl p-4 mb-6">
           <div className="flex items-center gap-2 mb-2">
-            <Search className="w-5 h-5 text-white" />
-            <h3 className="font-semibold text-white">How to Download</h3>
+            <Search className="w-5 h-5 text-[#051A24]" />
+            <h3 className="font-semibold text-[#051A24]">How to Download</h3>
           </div>
-          <p className="text-gray-300 text-sm">
+          <p className="text-[#051A24]/70 text-sm">
             These apps are available exclusively on the Solana dApp Store.
             Open the dApp Store on your Seeker phone and search for the app name to download.
           </p>
@@ -144,24 +142,24 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-gh-800 border border-gh-700 rounded-xl overflow-hidden p-4 sm:p-5"
+              className="bg-[#051A24]/[0.04] border border-[#051A24]/10 rounded-xl overflow-hidden p-4 sm:p-5"
             >
               <div className="flex flex-col sm:flex-row gap-4">
                 {/* left side - text content */}
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <h2 className="text-lg font-bold text-white">{app.title}</h2>
+                    <h2 className="text-lg font-bold text-[#051A24]">{app.title}</h2>
                     {app.status === "live" ? (
-                      <span className="px-2 py-0.5 bg-green-500/20 text-green-400 border border-green-500/40 rounded text-xs font-medium">
+                      <span className="px-2 py-0.5 bg-[#b9f24d] text-[#051A24] rounded text-xs font-medium">
                         Live
                       </span>
                     ) : (
-                      <span className="px-2 py-0.5 bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded text-xs font-medium">
+                      <span className="px-2 py-0.5 bg-amber-100 text-amber-900 rounded text-xs font-medium">
                         Coming Soon
                       </span>
                     )}
                   </div>
-                  <p className="text-gray-200 text-sm leading-relaxed mb-3">
+                  <p className="text-[#051A24]/70 text-sm leading-relaxed mb-3">
                     {app.description}
                   </p>
 
@@ -170,7 +168,7 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
                     {app.features.map((feature, i) => (
                       <span
                         key={i}
-                        className="px-2 py-1 bg-gh-700/80 text-gray-200 rounded text-xs font-medium"
+                        className="px-2 py-1 bg-[#051A24]/[0.06] text-[#051A24]/70 rounded text-xs font-medium"
                       >
                         {feature}
                       </span>
@@ -179,9 +177,9 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
 
                   {/* search instruction */}
                   <div className="flex items-center gap-2 text-sm">
-                    <Search className="w-4 h-4 text-gray-400" />
-                    <span className="text-gray-400">Search:</span>
-                    <code className="px-2 py-0.5 bg-black/40 text-white rounded font-mono text-xs">
+                    <Search className="w-4 h-4 text-[#051A24]/55" />
+                    <span className="text-[#051A24]/55">Search:</span>
+                    <code className="px-2 py-0.5 bg-[#051A24]/[0.06] text-[#051A24] rounded font-mono text-xs">
                       {app.searchName}
                     </code>
                   </div>
@@ -189,14 +187,19 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
 
                 {/* right side - screenshots */}
                 <div className="flex gap-2 sm:gap-3">
+                  {app.screenshots.length === 0 && (
+                    <div className="grid w-24 sm:w-28 aspect-[9/16] place-items-center rounded-lg border border-dashed border-[#051A24]/20 px-3 text-center text-xs text-[#051A24]/45">
+                      Screens when it ships
+                    </div>
+                  )}
                   {app.screenshots.map((screenshot, i) => (
                     <div
                       key={i}
-                      className="relative w-24 sm:w-28 aspect-[9/16] bg-gh-900 rounded-lg overflow-hidden cursor-pointer group border-2 border-gh-600 hover:border-white/[0.15] transition-colors"
+                      className="relative w-24 sm:w-28 aspect-[9/16] bg-white rounded-lg overflow-hidden cursor-pointer group border-2 border-[#051A24]/10 hover:border-[#051A24]/25 transition-colors"
                       onClick={() => openLightbox(screenshot, `${app.title} - Screenshot ${i + 1}`)}
                     >
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center z-10">
-                        <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={20} />
+                        <Maximize2 className="text-[#051A24] opacity-0 group-hover:opacity-100 transition-opacity" size={20} />
                       </div>
                       <Image
                         src={screenshot}
@@ -225,12 +228,12 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
           >
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 p-2 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-full transition-colors z-50"
+              className="absolute top-4 right-4 z-50 rounded-full bg-white/10 p-2 text-white/80 transition-colors hover:bg-white/20 hover:text-white"
             >
               <X size={28} />
             </button>
 
-            <div className="absolute top-4 left-4 text-white text-lg font-semibold">
+            <div className="absolute top-4 left-4 text-lg font-semibold text-white">
               {lightbox.title}
             </div>
 
@@ -250,7 +253,7 @@ export function SeekerDetails({ onBack }: SeekerDetailsProps) {
               />
             </motion.div>
 
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-sm">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-white/50">
               Click anywhere to close
             </div>
           </motion.div>

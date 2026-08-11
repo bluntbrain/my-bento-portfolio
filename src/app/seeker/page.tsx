@@ -16,14 +16,14 @@ export default function SeekerPage() {
 
   return (
     <>
-      <div className="min-h-screen p-4 sm:p-6 text-white relative">
+      <div className="ink min-h-screen">
         <Toaster position="top-center" />
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div>
           {/* contact */}
           <ContactSection />
 
           {/* seeker apps content */}
-          <div className="col-span-1 sm:col-span-2 lg:col-span-4">
+          <div className="mx-auto max-w-[1200px] px-6">
             <SeekerDetails onBack={handleBack} />
           </div>
 

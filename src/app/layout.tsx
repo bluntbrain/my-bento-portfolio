@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Instrument_Serif } from "next/font/google";
 import "./globals.css";
+
+// serif accent face for the light home page
+const serif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-serif",
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,14 +23,16 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Ishan Lakhwani",
-  description: "React.js, React Native, Node.js, Solana, Rust, Go, Solidity",
+  description:
+    "Senior fullstack engineer and infrastructure lead. Terraform and AWS, React Native and Next.js, Rust and Solidity.",
   icons: {
+    // svg first for anything modern, png fallback for the rest
     icon: [
-      { url: "/icons8-solana-gradient-16.png", sizes: "16x16", type: "image/png" },
-      { url: "/icons8-solana-gradient-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/icons8-solana-gradient-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
     ],
-    apple: "/icons8-solana-gradient-96.png",
+    apple: "/icon-180.png",
   },
 };
 
@@ -32,12 +42,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ colorScheme: "dark" }}>
+    <html lang="en" style={{ colorScheme: "light" }}>
       <head>
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${serif.variable} antialiased`}
       >
         {children}
       </body>

@@ -12,10 +12,10 @@ export function WorkExperience({
   description,
 }: WorkExperienceProps) {
   return (
-    <div className="bg-gh-800 p-6 rounded-xl">
+    <div className="bg-[#051A24]/[0.04] p-6 rounded-xl">
       <h3 className="font-bold text-lg mb-2">{title}</h3>
-      <p className="text-gh-400 mb-1">{company}</p>
-      <p className="text-gh-500 text-sm mb-2">{period}</p>
+      <p className="text-[#051A24]/65 mb-1">{company}</p>
+      <p className="text-[#051A24]/50 text-sm mb-2">{period}</p>
       <p className="text-sm">{description}</p>
     </div>
   );

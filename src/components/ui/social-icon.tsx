@@ -8,7 +8,7 @@ export function SocialIcon({ href, icon, label }: SocialIconProps) {
   return (
     <a
       href={href}
-      className="text-gray-400 hover:text-white transition-colors"
+      className="text-[#051A24]/55 hover:text-[#051A24] transition-colors"
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}

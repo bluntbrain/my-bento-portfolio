@@ -69,7 +69,7 @@ function Dropdown({
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 rounded-lg border border-[#30363d] bg-[#21262d] px-4 py-2 text-sm text-white hover:border-[#8b949e]"
+        className="flex items-center gap-2 rounded-lg border border-[#051A24]/10 bg-[#051A24]/[0.05] px-4 py-2 text-sm text-[#051A24] hover:border-[#8b949e]"
       >
         <span>{selectedOption?.label || label}</span>
         <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,18 +78,18 @@ function Dropdown({
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 z-50 mt-2 max-h-80 w-56 overflow-y-auto rounded-lg border border-[#30363d] bg-[#161b22] shadow-lg">
+        <div className="absolute right-0 z-50 mt-2 max-h-80 w-56 overflow-y-auto rounded-lg border border-[#051A24]/10 bg-white shadow-lg">
           {/* search input for org dropdown */}
           {options.length > 10 && (
-            <div className="border-b border-[#30363d] p-2">
-              <div className="flex items-center gap-2 rounded border border-[#30363d] bg-[#0d1117] px-3 py-1.5">
-                <svg className="h-4 w-4 text-[#8b949e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="border-b border-[#051A24]/10 p-2">
+              <div className="flex items-center gap-2 rounded border border-[#051A24]/10 bg-white px-3 py-1.5">
+                <svg className="h-4 w-4 text-[#051A24]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <input
                   type="text"
                   placeholder="Organization"
-                  className="w-full bg-transparent text-sm text-white placeholder-[#8b949e] outline-none"
+                  className="w-full bg-transparent text-sm text-[#051A24] placeholder-[#8b949e] outline-none"
                 />
               </div>
             </div>
@@ -104,12 +104,12 @@ function Dropdown({
                 }}
                 className={`flex w-full items-center gap-3 px-4 py-2 text-left text-sm transition-colors ${
                   value === option.value
-                    ? "bg-[#21262d] text-white"
-                    : "text-[#c9d1d9] hover:bg-[#21262d]"
+                    ? "bg-[#051A24]/[0.05] text-[#051A24]"
+                    : "text-[#051A24] hover:bg-[#051A24]/[0.06]"
                 }`}
               >
                 {value === option.value && (
-                  <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-4 w-4 text-[#051A24]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 )}
@@ -233,18 +233,18 @@ export function IssuesClient() {
     <div className="space-y-8">
       {/* header */}
       <div>
-        <h1 className="text-4xl font-bold text-white">Open Source Tasks</h1>
-        <p className="mt-2 text-[#8b949e]">
+        <h1 className="text-4xl font-bold text-[#051A24]">Open Source Tasks</h1>
+        <p className="mt-2 text-[#051A24]/60">
           Contribute to open-source codebases to gain experience and make an impact.
         </p>
       </div>
 
       {/* fetch progress bar */}
       {fetchingOrg && (
-        <div className="rounded-lg border border-[#30363d] bg-[#161b22] p-4">
+        <div className="rounded-lg border border-[#051A24]/10 bg-white p-4">
           <div className="flex items-center gap-3">
-            <span className="h-5 w-5 animate-spin rounded-full border-2 border-[#30363d] border-t-[#58a6ff]" />
-            <span className="text-sm text-[#c9d1d9]">{fetchProgress}</span>
+            <span className="h-5 w-5 animate-spin rounded-full border-2 border-[#051A24]/10 border-t-[#58a6ff]" />
+            <span className="text-sm text-[#051A24]">{fetchProgress}</span>
           </div>
         </div>
       )}
@@ -253,7 +253,7 @@ export function IssuesClient() {
       {fetchResult && (
         <div className={`rounded-lg border p-4 ${fetchResult.success ? "border-[#238636] bg-[#238636]/10" : "border-[#da3633] bg-[#da3633]/10"}`}>
           <div className="flex items-center justify-between">
-            <span className="text-sm text-[#c9d1d9]">
+            <span className="text-sm text-[#051A24]">
               {fetchResult.success
                 ? `Successfully cached ${fetchResult.count} issues from ${getOrgName(fetchResult.org)}`
                 : `Failed to fetch issues from ${getOrgName(fetchResult.org)}`
@@ -261,7 +261,7 @@ export function IssuesClient() {
             </span>
             <button
               onClick={() => setFetchResult(null)}
-              className="text-[#8b949e] hover:text-white"
+              className="text-[#051A24]/60 hover:text-[#051A24]"
             >
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -287,7 +287,7 @@ export function IssuesClient() {
             <button
               onClick={() => handleFetchOrg(selectedOrg)}
               disabled={fetchingOrg !== null}
-              className="flex items-center gap-2 rounded-lg border border-[#30363d] bg-[#238636] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#2ea043] disabled:opacity-50"
+              className="flex items-center gap-2 rounded-lg border border-[#051A24]/10 bg-[#238636] px-4 py-2 text-sm font-medium text-[#051A24] transition-colors hover:bg-[#2ea043] disabled:opacity-50"
             >
               {fetchingOrg === selectedOrg ? (
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
@@ -313,13 +313,13 @@ export function IssuesClient() {
       {/* issues grid */}
       {loading && issues.length === 0 ? (
         <div className="py-20 text-center">
-          <div className="mx-auto h-10 w-10 animate-spin rounded-full border-3 border-[#30363d] border-t-[#58a6ff]" />
-          <p className="mt-5 text-base text-[#8b949e]">Loading issues...</p>
+          <div className="mx-auto h-10 w-10 animate-spin rounded-full border-3 border-[#051A24]/10 border-t-[#58a6ff]" />
+          <p className="mt-5 text-base text-[#051A24]/60">Loading issues...</p>
         </div>
       ) : sortedIssues.length === 0 ? (
         <div className="py-20 text-center">
           <svg
-            className="mx-auto h-16 w-16 text-[#8b949e]"
+            className="mx-auto h-16 w-16 text-[#051A24]/60"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -331,8 +331,8 @@ export function IssuesClient() {
               d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M12 2a10 10 0 100 20 10 10 0 000-20z"
             />
           </svg>
-          <p className="mt-5 text-lg text-[#8b949e]">No issues found</p>
-          <p className="mt-2 text-sm text-[#8b949e]">Select an organization and click Fetch Issues to load data</p>
+          <p className="mt-5 text-lg text-[#051A24]/60">No issues found</p>
+          <p className="mt-2 text-sm text-[#051A24]/60">Select an organization and click Fetch Issues to load data</p>
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
@@ -348,11 +348,11 @@ export function IssuesClient() {
           <button
             onClick={handleLoadMore}
             disabled={loadingMore}
-            className="rounded-lg border border-[#30363d] bg-[#21262d] px-8 py-3 text-base font-medium text-white transition-colors hover:bg-[#30363d] disabled:opacity-50"
+            className="rounded-lg border border-[#051A24]/10 bg-[#051A24]/[0.05] px-8 py-3 text-base font-medium text-[#051A24] transition-colors hover:bg-[#051A24]/[0.08] disabled:opacity-50"
           >
             {loadingMore ? (
               <span className="flex items-center gap-2">
-                <span className="h-5 w-5 animate-spin rounded-full border-2 border-[#30363d] border-t-white" />
+                <span className="h-5 w-5 animate-spin rounded-full border-2 border-[#051A24]/10 border-t-white" />
                 Loading...
               </span>
             ) : (
@@ -363,19 +363,19 @@ export function IssuesClient() {
       )}
 
       {/* fetch all section */}
-      <div className="rounded-lg border border-[#30363d] bg-[#161b22] p-6">
-        <h3 className="text-lg font-semibold text-white">Fetch Issues from Organizations</h3>
-        <p className="mt-1 text-sm text-[#8b949e]">Click on an organization to fetch and cache its issues</p>
+      <div className="rounded-lg border border-[#051A24]/10 bg-white p-6">
+        <h3 className="text-lg font-semibold text-[#051A24]">Fetch Issues from Organizations</h3>
+        <p className="mt-1 text-sm text-[#051A24]/60">Click on an organization to fetch and cache its issues</p>
         <div className="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {SOLANA_COMPANIES.map((company) => (
             <button
               key={company.username}
               onClick={() => handleFetchOrg(company.username)}
               disabled={fetchingOrg !== null}
-              className={`flex items-center gap-3 rounded-lg border border-[#30363d] p-3 text-left transition-colors ${
+              className={`flex items-center gap-3 rounded-lg border border-[#051A24]/10 p-3 text-left transition-colors ${
                 fetchingOrg === company.username
                   ? "border-[#58a6ff] bg-[#58a6ff]/10"
-                  : "hover:border-[#8b949e] hover:bg-[#21262d]"
+                  : "hover:border-[#8b949e] hover:bg-[#051A24]/[0.06]"
               } disabled:opacity-50`}
             >
               <Image
@@ -385,9 +385,9 @@ export function IssuesClient() {
                 height={32}
                 className="rounded-full"
               />
-              <span className="truncate text-sm font-medium text-white">{company.name}</span>
+              <span className="truncate text-sm font-medium text-[#051A24]">{company.name}</span>
               {fetchingOrg === company.username && (
-                <span className="ml-auto h-4 w-4 animate-spin rounded-full border-2 border-[#30363d] border-t-[#58a6ff]" />
+                <span className="ml-auto h-4 w-4 animate-spin rounded-full border-2 border-[#051A24]/10 border-t-[#58a6ff]" />
               )}
             </button>
           ))}
@@ -406,7 +406,7 @@ function IssueCard({ issue }: { issue: CachedIssue }) {
       href={issue.html_url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex gap-4 rounded-lg border border-[#30363d] bg-[#0d1117] p-5 transition-colors hover:border-[#8b949e]"
+      className="flex gap-4 rounded-lg border border-[#051A24]/10 bg-white p-5 transition-colors hover:border-[#8b949e]"
     >
       {/* org logo */}
       {orgLogo ? (
@@ -418,8 +418,8 @@ function IssueCard({ issue }: { issue: CachedIssue }) {
           className="h-12 w-12 shrink-0 rounded-full"
         />
       ) : (
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#21262d]">
-          <svg className="h-6 w-6 text-[#8b949e]" viewBox="0 0 16 16" fill="currentColor">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#051A24]/[0.05]">
+          <svg className="h-6 w-6 text-[#051A24]/60" viewBox="0 0 16 16" fill="currentColor">
             <path d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
             <path fillRule="evenodd" d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0z" />
           </svg>
@@ -428,7 +428,7 @@ function IssueCard({ issue }: { issue: CachedIssue }) {
 
       <div className="min-w-0 flex-1">
         {/* title */}
-        <h3 className="text-base font-semibold leading-snug text-white">
+        <h3 className="text-base font-semibold leading-snug text-[#051A24]">
           #{issue.number} - {issue.title}
         </h3>
 
@@ -451,12 +451,12 @@ function IssueCard({ issue }: { issue: CachedIssue }) {
         )}
 
         {/* repo info */}
-        <p className="mt-3 text-sm text-[#8b949e]">
+        <p className="mt-3 text-sm text-[#051A24]/60">
           {issue.org_name}/{issue.repo_name}
         </p>
 
         {/* meta row */}
-        <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-[#8b949e]">
+        <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-[#051A24]/60">
           <span className="flex items-center gap-1">
             <span className="h-2 w-2 rounded-full bg-[#238636]" />
             {issue.state}

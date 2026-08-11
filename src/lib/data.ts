@@ -5,25 +5,21 @@ export const solanaProjects = [
       name: "NFT Project",
       description: "Full web-app to sell custom NFTs",
       github: "https://github.com/yourusername/nft-project",
-      live: "https://nft-project.example.com",
     },
     {
       name: "DEFI Project",
       description: "Launch go Fund me as a web3 app",
       github: "https://github.com/yourusername/defi-project",
-      live: "https://defi-project.example.com",
     },
     {
       name: "DApp Project",
       description: "Web3 version of Giphy",
       github: "https://github.com/yourusername/dapp-project",
-      live: "https://dapp-project.example.com",
     },
     {
       name: "CHAINLINK Project",
       description: "Retrieved real-time exchange rates with Solana",
       github: "https://github.com/yourusername/chainlink-project",
-      live: "https://chainlink-project.example.com",
     },
   ];
   
@@ -33,7 +29,6 @@ export const solanaProjects = [
       description:
         "Web-based interface to explore and display data from the Redstone Holesky Blockchain, specifically focusing on game data. Utilizing the MUD Indexer for data retrieval, it features a PostgreSQL database for storage, a Node.js backend for data manipulation and API endpoints, and a simple frontend for user interaction.",
       github: "https://github.com/bluntbrain/redstone-blockchain-data-explorer",
-      live: "https://redstone-explorer.example.com",
     },
     {
       name: "Decentralised Voting dApp",

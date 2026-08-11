@@ -1,77 +1,109 @@
+// open source contribution
 "use client";
 
 import React from "react";
-import { Card } from "../ui/card";
-import { ExternalLink, GitMerge, Star } from "lucide-react";
+import { GitMerge, Star, ExternalLink } from "lucide-react";
+import { Em } from "../ui/pill-button";
+import { useInView } from "@/lib/utils";
 
-const featuredPRs = [
+const FEATURED_PRS = [
   { number: 760, title: "casino skill for card games" },
   { number: 655, title: "autonomous task generation" },
-  { number: 543, title: "token skills, defi & nfts" },
+  { number: 543, title: "token skills, defi and nfts" },
 ];
+
+
+const Fade = ({
+  delay,
+  children,
+  className = "",
+}: {
+  delay: number;
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      className={`reveal ${inView ? "in-view" : ""} ${className}`}
+      style={{ animationDelay: `${delay}s` }}
+    >
+      {children}
+    </div>
+  );
+};
 
 export function OpenSourceContribution() {
   return (
-    <Card className="p-5">
-      <p className="text-gh-400 text-sm leading-relaxed mb-4">
-        <span className="text-white font-medium">
-          Top open source contributor
-        </span>{" "}
-        to{" "}
-        <a
-          href="https://github.com/crestalnetwork/intentkit"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white hover:underline font-medium"
-        >
-          IntentKit
-        </a>{" "}
-        <span className="text-gh-500">(</span>
-        <Star className="inline w-3.5 h-3.5 text-gh-500 -mt-0.5" />
-        <span className="text-white font-medium"> 6.5K+</span>
-        <span className="text-gh-500">)</span> — an{" "}
-        <span className="text-white font-medium">AI Agent framework</span>{" "}
-        on Base L2. Built{" "}
-        <span className="text-white font-medium">45+ tools</span> in{" "}
-        <span className="text-white font-medium">Python</span> using{" "}
-        <span className="text-white font-medium">LangChain</span>.
-      </p>
+    <section className="mx-auto max-w-[1200px] px-6 py-12">
+      <Fade delay={0.1}>
+        <p className="inline-flex items-center gap-2 rounded-full bg-[#b9f24d] px-4 py-1.5 font-mono text-[11px] uppercase tracking-widest text-[#051A24]">
+          <Star className="h-3.5 w-3.5" />
+          Top outside contributor
+        </p>
+        <h2 className="mt-5 text-[32px] leading-[1.1] tracking-tight text-[#0D212C] md:text-[40px] lg:text-[44px]">
+          <span className="font-serif">45 pull requests</span> merged into a{" "}
+          <span className="font-serif">6,500-star</span> AI agent framework.
+        </h2>
+      </Fade>
 
-      <div className="flex items-center gap-2 mb-4">
-        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.06] rounded-lg">
-          <GitMerge className="w-3.5 h-3.5 text-white" />
-          <span className="text-white text-sm font-medium">
-            45 merged
-          </span>
-        </div>
-        <a
-          href="https://github.com/crestalnetwork/intentkit/pulls?q=is%3Apr+author%3Abluntbrain"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.06] hover:bg-white/[0.1] rounded-lg transition-colors"
-        >
-          <span className="text-gh-300 text-sm font-medium">View All</span>
-          <ExternalLink className="w-3.5 h-3.5 text-gh-500" />
-        </a>
-      </div>
-
-      <div className="grid grid-cols-1 gap-1.5">
-        {featuredPRs.map((pr) => (
+      <Fade delay={0.2}>
+        <p className="mt-6 max-w-2xl text-sm leading-relaxed text-[#051A24]/70 md:text-base">
+          <Em loud>The single largest outside contributor</Em> to{" "}
           <a
-            key={pr.number}
-            href={`https://github.com/crestalnetwork/intentkit/pull/${pr.number}`}
+            href="https://github.com/crestalnetwork/intentkit"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-3 py-2 bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.04] hover:border-white/[0.08] rounded-lg transition-colors group"
+            className="font-semibold text-[#051A24] underline decoration-2 underline-offset-4"
           >
-            <GitMerge className="w-3.5 h-3.5 text-white shrink-0" />
-            <span className="text-gh-500 text-sm font-mono">#{pr.number}</span>
-            <span className="text-gh-400 text-sm truncate group-hover:text-gh-200 transition-colors">
-              {pr.title}
-            </span>
+            IntentKit
           </a>
-        ))}
-      </div>
-    </Card>
+          , an AI agent framework running on Base. <Em>45+ agent tools</Em> written in
+          Python with LangChain, from DeFi and NFT actions to autonomous task
+          generation.
+        </p>
+      </Fade>
+
+      <Fade delay={0.3}>
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {[
+            { value: "45", label: "Pull requests merged", icon: GitMerge },
+            { value: "6.5K+", label: "Stars on the repo", icon: Star },
+            { value: "45+", label: "Agent tools shipped", icon: GitMerge },
+            { value: "#1", label: "Outside contributor", icon: Star },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-[28px] bg-white px-6 py-6 shadow-[0_4px_16px_rgba(0,0,0,0.08)]"
+            >
+              <stat.icon className="h-4 w-4 text-[#051A24]/40" />
+              <p className="mt-4 font-serif text-3xl text-[#0D212C]">{stat.value}</p>
+              <p className="mt-1 text-sm text-[#051A24]/60">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </Fade>
+
+      <Fade delay={0.4}>
+        <div className="mt-4 flex flex-col gap-2">
+          {FEATURED_PRS.map((pr) => (
+            <a
+              key={pr.number}
+              href={`https://github.com/crestalnetwork/intentkit/pull/${pr.number}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-2xl bg-white px-6 py-4 shadow-[0_0_0_0.5px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-[0_4px_30px_rgba(0,0,0,0.08)]"
+            >
+              <GitMerge className="h-4 w-4 shrink-0 text-[#051A24]" />
+              <span className="font-mono text-sm text-[#051A24]/50">#{pr.number}</span>
+              <span className="truncate text-sm text-[#051A24]">{pr.title}</span>
+              <ExternalLink className="ml-auto h-3.5 w-3.5 shrink-0 text-[#051A24]/40" />
+            </a>
+          ))}
+        </div>
+      </Fade>
+    </section>
   );
 }
+
