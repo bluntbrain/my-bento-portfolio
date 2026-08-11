@@ -12,6 +12,7 @@ import { ProjectsSection } from "@/components/sections/featured-projects";
 import { OpenSourceContribution } from "@/components/sections/opensource-contribution";
 import { TheStack } from "@/components/sections/the-stack";
 import { PillButton } from "@/components/ui/pill-button";
+import { useInView } from "@/lib/utils";
 
 const TELEGRAM =
   "https://t.me/bluntbrainsol?text=Hi%20Ishan%2C%20I%20came%20across%20your%20portfolio%20at%20https%3A%2F%2Fbluntbrain.com%20and%20would%20like%20to%20connect!";
@@ -151,9 +152,15 @@ function SiteFooter() {
   );
 }
 
-function BottomNav() {
+// the floating pill duplicates the footer CTA and covers copy once you reach
+// the bottom, so it steps out of the way when the outro is on screen
+function BottomNav({ hidden }: { hidden: boolean }) {
   return (
-    <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2">
+    <div
+      className={`fixed bottom-6 left-1/2 z-50 -translate-x-1/2 transition-all duration-300 ${
+        hidden ? "pointer-events-none translate-y-6 opacity-0" : "opacity-100"
+      }`}
+    >
       <div className="flex items-center gap-3 rounded-full bg-white py-2 pl-6 pr-2 shadow-[0_1px_2px_0_rgba(5,26,36,0.08),0_4px_16px_0_rgba(5,26,36,0.1),0_0_0_0.5px_rgba(0,0,0,0.06)] md:gap-4 md:pl-8">
         <a href="#top" className="font-serif text-2xl font-semibold text-[#051A24]">
           IL
@@ -167,6 +174,8 @@ function BottomNav() {
 }
 
 export default function Home() {
+  const { ref: outroRef, inView: outroVisible } = useInView<HTMLDivElement>(0.05, false);
+
   return (
     <div id="top" className="ink min-h-screen">
       <Header />
@@ -177,9 +186,11 @@ export default function Home() {
       <ProjectsSection />
       <WorkExperienceSection />
       <TheStack />
-      <PartnerSection />
-      <SiteFooter />
-      <BottomNav />
+      <div ref={outroRef}>
+        <PartnerSection />
+        <SiteFooter />
+      </div>
+      <BottomNav hidden={outroVisible} />
     </div>
   );
 }

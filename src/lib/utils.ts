@@ -6,9 +6,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-// one-shot scroll reveal used across the light home page sections. attach the
-// ref to a wrapper and spread the class onto it: `reveal ${inView ? "in-view" : ""}`
-export function useInView<T extends HTMLElement>(threshold = 0.1) {
+// scroll reveal used across the light home page sections. attach the ref to a
+// wrapper and spread the class onto it: `reveal ${inView ? "in-view" : ""}`.
+// once=false keeps reporting, for anything that has to react to leaving view too.
+export function useInView<T extends HTMLElement>(threshold = 0.1, once = true) {
   const ref = useRef<T>(null)
   const [inView, setInView] = useState(false)
 
@@ -19,14 +20,16 @@ export function useInView<T extends HTMLElement>(threshold = 0.1) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true)
-          observer.disconnect()
+          if (once) observer.disconnect()
+        } else if (!once) {
+          setInView(false)
         }
       },
       { threshold }
     )
     observer.observe(node)
     return () => observer.disconnect()
-  }, [threshold])
+  }, [threshold, once])
 
   return { ref, inView }
 }
